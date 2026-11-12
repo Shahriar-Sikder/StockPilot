@@ -76,6 +76,7 @@
     <Content Include="App\tenant\views\stock-history\index.jsx" />
     <Content Include="react\index.html" />
     <Content Include="react\favicon.svg" />
+    <Content Include="react\favicon.ico" />
     <Content Include="react\assets\**\*.*" />
     <None Include="react-app\package.json" />
     <None Include="react-app\package-lock.json" Condition="Exists('react-app\package-lock.json')" />
