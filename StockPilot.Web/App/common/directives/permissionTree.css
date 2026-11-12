@@ -1,0 +1,67 @@
+/* Toolbar + scroll container for the module-wise permission tree (permissionTree.js). */
+
+.permission-tree-toolbar {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: 8px 0 10px 0;
+    border-bottom: 1px solid #e7ecf1;
+    margin-bottom: 8px;
+}
+
+.permission-tree-toolbar .permission-tree-search {
+    -webkit-flex: 1 1 220px;
+    flex: 1 1 220px;
+    min-width: 200px;
+    margin-right: 10px;
+}
+
+.permission-tree-toolbar .permission-tree-actions {
+    margin-right: 10px;
+}
+
+.permission-tree-toolbar .permission-tree-count {
+    background-color: #337ab7;
+    margin-left: auto;
+}
+
+/* The tree is long even collapsed, so keep it inside the modal instead of growing it. */
+.permission-tree-wrapper .permission-tree {
+    max-height: 45vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Module group rows read as headings, individual pages stay regular weight. */
+.permission-tree-wrapper .jstree-node > .jstree-anchor {
+    line-height: 22px;
+    height: 22px;
+}
+
+.permission-tree-wrapper > .permission-tree > ul > li > .jstree-anchor,
+.permission-tree-wrapper > .permission-tree > ul > li > ul > li > .jstree-anchor {
+    font-weight: 600;
+}
+
+/* jsTree's search plugin marks hits with .jstree-search (italic by default) - make it readable. */
+.permission-tree-wrapper .jstree-anchor.jstree-search {
+    font-style: normal;
+    background-color: #fcf8e3;
+    border-radius: 2px;
+}
+
+@media (max-width: 767px) {
+    .permission-tree-toolbar .permission-tree-search {
+        -webkit-flex: 1 1 100%;
+        flex: 1 1 100%;
+        margin-right: 0;
+        margin-bottom: 8px;
+    }
+
+    .permission-tree-toolbar .permission-tree-count {
+        margin-left: 0;
+    }
+}

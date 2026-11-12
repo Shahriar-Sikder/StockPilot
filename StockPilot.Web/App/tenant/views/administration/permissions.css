@@ -1,0 +1,49 @@
+/* Permission tree (Roles and Users editors). Colours come from the theme variables. */
+.pt-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:6px}
+.pt-bar .sr{flex:1 1 200px;max-width:320px}
+.pt-help{margin:4px 0 10px;font-size:12px}
+.pt-tree{border:1px solid var(--bd);border-radius:8px;overflow:hidden}
+.pt-node.grp>.pt-row{background:var(--bg)}
+.pt-node.grp>.pt-row .pt-name span{font-weight:700}
+.pt-row{display:flex;align-items:center;flex-wrap:wrap;gap:6px 10px;padding:8px 12px 8px calc(8px + var(--d,0) * 22px);border-bottom:1px solid var(--bd);min-height:42px}
+.pt-tree>.pt-node:last-child>.pt-row,.pt-kids>.pt-node:last-child>.pt-row{border-bottom-color:var(--bd)}
+.pt-caret{width:18px;flex:none;background:none;border:0;padding:0;color:var(--mu);cursor:pointer;font-size:13px;text-align:center}
+span.pt-caret{cursor:default}
+.pt-name{display:flex;align-items:center;gap:8px;cursor:pointer;min-width:0;flex:0 1 auto}
+.pt-name input{width:16px;height:16px;flex:none;margin:0}
+.pt-name span{font-size:13.5px}
+.pt-view{font-size:11px;color:var(--mu);border:1px solid var(--bd);border-radius:4px;padding:0 5px}
+.pt-count{font-size:11.5px;color:var(--mu)}
+.pt-actions{display:flex;flex-wrap:wrap;gap:6px;margin-left:auto}
+.pt-chip{display:inline-flex;align-items:center;gap:6px;padding:3px 10px 3px 7px;border:1px solid var(--bd);border-radius:14px;font-size:12.5px;cursor:pointer;color:var(--mu);background:var(--sf);user-select:none}
+.pt-chip input{width:14px;height:14px;margin:0}
+.pt-chip.on{border-color:var(--ac);color:var(--tx);background:var(--ac2)}
+.pt-chip.chg{box-shadow:inset 0 0 0 1px var(--wn)}
+.pt-tag{font-size:10.5px;font-weight:700;border-radius:4px;padding:1px 6px;text-transform:uppercase;letter-spacing:.03em}
+.pt-tag.role{background:var(--bg);color:var(--mu);border:1px solid var(--bd)}
+.pt-tag.add{background:var(--okb);color:var(--ok)}
+.pt-tag.rem{background:var(--erb);color:var(--er)}
+@media(max-width:560px){
+  .pt-row{padding-left:calc(6px + var(--d,0) * 14px)}
+  .pt-actions{margin-left:24px;width:100%}
+}
+
+/* Roles / Users pages */
+.au-tags{display:flex;flex-wrap:wrap;gap:4px}
+.au-legend{display:flex;flex-wrap:wrap;gap:10px;align-items:center;font-size:12px;color:var(--mu);margin:0 0 10px}
+.au-form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.au-form label{display:flex;flex-direction:column;gap:5px;font-size:12.5px;color:var(--mu);font-weight:500}
+.au-form label.ck{flex-direction:row;align-items:center;gap:8px;color:var(--tx)}
+.au-form label.ck input{width:auto}
+.au-form input{width:100%;color:var(--tx)}
+.au-full{grid-column:1/-1}
+.au-roles{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+.au-roles label{display:flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid var(--bd);border-radius:8px;cursor:pointer;font-size:13.5px}
+.au-roles label.on{border-color:var(--ac);background:var(--ac2)}
+.au-roles input{width:auto;margin:0}
+@media(max-width:560px){.au-form{grid-template-columns:1fr}}
+
+/* Permissions the signed-in user cannot change. Recovered from the release build (minified); the original comments and layout are lost. */
+.pt-chip.lock,.pt-name.lock{opacity:.5;cursor:not-allowed}
+.pt-chip.lock input,.pt-name.lock input{cursor:not-allowed}
+.au-roles label.lock{opacity:.55;cursor:not-allowed}

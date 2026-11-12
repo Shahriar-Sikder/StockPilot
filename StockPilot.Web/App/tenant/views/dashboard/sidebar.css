@@ -1,0 +1,94 @@
+/* Sidebar modes (dashboard/index.jsx useSidebarMode): open, sb-mini (icon rail) and sb-auto (icon rail that opens over
+   the page while hovered or focused). Loaded after stockpilot.css; desktop only, phones keep the top strip. */
+:where(.sp-shell) aside{transition:width .18s ease,box-shadow .18s ease;display:flex;flex-direction:column}
+:where(.sp-shell) aside .brand{flex:none}
+:where(.sp-shell) aside .brand .lg{flex:none}
+:where(.sp-shell) aside a,:where(.sp-shell) aside .sbt{flex:none}
+:where(.sp-shell) aside .nl{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* the collapse / expand / keep-open control, under the menu */
+.sbt{display:flex;gap:11px;align-items:center;width:100%;margin:8px 0 2px;padding:6px 10px;border:0;border-radius:6px;background:none;color:var(--mu);font:inherit;font-size:13px;cursor:pointer;text-align:left}
+.sbt:hover{background:var(--bg);color:var(--tx)}
+.sbt:focus-visible{outline:2px solid var(--ac);outline-offset:1px}
+.sbt svg{flex:none}
+
+@media(min-width:761px){
+  /* icon rail: collapsed, and auto-hide while not hovered */
+  body.sb-mini aside,
+  body.sb-auto aside{width:60px;padding-left:8px;padding-right:8px;overflow-x:hidden}
+  body.sb-mini aside .nl,
+  body.sb-mini aside .ft,
+  body.sb-auto aside:not(:hover):not(:focus-within) .nl,
+  body.sb-auto aside:not(:hover):not(:focus-within) .ft{display:none}
+  body.sb-mini aside a,
+  body.sb-mini aside .sbt,
+  body.sb-auto aside:not(:hover):not(:focus-within) a,
+  body.sb-auto aside:not(:hover):not(:focus-within) .sbt{justify-content:center;padding-left:0;padding-right:0;position:relative}
+  body.sb-mini aside .brand,
+  body.sb-auto aside:not(:hover):not(:focus-within) .brand{justify-content:center;padding-left:0;padding-right:0}
+  /* section headings become a thin rule */
+  body.sb-mini aside .nvs,
+  body.sb-auto aside:not(:hover):not(:focus-within) .nvs{font-size:0;height:1px;background:var(--bd);margin:10px 6px}
+  /* the waiting-requests count becomes a dot on the icon */
+  body.sb-mini aside .nvb,
+  body.sb-auto aside:not(:hover):not(:focus-within) .nvb{position:absolute;top:2px;right:6px;min-width:8px;width:8px;height:8px;padding:0;font-size:0;line-height:0}
+  body.sb-mini aside .tourl,
+  body.sb-auto aside:not(:hover):not(:focus-within) .tourl{border-style:solid;border-color:transparent}
+  body.sb-mini aside a:hover,
+  body.sb-auto aside:not(:hover):not(:focus-within) a:hover{transform:none}
+
+  /* auto-hide: the sidebar sits over the page and opens on hover / focus, so the page does not move */
+  body.sb-auto aside{position:fixed;left:0;top:0;bottom:0;height:100vh;z-index:30}
+  body.sb-auto main{margin-left:60px}
+  body.sb-auto aside:hover,
+  body.sb-auto aside:focus-within{width:232px;box-shadow:8px 0 32px rgba(0,0,0,.18);overflow-y:auto}
+}
+
+@media(prefers-reduced-motion:reduce){:where(.sp-shell) aside{transition:none}}
+
+/* phones: the existing horizontal strip; the control is not needed there */
+@media(max-width:760px){
+  .sbt{display:none}
+  :where(.sp-shell) aside{flex-direction:row}
+}
+
+/* Menu icon animations (sidebar entries, New menu, sidebar toggle). Recovered from the release build (minified); the original comments and layout are lost. */
+.mi{--mi-x:21px;position:relative;overflow:hidden}
+.mi svg{transform-box:fill-box;transform-origin:50%;flex:none}
+.mn a.mi{--mi-x:20px}
+.mi:hover svg{animation:.45s cubic-bezier(.34,1.56,.64,1) mi-pop}
+.mi[data-i=dash]:hover svg{animation:.5s mi-tiles}
+.mi[data-i=items]:hover svg{animation:.55s cubic-bezier(.34,1.56,.64,1) mi-hop}
+.mi[data-i=purchase]:hover svg,.mi[data-i=pin]:hover svg{animation:.6s mi-down}
+.mi[data-i=sale]:hover svg{animation:.6s mi-up}
+.mi[data-i=move]:hover svg{animation:.6s mi-shuttle}
+.mi[data-i=supplier]:hover svg{animation:.7s mi-drive}
+.mi[data-i=reports]:hover svg,.mi[data-i=file]:hover svg{animation:.5s mi-tilt}
+.mi[data-i=setup]:hover svg{animation:.55s mi-wiggle}
+.mi[data-i=user]:hover svg{animation:.5s mi-nod}
+.mi[data-i=lock]:hover svg{animation:.45s mi-shake}
+.mi[data-i=compass]:hover svg{animation:.7s cubic-bezier(.34,1.56,.64,1) mi-turn}
+.mi[data-i=chevl]:hover svg{animation:.5s mi-left}
+.mi[data-i=chevr]:hover svg{animation:.5s mi-right}
+.btn.mi-new svg{transition:transform .25s cubic-bezier(.34,1.56,.64,1)}
+.btn.mi-new:hover svg,.btn.mi-new[aria-expanded=true] svg{transform:rotate(90deg)}
+.mi[data-clk] svg{animation:.35s cubic-bezier(.34,1.56,.64,1) mi-press}
+.mi[data-clk]:after{content:"";left:var(--mi-x);background:var(--ac);opacity:.35;pointer-events:none;border-radius:50%;width:8px;height:8px;margin:-4px 0 0 -4px;animation:.5s ease-out forwards mi-ripple;position:absolute;top:50%}
+@media (width>=761px){body.sb-mini aside .mi,body.sb-auto aside:not(:hover):not(:focus-within) .mi{--mi-x:50%}}
+@keyframes mi-pop{0%{transform:scale(1)}40%{transform:scale(1.22)rotate(-6deg)}to{transform:scale(1)}}
+@keyframes mi-tiles{0%,to{transform:none}40%{transform:scale(1.2)rotate(8deg)}70%{transform:scale(.96)rotate(-3deg)}}
+@keyframes mi-hop{0%,to{transform:translateY(0)}35%{transform:translateY(-4px)scale(1.08)}60%{transform:translateY(0)scale(.96,1.04)}80%{transform:translateY(-1px)}}
+@keyframes mi-down{0%,to{transform:translateY(0)}40%{transform:translateY(3px)}70%{transform:translateY(-1px)}}
+@keyframes mi-up{0%,to{transform:translateY(0)}40%{transform:translateY(-3px)}70%{transform:translateY(1px)}}
+@keyframes mi-shuttle{0%,to{transform:translate(0)}30%{transform:translate(3px)}65%{transform:translate(-3px)}}
+@keyframes mi-drive{0%{transform:translate(0)}25%{transform:translate(4px)translateY(-1px)}50%{transform:translate(4px)}51%{opacity:0;transform:translate(-5px)}52%{opacity:1}to{transform:translate(0)}}
+@keyframes mi-tilt{0%,to{transform:rotate(0)}35%{transform:rotate(-10deg)scale(1.08)}70%{transform:rotate(5deg)}}
+@keyframes mi-wiggle{0%,to{transform:rotate(0)}25%{transform:rotate(12deg)}50%{transform:rotate(-10deg)}75%{transform:rotate(5deg)}}
+@keyframes mi-nod{0%,to{transform:translateY(0)scale(1)}40%{transform:translateY(-2px)scale(1.12)}}
+@keyframes mi-shake{0%,to{transform:translate(0)}20%{transform:translate(-2px)rotate(-6deg)}40%{transform:translate(2px)rotate(6deg)}60%{transform:translate(-1px)}80%{transform:translate(1px)}}
+@keyframes mi-turn{0%{transform:rotate(0)}to{transform:rotate(360deg)}}
+@keyframes mi-left{0%,to{transform:translate(0)}45%{transform:translate(-4px)}}
+@keyframes mi-right{0%,to{transform:translate(0)}45%{transform:translate(4px)}}
+@keyframes mi-press{0%{transform:scale(1)}30%{transform:scale(.78)}70%{transform:scale(1.18)}to{transform:scale(1)}}
+@keyframes mi-ripple{to{opacity:0;width:160px;height:160px;margin:-80px 0 0 -80px}}
+@media (prefers-reduced-motion:reduce){.mi svg,.mi[data-clk]:after{animation:none!important}.btn.mi-new svg{transition:none}}

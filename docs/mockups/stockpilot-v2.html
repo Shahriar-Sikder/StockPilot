@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>StockPilot – Inventory</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f6fa;--sf:#fff;--tx:#0f172a;--mu:#64748b;--bd:#e4e8f0;--ac:#2563eb;--ac2:#e9f0ff;--ok:#047857;--okb:#e1f6ec;--wn:#b45309;--wnb:#fef1d8;--er:#c2342b;--erb:#fdebea;--in:#2563eb;--out:#f59e0b;--sh:0 1px 2px rgba(15,23,42,.05),0 4px 14px rgba(15,23,42,.04);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b0f17;--sf:#121823;--tx:#e7ecf4;--mu:#8b97ab;--bd:#222b3a;--ac:#5b93ff;--ac2:#16233f;--ok:#4ade9c;--okb:#10301f;--wn:#f3b556;--wnb:#33270e;--er:#ff8a80;--erb:#3a1b1a;--in:#5b93ff;--out:#f3b556;--sh:none;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0b0f17;--sf:#121823;--tx:#e7ecf4;--mu:#8b97ab;--bd:#222b3a;--ac:#5b93ff;--ac2:#16233f;--ok:#4ade9c;--okb:#10301f;--wn:#f3b556;--wnb:#33270e;--er:#ff8a80;--erb:#3a1b1a;--in:#5b93ff;--out:#f3b556;--sh:none;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}svg{flex:none}
+body{margin:0;background:var(--bg);color:var(--tx);font:14px/1.5 Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;display:flex;min-height:100vh;-webkit-font-smoothing:antialiased}
+aside{width:232px;flex:none;background:var(--sf);border-right:1px solid var(--bd);padding:16px 12px;position:sticky;top:0;height:100vh;overflow-y:auto}
+.brand{display:flex;gap:10px;align-items:center;font-weight:700;font-size:16px;padding:2px 8px 16px}.lg{width:32px;height:32px;border-radius:6px;background:var(--ac);color:var(--acx);display:grid;place-items:center}
+aside a{display:flex;gap:11px;align-items:center;padding:9px 12px;border-radius:6px;color:var(--mu);cursor:pointer;font-weight:500;margin:2px 0}
+aside a:hover{background:var(--bg);color:var(--tx)}aside a.on{background:var(--ac2);color:var(--ac);font-weight:600}
+aside .ft{margin:18px 8px 0;padding:12px;border:1px dashed var(--bd);border-radius:6px;color:var(--mu);font-size:12px}
+main{flex:1;min-width:0}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--sf);border-bottom:1px solid var(--bd);padding:10px 32px;display:flex;gap:12px;align-items:center}
+.srch{flex:1;max-width:460px;display:flex;gap:8px;align-items:center;border:1px solid var(--bd);border-radius:6px;padding:8px 12px;color:var(--mu);cursor:pointer;background:var(--bg)}.srch kbd{margin-left:auto;font:11px ui-monospace,monospace;border:1px solid var(--bd);border-radius:4px;padding:1px 6px;background:var(--sf)}
+.sp{flex:1}.chip{border:1px solid var(--bd);border-radius:6px;padding:6px 10px;font-size:12.5px;color:var(--mu);display:flex;gap:6px;align-items:center;cursor:pointer;background:var(--sf)}.chip:hover{color:var(--tx)}
+.me{width:32px;height:32px;border-radius:6px;background:var(--ac2);color:var(--ac);display:grid;place-items:center;font-weight:700;font-size:12px}
+.pg{padding:26px 32px 60px;max-width:1280px}
+.hd{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+h1{font-size:25px;margin:0;font-weight:700;letter-spacing:-.02em}h2{margin:0;font-size:18px}h3{margin:0 0 14px;font-size:14px;font-weight:600}.sub{margin:3px 0 0;color:var(--mu)}.ac{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.card{background:var(--sf);border:1px solid var(--bd);border-radius:8px;padding:18px;margin-bottom:18px;box-shadow:var(--sh)}.card.tw{padding:0}.card.tw>h3{padding:16px 18px 4px;margin:0}
+.tw{overflow-x:auto}table{border-collapse:collapse;width:100%}
+th{font-size:12px;font-weight:500;color:var(--mu);text-align:left;padding:11px 16px;border-bottom:1px solid var(--bd);white-space:nowrap}
+td{padding:12px 16px;border-bottom:1px solid var(--bd);white-space:nowrap}tbody tr:last-child>td{border-bottom:0}
+tr.row{cursor:pointer}tbody tr:hover>td{background:var(--bg)}tr.del td{opacity:.5;text-decoration:line-through}
+td.r,th.r{text-align:right;font-variant-numeric:tabular-nums}.pos{color:var(--ok);font-weight:600}.neg{color:var(--er);font-weight:600}
+input,select{font:inherit;color:var(--tx);background:var(--sf);border:1px solid var(--bd);border-radius:6px;padding:8px 11px;min-width:0}
+input:focus,select:focus{outline:0;border-color:var(--ac);box-shadow:0 0 0 3px var(--ac2)}input[type=checkbox]{width:auto}
+.btn{font:inherit;font-size:13px;font-weight:600;background:var(--ac);color:var(--acx);border:1px solid var(--ac);border-radius:6px;padding:8px 15px;cursor:pointer;display:inline-flex;gap:6px;align-items:center}.btn:hover{filter:brightness(1.08)}
+.btn.s{background:var(--sf);color:var(--tx);border-color:var(--bd)}.btn.s:hover{background:var(--bg);filter:none}.btn.g{background:var(--ok);border-color:var(--ok);color:#fff}.btn.d{background:var(--erb);border-color:transparent;color:var(--er)}.btn.l{padding:11px 20px;font-size:14px}
+.lnk{background:none;border:0;color:var(--er);cursor:pointer;font:inherit;font-size:13px}
+.b{display:inline-block;padding:2px 9px;border-radius:4px;font-size:12px;font-weight:600}
+.b.Draft,.b.Low{background:var(--wnb);color:var(--wn)}.b.Posted,.b.OK{background:var(--okb);color:var(--ok)}.b.Cancelled,.b.Out{background:var(--erb);color:var(--er)}
+.ch{display:inline-block;padding:2px 9px;border-radius:4px;font-size:12px;background:var(--bg);color:var(--mu);border:1px solid var(--bd)}
+.pills{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;align-items:center}.pills button{font:inherit;font-size:13px;font-weight:500;background:var(--sf);border:1px solid var(--bd);color:var(--mu);padding:6px 13px;border-radius:4px;cursor:pointer}.pills button.on{background:var(--tx);color:var(--bg);border-color:var(--tx)}
+.av{width:36px;height:36px;border-radius:6px;display:grid;place-items:center;font-weight:700;font-size:13px;color:#fff;flex:none}.av.lg{width:52px;height:52px;border-radius:8px;font-size:18px}
+.nm{display:flex;gap:12px;align-items:center}.nm b{display:block}.nm span{color:var(--mu);font-size:12px}
+.kp{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:18px}.kp>div{background:var(--sf);border:1px solid var(--bd);border-radius:8px;padding:18px;box-shadow:var(--sh)}
+.kp span{color:var(--mu);font-size:13px}.kp b{display:block;font-size:26px;letter-spacing:-.02em;line-height:1.25}.kp small{color:var(--mu);font-size:12px}
+.g2{display:grid;grid-template-columns:1.6fr 1fr;gap:18px}.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.bar{height:6px;border-radius:4px;background:var(--bd);overflow:hidden;width:110px}.bar i{display:block;height:100%;border-radius:4px;background:var(--ok)}.bar.w i{background:#e8890c}.bar.e i{background:var(--er)}
+.li{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--bd)}.li:last-child{border:0;padding-bottom:0}.li .mu,.mu{color:var(--mu);font-size:12.5px}
+.fd{display:flex;gap:12px;align-items:center;padding:9px 0}.fd i{font-style:normal;width:30px;height:30px;border-radius:6px;display:grid;place-items:center;font-weight:700;flex:none}.fd i.in{background:var(--okb);color:var(--ok)}.fd i.out{background:var(--wnb);color:var(--wn)}
+.lgd{display:flex;gap:14px;font-size:12px;color:var(--mu);margin-top:8px}.lgd i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px}
+.ov{position:fixed;inset:0;background:rgba(15,23,42,.4);z-index:30}
+.dw{position:fixed;top:0;right:0;bottom:0;width:min(560px,100vw);background:var(--sf);z-index:31;display:flex;flex-direction:column;box-shadow:-10px 0 40px rgba(0,0,0,.2);animation:sl .2s}@keyframes sl{from{transform:translateX(40px);opacity:0}}
+.dh{display:flex;gap:14px;align-items:center;padding:18px 22px;border-bottom:1px solid var(--bd)}.dh>div:nth-child(2){flex:1;min-width:0}.db{padding:20px 22px;overflow-y:auto;flex:1}.df{padding:14px 22px;border-top:1px solid var(--bd);display:flex;gap:8px;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.x{background:none;border:0;font-size:24px;color:var(--mu);cursor:pointer;line-height:1}
+.dl{display:grid;grid-template-columns:1fr 1fr;gap:12px 20px;margin:16px 0}.dl div span{display:block;color:var(--mu);font-size:12px}
+.fm{display:grid;grid-template-columns:1fr 1fr;gap:14px}.fm label,.fl{display:flex;flex-direction:column;gap:5px;font-size:12.5px;color:var(--mu);font-weight:500}.fm input,.fm select,.fl input,.fl select{width:100%;color:var(--tx)}.fm label.ck{flex-direction:row;align-items:center;gap:8px}.req{color:var(--er)}
+.sgw{position:relative}.sgl{position:absolute;left:0;right:0;top:100%;margin-top:4px;background:var(--sf);border:1px solid var(--bd);border-radius:6px;box-shadow:0 10px 30px rgba(0,0,0,.15);z-index:5;max-height:300px;overflow:auto}
+.sg{display:flex;gap:10px;align-items:center;padding:9px 12px;cursor:pointer}.sg:hover,.sg.on{background:var(--ac2)}.sg .mu{margin-left:auto}
+.ln{display:grid;grid-template-columns:1fr 80px 118px 92px 78px 24px;gap:8px;align-items:center;padding:12px 0;border-bottom:1px solid var(--bd)}.ln select,.ln input{padding:6px 8px}
+.stp{display:flex}.stp button{width:30px;border:1px solid var(--bd);background:var(--bg);cursor:pointer;color:var(--tx)}.stp button:first-child{border-radius:6px 0 0 6px}.stp button:last-child{border-radius:0 6px 6px 0}.stp input{width:54px;text-align:center;border-radius:0;border-left:0;border-right:0;padding:6px 2px}
+.warn{color:var(--er);font-size:12px}.ok2{color:var(--mu);font-size:12px}
+.mo{position:fixed;inset:0;background:rgba(15,23,42,.45);display:grid;place-items:start center;padding:8vh 16px 16px;z-index:50;overflow:auto}
+.md{background:var(--sf);border-radius:8px;width:100%;max-width:520px;box-shadow:0 20px 60px rgba(0,0,0,.3)}.md.wd{max-width:640px}.md.xl{max-width:900px}.md.xl .mb{min-height:400px;max-height:62vh;overflow:auto}.md.xl .mh{align-items:center}
+.mh{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--bd);font-size:16px}.mb{padding:20px}.mf{display:flex;justify-content:flex-end;gap:8px;padding:14px 20px;border-top:1px solid var(--bd)}
+.mn{position:absolute;right:0;top:calc(100% + 6px);background:var(--sf);border:1px solid var(--bd);border-radius:6px;box-shadow:0 10px 30px rgba(0,0,0,.15);padding:6px;min-width:230px;z-index:20}.mn a{display:flex;gap:10px;align-items:center;padding:9px 12px;border-radius:6px;cursor:pointer}.mn a:hover{background:var(--ac2)}
+.empty{text-align:center;padding:36px 20px;color:var(--mu)}.empty b{display:block;color:var(--tx);font-size:15px;margin-bottom:4px}
+.sr{width:220px}.tag{font:11px/1 ui-monospace,Menlo,monospace;background:var(--bg);color:var(--mu);border:1px solid var(--bd);border-radius:4px;padding:2px 6px;margin-left:6px}
+#toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(8px);background:#0f172a;color:#fff;padding:11px 16px;border-radius:6px;opacity:0;transition:.2s;pointer-events:none;max-width:90vw;z-index:99}#toast.on{opacity:1;transform:translateX(-50%);pointer-events:auto}#toast.bad{background:var(--er)}#toast button{background:none;border:0;color:var(--acl);font:inherit;font-weight:700;cursor:pointer;margin-left:10px}
+@media(max-width:900px){.g2{grid-template-columns:1fr}}
+@media(max-width:760px){body{flex-direction:column}aside{width:100%;height:auto;position:static;display:flex;gap:4px;overflow-x:auto;padding:8px;border-right:0;border-bottom:1px solid var(--bd)}.brand,.ft{display:none}aside a{white-space:nowrap}.top,.pg{padding-left:14px;padding-right:14px}.chip.hide{display:none}.ln{grid-template-columns:1fr 1fr}.dl{grid-template-columns:1fr}.fm{grid-template-columns:1fr}}
+
+.gt{display:flex;gap:10px;padding:12px 16px;border-bottom:1px solid var(--bd);align-items:center}.pgr{display:flex;gap:10px;align-items:center;padding:10px 16px;border-top:1px solid var(--bd);flex-wrap:wrap}.pgr select{padding:4px 6px}
+th.srt{cursor:pointer;user-select:none}th.srt:hover{color:var(--tx)}button:disabled{opacity:.4;cursor:default}.lnk.b2{color:var(--ac);margin-right:8px}
+.rpc{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-bottom:16px}.rpc button{text-align:left;font:inherit;background:var(--sf);border:1px solid var(--bd);border-radius:6px;padding:12px;cursor:pointer;color:var(--tx)}.rpc button.on{border-color:var(--ac);background:var(--ac2)}.rpc b{display:block}.rpc span{color:var(--mu);font-size:12px}
+.sm{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}.sm div{background:var(--sf);border:1px solid var(--bd);border-radius:6px;padding:8px 14px}.sm span{display:block;color:var(--mu);font-size:12px}
+#prn{display:none}
+@media print{body>*:not(#prn){display:none!important}#prn{display:block!important}body{display:block;background:#fff;color:#000}.sh{font:11px/1.4 Arial,sans-serif;color:#000}.shh{display:flex;justify-content:space-between;border-bottom:2px solid #000;padding-bottom:8px;margin-bottom:10px}.sh h1{font-size:18px;margin:0}.sh table{width:100%;border-collapse:collapse}.sh th{background:#eee;color:#000;border-bottom:1px solid #000;padding:4px 6px;font-size:10.5px;text-align:left}.sh td{padding:4px 6px;border-bottom:1px solid #ddd;white-space:normal}.sh .r{text-align:right}}
+
+/* compact spacing */
+.pg{padding:16px 20px 36px}.top{padding:7px 20px}aside{padding:12px 8px;width:212px}aside a{padding:6px 10px;margin:1px 0}.brand{padding:0 6px 10px}
+.hd{margin-bottom:12px}h1{font-size:21px}.card{padding:12px;margin-bottom:12px}.kp{gap:10px;margin-bottom:12px}.kp>div{padding:12px;position:relative;transition:transform .2s,box-shadow .2s}.kp>div:hover{transform:translateY(-2px)}.kp b{font-size:22px}
+th{padding:7px 12px}td{padding:7px 12px}.gt{padding:8px 12px}.pgr{padding:6px 12px}.btn{padding:6px 12px}.btn.l{padding:8px 16px}input,select{padding:6px 9px}
+.pills{margin-bottom:10px}.g2{gap:12px}.li{padding:8px 0}.fd{padding:6px 0}.dh{padding:14px 18px}.db{padding:14px 18px}.df{padding:10px 18px}.mh{padding:12px 16px}.mb{padding:14px 16px}.mf{padding:10px 16px}.fm{gap:10px}.ln{padding:8px 0}.rpc{gap:8px;margin-bottom:12px}.rpc button{padding:9px 10px}.sm{margin-bottom:10px}.steps{gap:10px;margin-bottom:12px}.sm div{padding:6px 12px}
+/* fixed-height tables: about 10 rows, then scroll */
+.card.tw{overflow:hidden}.card.tw .tw{max-height:430px;overflow:auto}.card.tw .tw th{position:sticky;top:0;z-index:1;background:var(--sf);box-shadow:0 1px 0 var(--bd)}
+td .av{width:28px;height:28px;font-size:11px;border-radius:4px}.th{width:30px;height:30px;object-fit:cover;border-radius:4px;display:block}.th.lg{width:64px;height:64px}img.av{object-fit:cover}
+.lnk{display:inline-flex;gap:4px;align-items:center}.ki{position:absolute;top:10px;right:10px;width:30px;height:30px;border-radius:6px;display:grid;place-items:center}
+/* loading */
+.spn{display:inline-block;width:13px;height:13px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:rot .7s linear infinite;vertical-align:-2px}
+#pb{position:fixed;top:0;left:0;height:3px;width:0;background:var(--ac);z-index:200;opacity:0;transition:opacity .2s}#pb.on{opacity:1;animation:pb 1.1s ease-in-out infinite}
+.sk{background:linear-gradient(90deg,var(--bd),var(--bg),var(--bd));background-size:200% 100%;animation:sh 1.2s infinite;border-radius:4px}.ld{display:flex;gap:8px;align-items:center;color:var(--mu);padding:14px}
+/* animations */
+@keyframes rot{to{transform:rotate(360deg)}}@keyframes pb{0%{width:0}60%{width:80%}100%{width:96%}}@keyframes sh{to{background-position:-200% 0}}
+@keyframes fu{from{opacity:0;transform:translateY(8px)}}@keyframes fi{from{opacity:0}}@keyframes pop{from{opacity:0;transform:scale(.96) translateY(6px)}}@keyframes gr{from{transform:scaleX(0)}}@keyframes up{from{transform:scaleY(0)}}
+.pg>*{animation:fu .35s both}.pg>*:nth-child(2){animation-delay:.05s}.pg>*:nth-child(3){animation-delay:.1s}.pg>*:nth-child(4){animation-delay:.15s}.pg>*:nth-child(5){animation-delay:.2s}
+tbody tr{animation:fi .3s both}.md{animation:pop .2s}.mn{animation:pop .15s}.bar i{transform-origin:left;animation:gr .8s ease}svg rect{transform-box:fill-box;transform-origin:bottom;animation:up .7s both}svg circle{animation:fi .9s both}
+.btn{transition:transform .12s,filter .12s}.btn:active{transform:scale(.97)}aside a{transition:background .15s,color .15s,transform .15s}aside a:hover{transform:translateX(2px)}
+/* login */
+#login{position:fixed;inset:0;z-index:150;background:linear-gradient(135deg,var(--acd),var(--ac) 55%,var(--acl));display:grid;place-items:center;padding:16px;transition:opacity .35s,transform .35s}#login.out{opacity:0;transform:scale(1.03)}
+.lc{background:var(--sf);border-radius:10px;padding:26px;width:min(380px,100%);box-shadow:0 20px 60px rgba(0,0,0,.3);display:flex;flex-direction:column;gap:10px;animation:pop .45s}.lc .brand{padding:0 0 6px}.lng{display:flex;gap:6px;justify-content:center;margin-top:8px}.lng button{font:inherit;font-size:12px;background:none;border:1px solid var(--bd);border-radius:6px;padding:3px 9px;cursor:pointer;color:var(--mu)}.lng button.on{background:var(--ac2);color:var(--ac);border-color:var(--ac)}
+/* tour */
+#tr{position:fixed;inset:0;z-index:120}.hl{position:fixed;border-radius:6px;box-shadow:0 0 0 9999px rgba(10,15,30,.6),0 0 0 3px var(--ac);transition:all .25s;pointer-events:none}.ov2{position:fixed;inset:0;background:rgba(10,15,30,.6)}
+.tp{position:fixed;background:var(--sf);border-radius:8px;padding:14px 16px;box-shadow:0 10px 40px rgba(0,0,0,.35);animation:pop .25s}.tp h3{margin:2px 0}.tp p{margin:6px 0 12px;color:var(--mu)}
+.tourl{margin-top:10px;border:1px dashed var(--bd);color:var(--ac)!important}
+.gt{flex-wrap:wrap}.fs{max-width:190px}.gl{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--mu)}
+
+/* themes: accent colours and modes */
+:root{--acx:#fff;--acd:#1e3a8a;--acl:#38bdf8}
+:root[data-accent=blue]{--ac:#2563eb;--ac2:#e9f0ff;--acd:#1e3a8a;--acl:#38bdf8;--acx:#fff;}
+:root[data-accent=red]{--ac:#dc2626;--ac2:#fdecec;--acd:#7f1d1d;--acl:#fb7185;--acx:#fff;}
+:root[data-accent=orange]{--ac:#ea580c;--ac2:#fff0e6;--acd:#7c2d12;--acl:#fdba74;--acx:#fff;--out:#2563eb;}
+:root[data-accent=yellow]{--ac:#ca8a04;--ac2:#fef7d6;--acd:#713f12;--acl:#fde047;--acx:#fff;--out:#2563eb;}
+:root[data-accent=green]{--ac:#059669;--ac2:#e1f6ec;--acd:#064e3b;--acl:#6ee7b7;--acx:#fff;}
+:root[data-accent=teal]{--ac:#0d9488;--ac2:#def7f4;--acd:#134e4a;--acl:#5eead4;--acx:#fff;}
+:root[data-accent=purple]{--ac:#7c3aed;--ac2:#f1eaff;--acd:#4c1d95;--acl:#c4b5fd;--acx:#fff;}
+:root[data-accent=pink]{--ac:#db2777;--ac2:#fde8f1;--acd:#831843;--acl:#f9a8d4;--acx:#fff;}
+:root[data-theme="black"]{--bg:#000;--sf:#0b0b0d;--tx:#f1f1f1;--mu:#9a9aa5;--bd:#26262c;--ok:#4ade9c;--okb:#10301f;--wn:#f3b556;--wnb:#33270e;--er:#ff8a80;--erb:#3a1b1a;--out:#f3b556;--sh:none;color-scheme:dark}
+:root[data-theme="dark"][data-accent=blue],:root[data-theme="black"][data-accent=blue]{--ac:#5b93ff;--ac2:#16233f;--acd:#0b1d4d;--acl:#7dd3fc;--acx:#0b1220;}
+:root[data-theme="dark"][data-accent=red],:root[data-theme="black"][data-accent=red]{--ac:#ff7a7a;--ac2:#3a1a1c;--acd:#3b0d0d;--acl:#fda4af;--acx:#0b1220;}
+:root[data-theme="dark"][data-accent=orange],:root[data-theme="black"][data-accent=orange]{--ac:#ff9a5c;--ac2:#3a2214;--acd:#3a1706;--acl:#fed7aa;--acx:#0b1220;--out:#5b93ff;}
+:root[data-theme="dark"][data-accent=yellow],:root[data-theme="black"][data-accent=yellow]{--ac:#facc15;--ac2:#352d0a;--acd:#3a2a05;--acl:#fef08a;--acx:#0b1220;--out:#5b93ff;}
+:root[data-theme="dark"][data-accent=green],:root[data-theme="black"][data-accent=green]{--ac:#34d399;--ac2:#10301f;--acd:#052e1c;--acl:#86efac;--acx:#0b1220;}
+:root[data-theme="dark"][data-accent=teal],:root[data-theme="black"][data-accent=teal]{--ac:#2dd4bf;--ac2:#0f2f2c;--acd:#042f2c;--acl:#99f6e4;--acx:#0b1220;}
+:root[data-theme="dark"][data-accent=purple],:root[data-theme="black"][data-accent=purple]{--ac:#a78bfa;--ac2:#241a3d;--acd:#1e1145;--acl:#ddd6fe;--acx:#0b1220;}
+:root[data-theme="dark"][data-accent=pink],:root[data-theme="black"][data-accent=pink]{--ac:#f472b6;--ac2:#3a1730;--acd:#3d0b22;--acl:#fbcfe8;--acx:#0b1220;}
+:root[data-theme][data-accent]{--in:var(--ac)}
+.tm{display:flex;gap:6px}.tm button{flex:1;display:flex;gap:5px;align-items:center;justify-content:center;font:inherit;font-size:12.5px;padding:6px 4px;border:1px solid var(--bd);background:var(--sf);color:var(--tx);border-radius:6px;cursor:pointer}.tm button.on{border-color:var(--ac);background:var(--ac2);color:var(--ac)}
+.sw{display:flex;gap:8px;flex-wrap:wrap;padding:2px 4px 4px}.sw button{width:26px;height:26px;border-radius:6px;border:2px solid transparent;cursor:pointer;transition:transform .12s}.sw button:hover{transform:scale(1.12)}.sw button.on{border-color:var(--tx);box-shadow:0 0 0 2px var(--sf) inset}
+.me{cursor:pointer;overflow:hidden}.me img{width:100%;height:100%;object-fit:cover;display:block}.pmh{display:flex;gap:12px;align-items:center;padding:14px;border-bottom:1px solid var(--bd)}.pmh .me{width:44px;height:44px;font-size:16px;cursor:default;flex:none}.pmh b{display:block}.mn a.out{color:var(--er)}
+</style><script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script></head><body>
+<aside id="nav"></aside><main><div class="top" id="top"></div><div class="pg" id="pg"></div></main><div id="dr"></div><div id="prn"></div><div id="pb"></div><div id="toast"></div>
+<script>
+const $=i=>document.getElementById(i);
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const n=(v,d=2)=>Number(v).toLocaleString('en-US',{maximumFractionDigits:d});
+let _id=100;const nid=()=>++_id;
+const day=o=>{const d=new Date();d.setDate(d.getDate()+o);return d.toISOString().slice(0,10)};
+const now=()=>day(0)+' '+new Date().toTimeString().slice(0,5),today=()=>day(0);
+const ago=d=>{const k=Math.round((new Date(day(0))-new Date(d))/864e5);return k<=0?'Today':k==1?'Yesterday':k+' days ago'};
+const R=o=>Object.assign({t:1,cr:day(-30)+' 09:00',by:'admin',lm:'',lmb:'',del:false},o);
+const D={
+country:[R({id:1,code:'BD',name:'Bangladesh',phone:'+880'}),R({id:2,code:'CN',name:'China',phone:'+86'}),R({id:3,code:'IN',name:'India',phone:'+91'})],
+currency:[R({id:1,code:'BDT',name:'Bangladeshi Taka',sym:'৳',dec:2,base:true}),R({id:2,code:'USD',name:'US Dollar',sym:'$',dec:2,base:false})],
+currencyConversion:[R({id:1,from:2,to:1,rate:122.5,date:day(-14)})],
+itemCategory:[R({id:1,code:'ELE',name:'Electronics'}),R({id:2,code:'GRO',name:'Grocery'})],
+itemSubCategory:[R({id:1,cat:1,code:'MOB',name:'Mobile Phones'}),R({id:2,cat:1,code:'ACC',name:'Accessories'}),R({id:3,cat:2,code:'BEV',name:'Beverages'})],
+unitSet:[R({id:1,code:'CNT',name:'Count'}),R({id:2,code:'WGT',name:'Weight'})],
+unitMaster:[R({id:1,set:1,code:'PCS',name:'Piece',base:true}),R({id:2,set:1,code:'BOX',name:'Box of 12',base:false}),R({id:3,set:2,code:'KG',name:'Kilogram',base:true}),R({id:4,set:2,code:'G',name:'Gram',base:false})],
+unitConversion:[R({id:1,from:2,to:1,factor:12}),R({id:2,from:3,to:4,factor:1000}),R({id:3,from:4,to:3,factor:0.001})],
+supplier:[R({id:1,code:'SUP-001',name:'Dhaka Gadgets Ltd',contact:'Rahim Uddin',phone:'01711-000111',country:1,currency:1,terms:30}),R({id:2,code:'SUP-002',name:'Sylhet Tea Co',contact:'Karim Ali',phone:'01811-000222',country:1,currency:1,terms:15})],
+itemMaster:[R({id:1,code:'ITM-001',name:'Smartphone X1',cat:1,sub:1,unit:1,cost:18000,price:22000,reorder:5}),R({id:2,code:'ITM-002',name:'Wireless Earbuds',cat:1,sub:2,unit:1,cost:1800,price:2900,reorder:15}),R({id:3,code:'ITM-003',name:'USB-C Cable',cat:1,sub:2,unit:1,cost:120,price:250,reorder:50}),R({id:4,code:'ITM-004',name:'Power Bank 10000mAh',cat:1,sub:2,unit:1,cost:1500,price:2200,reorder:10}),R({id:5,code:'ITM-005',name:'Green Tea',cat:2,sub:3,unit:3,cost:600,price:900,reorder:10}),R({id:6,code:'ITM-006',name:'Black Coffee',cat:2,sub:3,unit:3,cost:850,price:1300,reorder:8})],
+balance:[],move:[],
+purchase:[{id:1,no:'PI-0100',date:day(-4),party:1,cur:1,status:'Posted',lines:[{item:4,unit:1,qty:10,price:1480}]},{id:2,no:'PI-0101',date:day(0),party:1,cur:1,status:'Draft',lines:[{item:2,unit:1,qty:30,price:1800}]}],
+sale:[{id:1,no:'IS-0001',date:day(0),party:'Walk-in customer',type:'Sale',cur:1,status:'Draft',lines:[{item:1,unit:1,qty:2,price:22000}]}]
+};
+const emo=(e,bg)=>'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="${bg}"/><text x="32" y="44" font-size="34" text-anchor="middle">${e}</text></svg>`);
+[['itemMaster',1,'📱','#dbeafe'],['itemMaster',2,'🎧','#ede9fe'],['itemMaster',3,'🔌','#fef3c7'],['itemMaster',4,'🔋','#dcfce7'],['itemMaster',5,'🍵','#d1fae5'],['itemCategory',1,'💻','#dbeafe'],['itemCategory',2,'🛒','#dcfce7'],['itemSubCategory',1,'📱','#dbeafe'],['itemSubCategory',2,'🎧','#ede9fe'],['itemSubCategory',3,'🥤','#ffedd5']].forEach(([t,i,e,b])=>{D[t].find(x=>x.id==i).img=emo(e,b)});
+const T=(c,l,t)=>[c,l,t||''];
+const M={
+country:{n:'Country',c:[T('code','Code'),T('name','Name'),T('phone','Phone code')]},
+currency:{n:'Currency',c:[T('code','Code'),T('name','Name'),T('sym','Symbol'),T('dec','Decimals','num'),T('base','Base currency','bool')]},
+currencyConversion:{n:'CurrencyConversion',c:[T('from','From','fk:currency'),T('to','To','fk:currency'),T('rate','Rate','num'),T('date','Effective date','date')]},
+itemCategory:{n:'ItemCategory',c:[T('code','Code'),T('name','Name'),T('img','Picture','img')]},
+itemSubCategory:{n:'ItemSubCategory',c:[T('cat','Category','fk:itemCategory'),T('code','Code'),T('name','Name'),T('img','Picture','img')]},
+unitSet:{n:'UnitSet',c:[T('code','Code'),T('name','Name')]},
+unitMaster:{n:'UnitMaster',c:[T('set','Unit group','fk:unitSet'),T('code','Code'),T('name','Name'),T('base','Base unit','bool')]},
+unitConversion:{n:'UnitConversion',c:[T('from','1 of','fk:unitMaster'),T('to','equals (in)','fk:unitMaster'),T('factor','Factor','num')]},
+supplier:{n:'Supplier',c:[T('code','Code'),T('name','Name'),T('contact','Contact'),T('phone','Phone'),T('country','Country','fk:country'),T('currency','Currency','fk:currency'),T('terms','Payment days','num')]},
+itemMaster:{n:'ItemMaster',c:[T('code','Code'),T('name','Name'),T('cat','Category','fk:itemCategory'),T('sub','Sub-category','fk:itemSubCategory'),T('unit','Base unit','fk:unitMaster'),T('cost','Cost price','num'),T('price','Sale price','num'),T('reorder','Reorder level','num'),T('img','Picture','img')]}
+};
+const H={country:'Countries',currency:'Currencies',currencyConversion:'Exchange rates',itemCategory:'Categories',itemSubCategory:'Sub-categories',unitSet:'Unit groups',unitMaster:'Units',unitConversion:'Unit conversions',supplier:'Suppliers',itemMaster:'Items'};
+const SING={country:'country',currency:'currency',currencyConversion:'exchange rate',itemCategory:'category',itemSubCategory:'sub-category',unitSet:'unit group',unitMaster:'unit',unitConversion:'unit conversion',supplier:'supplier',itemMaster:'item'};
+const CODE=['currency','unitMaster','country'];
+const lbl=(t,i)=>{const r=D[t].find(x=>x.id==i);return r?(CODE.includes(t)?r.code:r.name):'-'};
+const item=i=>D.itemMaster.find(x=>x.id==i);
+const fac=(it,u)=>u==it.unit?1:((D.unitConversion.find(c=>c.from==u&&c.to==it.unit&&!c.del)||{}).factor||1);
+const unitsOf=it=>[it.unit].concat(D.unitConversion.filter(c=>c.to==it.unit&&!c.del).map(c=>c.from));
+const opts=(t,sel)=>D[t].filter(r=>!r.del).map(r=>`<option value="${r.id}" ${r.id==sel?'selected':''}>${esc(lbl(t,r.id))}</option>`).join('');
+function bal(i){let b=D.balance.find(x=>x.item==i);if(!b){b={item:i,qty:0,res:0,avg:0,last:0};D.balance.push(b)}return b}
+const tot=d=>d.lines.reduce((s,l)=>s+l.qty*l.price,0);
+const stat=b=>{const it=item(b.item);return b.qty<=0?'Out':b.qty<=it.reorder?'Low':'OK'};
+const SL={OK:'In stock',Low:'Low stock',Out:'Out of stock'};
+const TY={Opening:'Opening stock',PurchaseIn:'Received',SaleOut:'Sold',IssueOut:'Issued',PurchaseReturnOut:'Returned to supplier',SaleReturnIn:'Customer return'};
+const avc=s=>{let h=0;for(const c of s)h=(h*31+c.charCodeAt(0))%360;return `hsl(${h},55%,48%)`};
+const AV=(s,c,im)=>im?`<img class="av ${c||''}" src="${im}" alt="">`:`<div class="av ${c||''}" style="background:${avc(s)}">${esc(s.split(' ').slice(0,2).map(w=>w[0]).join('').toUpperCase())}</div>`;
+const P={dash:'<rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/>',items:'<path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/>',purchase:'<path d="M12 3v12M7 10l5 5 5-5M4 19h16"/>',sale:'<path d="M12 21V9M7 14l5-5 5 5M4 5h16"/>',move:'<path d="M4 8h14l-3-3M20 16H6l3 3"/>',supplier:'<path d="M2 6h11v10H2zM13 9h4l3 3v4h-7"/><circle cx="6" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/>',setup:'<path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/>',plus:'<path d="M12 5v14M5 12h14"/>',logout:'<path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/>',lock:'<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/>',camera:'<path d="M3 8a2 2 0 012-2h2l2-2h6l2 2h2a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><circle cx="12" cy="13" r="4"/>',sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',palette:'<circle cx="13.5" cy="6.5" r="1"/><circle cx="17.5" cy="10.5" r="1"/><circle cx="8.5" cy="7.5" r="1"/><circle cx="6.5" cy="12.5" r="1"/><path d="M12 2a10 10 0 100 20c1.1 0 2-.9 2-2 0-.5-.2-1-.5-1.4-.3-.4-.5-.9-.5-1.4 0-1.1.9-2 2-2h2.4A4.7 4.7 0 0022 10.7C22 5.9 17.5 2 12 2z"/>',coin:'<circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5C9.5 8.5 10.6 8 12 8s2.5.6 2.5 1.6-1 1.4-2.5 1.8-2.5.8-2.5 1.8S10.6 16 12 16s2.5-.5 2.5-1.5"/>',alert:'<path d="M10.3 3.9L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0zM12 9v4M12 17h.01"/>',edit:'<path d="M12 20h9M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/>',trash:'<path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14M10 11v6M14 11v6"/>',globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>',compass:'<circle cx="12" cy="12" r="9"/><path d="M16 8l-2 6-6 2 2-6z"/>',file:'<path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M14 3v6h6"/>',search:'<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>',moon:'<path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/>',reports:'<path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6M9 14h8M9 18h8"/>',dl:'<path d="M12 3v12M7 10l5 5 5-5M4 20h16"/>',up:'<path d="M12 15V3M7 8l5-5 5 5M4 20h16"/>',print:'<path d="M6 9V3h12v6M6 18H4v-7h16v7h-2M6 14h12v7H6z"/>'};
+const ic=(k,z)=>`<svg viewBox="0 0 24 24" width="${z||18}" height="${z||18}" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${P[k]||''}</svg>`;
+
+/* seed stock history, then derive balances */
+[[1,-14,'Opening',20,18000],[2,-14,'Opening',40,1800],[3,-14,'Opening',300,120],[4,-14,'Opening',25,1500],[5,-14,'Opening',20,600],[6,-14,'Opening',15,850],
+[2,-12,'SaleOut',-10],[6,-12,'SaleOut',-3],[1,-11,'SaleOut',-3],[3,-10,'SaleOut',-60],[5,-10,'SaleOut',-4],[2,-9,'SaleOut',-12],[4,-9,'SaleOut',-6],[4,-13,'SaleOut',-5],[1,-8,'SaleOut',-4],
+[3,-7,'PurchaseIn',120,118],[2,-6,'SaleOut',-6],[5,-6,'SaleOut',-5],[1,-5,'PurchaseIn',5,18200],[6,-5,'SaleOut',-2],[3,-4,'SaleOut',-90],[4,-4,'PurchaseIn',10,1480,'PI-0100'],[1,-3,'SaleOut',-6],[5,-3,'SaleOut',-3],
+[2,-2,'SaleOut',-5],[3,-2,'SaleOut',-40],[1,-1,'SaleOut',-4],[4,-1,'SaleOut',-3],[6,-1,'PurchaseIn',5,860]]
+.sort((a,b)=>a[1]-b[1]).forEach((e,i)=>{const b=bal(e[0]),q=e[3],c=e[4]||b.avg;
+ if(q>0){const nq=b.qty+q;b.avg=(b.qty*b.avg+q*c)/nq;b.last=c;b.qty=nq}else b.qty+=q;
+ D.move.push({id:nid(),date:day(e[1]),item:e[0],type:e[2],qty:q,cost:q>0?c:b.avg,after:b.qty,ref:e[5]||(e[2]=='Opening'?'Opening':(q>0?'PI-':'IS-')+(200+i))})});
+
+let role='admin';const isAdmin=()=>role=='admin',who=()=>isAdmin()?'admin':'staff';
+let view='dash',itf='All',tf='All',mvf='all',stab='itemCategory',curDoc=null,ed=null;
+const NAVS=[['dash','Dashboard'],['items','Items'],['purchase','Purchases'],['sale','Sales & issues'],['move','Stock history'],['supplier','Suppliers'],['reports','Reports'],['setup','Setup']];
+function nav(){$('nav').innerHTML=`<div class="brand"><div class="lg">${ic('items',18)}</div>StockPilot</div>`+NAVS.map(([k,l])=>`<a data-v="${k}" class="${view==k?'on':''}" onclick="go('${k}')">${ic(k)}${l}</a>`).join('')+`<a class="tourl" onclick="tour(0)">${ic('compass')}Take a tour</a><div class="ft">Tenant<br><b style="color:var(--tx)">Acme Traders</b><br>All data is tenant-isolated and fully audited.</div>`}
+function topbar(){$('top').innerHTML=`<div class="srch" onclick="pal()">${ic('search',16)}Search items, pages, actions…<kbd>Ctrl K</kbd></div><div class="sp"></div><div style="position:relative"><button class="btn" onclick="event.stopPropagation();menu()">${ic('plus',16)}New</button><div id="mn"></div></div><div class="tl" style="display:flex;gap:8px"><div style="position:relative"><span class="chip" onclick="event.stopPropagation();langMenu()">${ic('globe',15)}${LN[LANG]}</span><div id="lm"></div></div></div><div style="position:relative"><span class="chip" id="thc" onclick="event.stopPropagation();themeMenu()">${ic('palette',15)}Theme</span><div id="thm"></div></div><div style="position:relative"><div class="me" title="Profile" onclick="event.stopPropagation();profileMenu()">${meIn()}</div><div id="pm"></div></div>`}
+function menu(){const m=$('mn');if(m.innerHTML){m.innerHTML='';return}m.innerHTML=`<div class="mn">`+[['purchase','Receive stock',"editor('purchase')"],['sale','Sell or issue stock',"editor('sale')"],['items','Add an item',"openAdd('itemMaster')"],['supplier','Add a supplier',"openAdd('supplier')"]].map(a=>`<a onclick="${a[2]}">${ic(a[0],17)}${a[1]}</a>`).join('')+`</div>`}
+function toast(m,bad,act){const e=$('toast');e.innerHTML=esc(m)+(act?`<button onclick="window.UNDO()">${act[0]}</button>`:'');window.UNDO=()=>{act[1]();e.className=''};e.className='on'+(bad?' bad':'');clearTimeout(toast.t);toast.t=setTimeout(()=>e.className='',act?6000:2800)}
+function modal(t,body,ok,fn,wide){closeM();const m=document.createElement('div');m.id='mo';m.className='mo';m.innerHTML=`<div class="md ${wide?'wd':''}"><div class="mh"><b>${t}</b><button class="x" onclick="closeM()">×</button></div><div class="mb">${body}</div>${ok?`<div class="mf"><button class="btn s" onclick="closeM()">Cancel</button><button class="btn ${ok[1]||''}" id="mok">${ok[0]}</button></div>`:''}</div>`;document.body.appendChild(m);m.onclick=e=>{if(e.target==m)closeM()};if(ok)$('mok').onclick=()=>{if(fn()!==false)closeM()};const f=m.querySelector('input,select');if(f)f.focus()}
+function closeM(){const m=$('mo');if(m)m.remove()}
+function drawer(h){$('dr').innerHTML=`<div class="ov" onclick="closeD()"></div><div class="dw">${h}</div>`}
+function closeD(){$('dr').innerHTML='';ed=null}
+document.addEventListener('keydown',e=>{if(e.key=='Escape'){closeM();closeD()}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()=='k'){e.preventDefault();pal()}});
+document.addEventListener('click',()=>{['mn','lm','thm','pm'].forEach(i=>{const m=$(i);if(m)m.innerHTML=''})});
+
+/* command palette */
+let PE=[];
+function pal(){closeM();modal('Search or jump to','<input id="pq" style="width:100%" placeholder="Type an item, page or action…" oninput="palR(this.value)"><div id="pl" style="margin-top:10px;max-height:320px;overflow:auto"></div>');palR('');$('pq').onkeydown=e=>{if(e.key=='Enter'&&PE[0])palGo(0)}}
+function palR(v){v=v.toLowerCase();PE=[['Receive stock','Action',()=>editor('purchase')],['Sell or issue stock','Action',()=>editor('sale')],['Add an item','Action',()=>openAdd('itemMaster')],['Add a supplier','Action',()=>openAdd('supplier')],['Take a tour','Help',()=>tour(0)]].concat(NAVS.map(([k,l])=>['Go to '+l,'Page',()=>go(k)]),D.itemMaster.filter(i=>!i.del).map(i=>[i.name,'Item · '+i.code,()=>{go('items');openItem(i.id)}])).filter(e=>e[0].toLowerCase().includes(v)||e[1].toLowerCase().includes(v)).slice(0,8);
+ $('pl').innerHTML=PE.map((e,i)=>`<div class="sg ${i==0?'on':''}" onclick="palGo(${i})"><b>${esc(e[0])}</b><span class="mu">${e[1]}</span></div>`).join('')||'<div class="empty">No matches</div>'}
+function palGo(i){closeM();PE[i][2]()}
+
+/* generic master-data list + add */
+function cell(r,c){const v=r[c[0]],t=c[2];if(t.startsWith('fk:'))return esc(lbl(t.slice(3),v));if(t=='bool')return v?'Yes':'No';if(t=='num')return n(v);return esc(v)}
+function filt(v){v=v.toLowerCase();document.querySelectorAll('#pg tr.fr').forEach(r=>r.style.display=r.textContent.toLowerCase().includes(v)?'':'none')}
+const SR=ph=>`<input class="sr" placeholder="${ph}" oninput="filt(this.value)">`;
+function mcols(k){let c=M[k].c.map(([f,l,t])=>({k:f,l,r:t=='num',v:r=>t=='img'?(r[f]?'Yes':'No'):t.startsWith('fk:')?lbl(t.slice(3),r[f]):t=='bool'?(r[f]?'Yes':'No'):r[f],h:t=='num'?r=>n(r[f]):t=='img'?r=>r[f]?`<img class="th" src="${r[f]}" alt="">`:'<span class="mu">—</span>':null}));
+ return c.concat([{k:'_a',l:'',nosort:1,noexp:1,h:r=>r.del?`<button class="lnk b2" onclick="restore('${k}',${r.id})">Restore</button>`:`<button class="lnk b2" onclick="openEdit('${k}',${r.id})">${ic('edit',13)}Edit</button><button class="lnk" onclick="del('${k}',${r.id})">${ic('trash',13)}Delete</button>`}])}
+function listPage(k,emb){const all=D[k].filter(r=>!r.del),live=D[k].filter(r=>!r.del).length,btn=`<button class="btn" onclick="openAdd('${k}')">${ic('plus',15)}Add ${SING[k]}</button>`;
+ return (emb?`<div class="ac" style="justify-content:flex-end;margin-bottom:14px">${btn}</div>`:`<div class="hd"><div><h1>${H[k]}</h1><p class="sub">${live} record${live==1?'':'s'}<span class="tag">${M[k].n}</span></p></div><div class="ac">${btn}</div></div>`)+grid('m_'+k,mcols(k),all,{cls:r=>r.del?'del':'',name:H[k],pdf:true,filters:(MF[k]||(()=>[]))()})+`<p class="mu">Deleting only marks a record as deleted, so Undo always works.</p>`}
+function fields(k,r){return `<div class="fm">`+M[k].c.map((c,i)=>{const id='f_'+c[0],t=c[2],v=r?r[c[0]]:'',rq=i==0?' <span class="req">*</span>':'';
+ if(t=='img')return `<label style="grid-column:1/-1">Picture (optional)<input type="file" id="${id}" accept="image/*" onchange="imgPick(this)"><div id="imgp" style="margin-top:6px">${IMGT?`<img class="th lg" src="${IMGT}" alt=""> <button type="button" class="lnk" onclick="IMGT='';imgPrev()">Remove</button>`:'<span class="mu">No picture</span>'}</div></label>`;
+ if(t=='bool')return `<label class="ck"><input type="checkbox" id="${id}" ${v?'checked':''}>${c[1]}</label>`;
+ return `<label>${c[1]}${rq}`+(t.startsWith('fk:')?`<select id="${id}">${opts(t.slice(3),v)}</select>`:`<input id="${id}" type="${t=='num'?'number':t=='date'?'date':'text'}" value="${t=='date'&&!v?today():esc(v)}">`)+`</label>`}).join('')+`</div>`}
+function openAdd(k){IMGT='';closeD();modal('Add '+SING[k],fields(k),['Save '+SING[k]],()=>add(k),k=='itemMaster'||k=='supplier')}
+function openEdit(k,id){closeD();const r=D[k].find(x=>x.id==id);IMGT=r.img||'';modal('Edit '+SING[k],fields(k,r),['Save changes'],()=>add(k,r),k=='itemMaster'||k=='supplier')}
+function add(k,ex){const m=M[k],o=ex||{id:nid(),t:1,cr:now(),by:who(),lm:'',lmb:'',del:false},t0=Object.assign({},o);
+ for(const c of m.c){const e=$('f_'+c[0]),t=c[2];o[c[0]]=t=='img'?IMGT:t=='bool'?e.checked:(t=='num'||t.startsWith('fk:'))?+e.value:e.value}
+ const f=o[m.c[0][0]];if(f===''||f==null||(typeof f=='number'&&isNaN(f))){Object.assign(o,t0);toast('Please fill in '+m.c[0][1],1);return false}
+ if(ex){o.lm=now();o.lmb=who()}else{D[k].push(o);if(k=='itemMaster')bal(o.id)}
+ toast((ex?'Updated ':'Saved ')+SING[k]);render()}
+function del(k,id){const r=D[k].find(x=>x.id==id);r.del=true;toast('Deleted',0,['Undo',()=>{r.del=false;render()}]);render()}
+function restore(k,id){D[k].find(x=>x.id==id).del=false;toast('Restored');render()}
+
+/* pages */
+function dash(){
+ const B=D.balance.filter(b=>item(b.item)&&!item(b.item).del),val=B.reduce((s,b)=>s+b.qty*b.avg,0),
+ cnt={OK:0,Low:0,Out:0};B.forEach(b=>cnt[stat(b)]++);
+ const days=[...Array(14)].map((_,i)=>day(i-13)),inn=days.map(d=>D.move.filter(m=>m.date==d&&m.qty>0&&m.type!='Opening').reduce((s,m)=>s+m.qty*m.cost,0)),out=days.map(d=>D.move.filter(m=>m.date==d&&m.qty<0).reduce((s,m)=>s-m.qty*m.cost,0)),mx=Math.max(1,...inn,...out),
+ sI=inn.reduce((a,b)=>a+b,0),sO=out.reduce((a,b)=>a+b,0),
+ drs=[].concat(...['purchase','sale'].map(k=>D[k].filter(d=>d.status=='Draft').map(d=>({k,d})))),lows=B.filter(b=>stat(b)!='OK');
+ const bars=days.map((d,i)=>{const x=14+i*42;return `<rect x="${x}" y="${170-inn[i]/mx*150}" width="15" height="${inn[i]/mx*150}" rx="3" fill="var(--in)"/><rect x="${x+17}" y="${170-out[i]/mx*150}" width="15" height="${out[i]/mx*150}" rx="3" fill="var(--out)"/><text x="${x+16}" y="190" text-anchor="middle" font-size="10" fill="var(--mu)">${d.slice(8)}</text>`}).join('');
+ const tt=B.length||1,C=2*Math.PI*42;let off=0;const seg=[['OK','var(--ok)'],['Low','var(--out)'],['Out','var(--er)']].map(([k,c])=>{const l=cnt[k]/tt*C,r=`<circle cx="60" cy="60" r="42" fill="none" stroke="${c}" stroke-width="16" stroke-dasharray="${l} ${C-l}" stroke-dashoffset="${-off}" transform="rotate(-90 60 60)"/>`;off+=l;return r}).join('');
+ return `<div class="hd"><div><h1>Good day, ${esc(ME.name.split(' ')[0])}</h1><p class="sub">Here is how your stock looks today.</p></div><div class="ac"><button class="btn l" onclick="editor('purchase')">${ic('purchase',17)}Receive stock</button><button class="btn s l" onclick="editor('sale')">${ic('sale',17)}Sell or issue</button></div></div>
+ <div class="kp"><div>${KI('coin','var(--ac)','var(--ac2)')}<span>Stock value</span><b data-cu="${val}" data-pre="৳ ">৳ ${n(val,0)}</b><small>${B.length} items tracked</small></div><div>${KI('purchase','var(--ok)','var(--okb)')}<span>Stock in (14 days)</span><b class="pos" data-cu="${sI}" data-pre="৳ ">৳ ${n(sI,0)}</b><small>Purchases received</small></div><div>${KI('sale','var(--wn)','var(--wnb)')}<span>Stock out (14 days)</span><b style="color:var(--wn)" data-cu="${sO}" data-pre="৳ ">৳ ${n(sO,0)}</b><small>Sales and issues at cost</small></div><div>${KI('alert','var(--er)','var(--erb)')}<span>Needs attention</span><b>${lows.length+drs.length}</b><small>${lows.length} low · ${drs.length} waiting to post</small></div></div>
+ <div class="g2"><div class="card"><h3>Stock in vs out · last 14 days</h3><svg viewBox="0 0 600 196" width="100%" style="display:block">${bars}</svg><div class="lgd"><span><i style="background:var(--in)"></i>Stock in</span><span><i style="background:var(--out)"></i>Stock out</span></div></div>
+ <div class="card"><h3>Stock health</h3><div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap"><svg viewBox="0 0 120 120" width="130" height="130">${seg}<text x="60" y="58" text-anchor="middle" font-size="22" font-weight="700" fill="var(--tx)">${B.length}</text><text x="60" y="74" text-anchor="middle" font-size="10" fill="var(--mu)">items</text></svg><div>${[['OK','In stock','var(--ok)'],['Low','Low stock','var(--out)'],['Out','Out of stock','var(--er)']].map(([k,l,c])=>`<div style="margin:6px 0"><i style="display:inline-block;width:10px;height:10px;border-radius:3px;background:${c};margin-right:8px"></i>${l}: <b>${cnt[k]}</b></div>`).join('')}</div></div></div></div>
+ <div class="g2"><div class="card"><h3>Needs your attention</h3>`+drs.map(({k,d})=>`<div class="li"><div><b>${d.no}</b> <span class="b Draft">Draft</span><div class="mu">${k=='purchase'?'Purchase':'Sale'} · ৳ ${n(tot(d),0)} · not posted yet</div></div><button class="btn s" onclick="viewDoc('${k}',${d.id})">Review</button></div>`).join('')+lows.map(b=>{const it=item(b.item);return `<div class="li"><div class="nm">${AV(it.name,'',it.img)}<div><b>${esc(it.name)}</b><span>${n(b.qty,2)} ${lbl('unitMaster',it.unit)} left · reorder at ${it.reorder}</span></div></div><button class="btn s" onclick="editor('purchase',${it.id})">Reorder</button></div>`}).join('')+((lows.length+drs.length)?'':'<p class="mu">You are all caught up.</p>')+`</div>
+ <div class="card"><h3>Recent activity</h3>`+D.move.slice(-6).reverse().map(m=>{const it=item(m.item),i=m.qty>0;return `<div class="fd"><i class="${i?'in':'out'}">${i?'+':'−'}</i><div style="flex:1;min-width:0"><b>${TY[m.type]} · ${esc(it.name)}</b><div class="mu">${n(Math.abs(m.qty),2)} ${lbl('unitMaster',it.unit)} · ${esc(m.ref)} · ${ago(m.date)}</div></div></div>`}).join('')+`</div></div>`}
+
+function items(){
+ const all=D.itemMaster.filter(i=>!i.del).map(i=>{const b=bal(i.id),s=stat(b);return {id:i.id,code:i.code,name:i.name,catId:i.cat,subId:i.sub,sub:lbl('itemSubCategory',i.sub),cat:lbl('itemCategory',i.cat),unit:lbl('unitMaster',i.unit),qty:b.qty,val:b.qty*b.avg,st:s,ratio:b.qty/(i.reorder*3)}}),
+ c={All:all.length,Low:all.filter(x=>x.st!='OK').length,OK:all.filter(x=>x.st=='OK').length},rows=all.filter(x=>itf=='All'||(itf=='Low'?x.st!='OK':x.st=='OK'));
+ return `<div class="hd"><div><h1>Items</h1><p class="sub">Click an item to see its stock, history and quick actions.<span class="tag">ItemMaster · StockBalance</span></p></div><div class="ac"><button class="btn" onclick="openAdd('itemMaster')">${ic('plus',15)}Add item</button></div></div>
+ <div class="pills">${[['All','All'],['OK','In stock'],['Low','Needs reorder']].map(([k,l])=>`<button class="${itf==k?'on':''}" onclick="itf='${k}';if(GS.items)GS.items.page=1;render()">${l} (${c[k]})</button>`).join('')}</div>`+
+ grid('items',[C('code','Code'),{k:'name',l:'Item',v:r=>r.name,h:r=>`<div class="nm">${AV(r.name,'',(item(r.id)||{}).img)}<b>${esc(r.name)}</b></div>`},C('cat','Category'),C('sub','Sub-category'),{k:'qty',l:'On hand',r:1,v:r=>r.qty,h:r=>`<b>${n(r.qty,2)}</b>`},C('unit','Unit'),{k:'ratio',l:'Level',noexp:1,v:r=>r.ratio,h:r=>`<div class="bar ${r.st=='Low'?'w':r.st=='Out'?'e':''}"><i style="width:${Math.min(100,Math.round(r.ratio*100))}%"></i></div>`},CN('val','Value'),{k:'st',l:'Status',v:r=>SL[r.st],h:r=>`<span class="b ${r.st}">${SL[r.st]}</span>`}],rows,{click:r=>`openItem(${r.id})`,name:'Items',pdf:true,filters:IF()})}
+
+function openItem(id){
+ const it=item(id),b=bal(id),s=stat(b),mv=D.move.filter(m=>m.item==id).slice(-6).reverse(),u=lbl('unitMaster',it.unit);
+ drawer(`<div class="dh">${AV(it.name,'lg',it.img)}<div><h2>${esc(it.name)}</h2><div class="mu">${it.code} · ${lbl('itemCategory',it.cat)} / ${lbl('itemSubCategory',it.sub)}</div></div><button class="x" onclick="closeD()">×</button></div>
+ <div class="db"><span class="b ${s}">${SL[s]}</span><div class="g3" style="margin-top:14px"><div class="card" style="margin:0"><span class="mu">On hand</span><h2>${n(b.qty,2)} <small class="mu">${u}</small></h2></div><div class="card" style="margin:0"><span class="mu">Avg cost</span><h2>৳ ${n(b.avg)}</h2></div><div class="card" style="margin:0"><span class="mu">Value</span><h2>৳ ${n(b.qty*b.avg,0)}</h2></div></div>
+ <div class="dl"><div><span>Sale price</span>৳ ${n(it.price)}</div><div><span>Reorder level</span>${it.reorder} ${u}</div><div><span>Base unit</span>${u}</div><div><span>Buy / sell in</span>${unitsOf(it).map(x=>lbl('unitMaster',x)).join(', ')}</div></div>
+ <h3 style="margin-top:22px">Recent activity</h3>`+mv.map(m=>`<div class="fd"><i class="${m.qty>0?'in':'out'}">${m.qty>0?'+':'−'}</i><div style="flex:1"><b>${TY[m.type]}</b><div class="mu">${esc(m.ref)} · ${ago(m.date)}</div></div><div style="text-align:right"><b class="${m.qty>0?'pos':'neg'}">${m.qty>0?'+':''}${n(m.qty,2)}</b><div class="mu">bal ${n(m.after,2)}</div></div></div>`).join('')+`</div>
+ <div class="df"><button class="btn g" onclick="editor('purchase',${id})">${ic('purchase',16)}Receive stock</button><button class="btn s" onclick="editor('sale',${id})">${ic('sale',16)}Issue / sell</button><button class="btn s" onclick="openEdit('itemMaster',${id})">Edit item</button></div>`)}
+
+function docs(k){
+ const P=k=='purchase',all=D[k],rows=all.filter(d=>tf=='All'||d.status==tf).map(d=>({id:d.id,no:d.no,date:d.date,partyId:d.party,party:P?lbl('supplier',d.party):d.party,items:d.lines.length,total:tot(d),cur:lbl('currency',d.cur),docs:(d.docs||[]).length,st:d.status}));
+ return `<div class="hd"><div><h1>${P?'Purchases':'Sales & issues'}</h1><p class="sub">${P?'Goods received from suppliers.':'Goods sold or issued out of stock.'} Posting a document updates stock.<span class="tag">${P?'PurchaseInvoice':'IssueSale'}</span></p></div><div class="ac">${P?`<button class="btn s" onclick="openImport()">${ic('up',15)}Import from Excel</button>`:''}<button class="btn" onclick="editor('${k}')">${ic('plus',15)}${P?'Receive stock':'New sale / issue'}</button></div></div>
+ <div class="pills">${['All','Draft','Posted','Cancelled'].map(t=>`<button class="${tf==t?'on':''}" onclick="tf='${t}';if(GS.d_${k})GS.d_${k}.page=1;render()">${t} (${t=='All'?all.length:all.filter(d=>d.status==t).length})</button>`).join('')}</div>`+
+ grid('d_'+k,[{k:'no',l:'Number',v:r=>r.no,h:r=>`<b>${r.no}</b>`},C('date','Date'),C('party',P?'Supplier':'Customer'),CN('items','Items'),...(P?[{k:'docs',l:'Documents',r:1,v:r=>r.docs,h:r=>r.docs?`<span class="b OK">${ic('file',12)} ${r.docs}</span>`:''}]:[]),{k:'total',l:'Total',r:1,v:r=>r.total,h:r=>r.cur+' '+n(r.total)},{k:'st',l:'Status',v:r=>r.st,h:r=>`<span class="b ${r.st}">${r.st}</span>`}],rows,{click:r=>`viewDoc('${k}',${r.id})`,name:P?'Purchases':'Sales and issues',filters:DF(k)})}
+function moves(){
+ const rows=D.move.slice().reverse().map(m=>{const it=item(m.item);return {id:m.id,date:m.date,itemId:m.item,type:m.type,item:it.name,what:TY[m.type],qty:m.qty,unit:lbl('unitMaster',it.unit),cost:m.cost,after:m.after,ref:m.ref}});
+ return `<div class="hd"><div><h1>Stock history</h1><p class="sub">Every stock in and out, with the balance after each change. This log is never edited.<span class="tag">StockMovement</span></p></div></div>`+
+ grid('move',[C('date','Date'),C('item','Item'),C('what','What happened'),{k:'qty',l:'Quantity',r:1,v:r=>r.qty,h:r=>`<span class="${r.qty>0?'pos':'neg'}">${r.qty>0?'+':''}${n(r.qty,2)}</span>`},C('unit','Unit'),CN('cost','Unit cost'),CN('after','Balance after'),C('ref','Reference')],rows,{name:'Stock history',filters:MV()})}
+function setup(){const ks=['itemCategory','itemSubCategory','unitSet','unitMaster','unitConversion','currency','currencyConversion','country'];
+ return `<div class="hd"><div><h1>Setup</h1><p class="sub">The reference lists that items, suppliers and documents use.</p></div></div><div class="pills">${ks.map(k=>`<button class="${stab==k?'on':''}" onclick="stab='${k}';render()">${H[k]}</button>`).join('')}</div>`+listPage(stab,true)}
+
+/* document viewer */
+function viewDoc(k,id){const d=D[k].find(x=>x.id==id),P=k=='purchase';
+ drawer(`<div class="dh"><div class="av lg" style="background:${avc(d.no)}">${P?'↓':'↑'}</div><div><h2>${d.no}</h2><div class="mu">${P?'Purchase':'Sale / issue'} · ${d.date}</div></div><span class="b ${d.status}">${d.status}</span><button class="x" onclick="closeD()">×</button></div>
+ <div class="db"><div class="dl"><div><span>${P?'Supplier':'Customer'}</span>${P?esc(lbl('supplier',d.party)):esc(d.party)}</div><div><span>Currency</span>${lbl('currency',d.cur)}</div></div>`+
+ d.lines.map(l=>{const it=item(l.item),f=fac(it,l.unit);return `<div class="li"><div class="nm">${AV(it.name,'',it.img)}<div><b>${esc(it.name)}</b><span>${n(l.qty)} ${lbl('unitMaster',l.unit)} × ${n(l.price)}</span></div></div><div style="text-align:right"><b>${n(l.qty*l.price)}</b><div class="mu">${P?'+':'−'}${n(l.qty*f,4)} ${lbl('unitMaster',it.unit)} stock</div></div></div>`}).join('')+
+ PIDOCS(k,d)+`<p class="mu" style="margin-top:16px">${d.status=='Draft'?'Draft: nothing has changed in stock yet.':d.status=='Posted'?'Posted: stock was updated. Cancelling adds reversing entries.':'Cancelled: reversing entries were written to stock history.'}</p></div>
+ <div class="df"><b style="font-size:17px">${lbl('currency',d.cur)} ${n(tot(d))}</b><div class="ac">`+(d.status=='Draft'?`<button class="btn g" onclick="askPost('${k}',${id})">Post to stock</button>`:d.status=='Posted'?`<button class="btn d" onclick="askCancel('${k}',${id})">Cancel &amp; reverse</button>`:'')+`</div></div>`)}
+function summ(d,P){return d.lines.map(l=>{const it=item(l.item);return `${P?'+':'−'}${n(l.qty*fac(it,l.unit),4)} ${lbl('unitMaster',it.unit)} ${esc(it.name)}`}).join('<br>')}
+const busy=(t,fn)=>{const b=$('mok');b.disabled=true;b.innerHTML='<i class="spn"></i> '+t;lo(1);setTimeout(()=>{closeM();lo(0);fn()},550);return false};
+function askPost(k,id){const d=D[k].find(x=>x.id==id),P=k=='purchase';modal('Post '+d.no+'?',`<p style="margin-top:0">This updates stock immediately:</p><p><b>${summ(d,P)}</b></p><p class="mu">You can cancel it later; that writes reversing entries.</p>`,['Post to stock','g'],()=>busy('Posting…',()=>post(k,id)))}
+function askCancel(k,id){const d=D[k].find(x=>x.id==id),P=k=='purchase';modal('Cancel '+d.no+'?',`<p style="margin-top:0">These stock changes will be reversed:</p><p><b>${summ(d,!P)}</b></p>`,['Cancel document','d'],()=>busy('Cancelling…',()=>cancel(k,id)))}
+
+/* document editor (slide-over with item search) */
+function editor(k,pre){closeM();closeD();const P=k=='purchase';ed={k,date:today(),party:P?1:'',type:'Sale',cur:1,lines:[],docs:[]};
+ const m=document.createElement('div');m.id='mo';m.className='mo';
+ m.innerHTML=`<div class="md xl"><div class="mh"><div class="nm"><div class="av lg" style="background:${P?'var(--ok)':'var(--in)'}">${P?'↓':'↑'}</div><div><b style="font-size:17px">${P?'Receive stock':'Sell or issue stock'}</b><div class="mu" style="font-weight:400">${P?'Record a purchase from a supplier':'Record items leaving your stock'}</div></div></div><div class="ac">${P?`<button class="btn s" onclick="openImport()">${ic('up',15)}Import from Excel</button>`:''}<button class="x" onclick="closeM()">×</button></div></div>
+ <div class="mb"><div class="fm" style="grid-template-columns:repeat(auto-fit,minmax(170px,1fr))"><label class="fl">Date<input type="date" value="${ed.date}" onchange="ed.date=this.value"></label>`+
+ (P?`<label class="fl">Supplier<select onchange="ed.party=+this.value">${opts('supplier',1)}</select></label>`:`<label class="fl">Customer<input placeholder="e.g. Walk-in customer" onchange="ed.party=this.value"></label><label class="fl">Type<select onchange="ed.type=this.value"><option value="Sale">Sale</option><option value="InternalIssue">Internal use</option><option value="Damage">Damaged</option><option value="Sample">Sample</option></select></label>`)+
+ `<label class="fl">Currency<select onchange="ed.cur=+this.value">${opts('currency',1)}</select></label></div>
+ <div class="sgw" style="margin:20px 0 6px"><label class="fl">Add items<input id="eq" autocomplete="off" placeholder="Search by name or code, then press Enter…" oninput="edSearch(this.value)" onfocus="edSearch(this.value)" onblur="setTimeout(()=>{const s=$('sug');if(s)s.innerHTML=''},150)"></label><div id="sug"></div></div><div id="lines"></div>${P?`<div style="margin-top:10px"><label class="btn s">${ic('up',15)}Attach documents (optional)<input type="file" multiple hidden accept="${FTA}" onchange="edDocAdd(this)"></label><div id="edocs"></div></div>`:''}</div>
+ <div class="mf" style="justify-content:space-between;align-items:center"><b id="tot" style="font-size:17px"></b><div class="ac"><button class="btn s" onclick="closeM()">Discard</button><button class="btn s" id="esd" onclick="edSave(false)">Save draft</button><button class="btn g" id="esp" onclick="edSave(true)">Save &amp; post</button></div></div></div>`;
+ document.body.appendChild(m);
+ $('eq').onkeydown=e=>{if(e.key=='Enter'){const f=document.querySelector('#sug .sg');if(f)edAdd(+f.dataset.id)}};
+ if(pre)edAdd(pre);else{edLines();$('eq').focus()}}
+function edSearch(v){v=v.toLowerCase();const r=D.itemMaster.filter(i=>!i.del&&(i.name+i.code).toLowerCase().includes(v)).slice(0,6);
+ $('sug').innerHTML=r.length?`<div class="sgl">`+r.map(i=>`<div class="sg" data-id="${i.id}" onmousedown="event.preventDefault();edAdd(${i.id})">${AV(i.name,'',i.img)}<div><b>${esc(i.name)}</b><div class="mu">${i.code}</div></div><span class="mu">${n(bal(i.id).qty,2)} ${lbl('unitMaster',i.unit)} in stock</span></div>`).join('')+`</div>`:''}
+function edAdd(id){const it=item(id),P=ed.k=='purchase',l=ed.lines.find(x=>x.item==id);if(l)l.qty++;else ed.lines.push({item:id,unit:it.unit,qty:1,price:P?it.cost:it.price});$('sug').innerHTML='';$('eq').value='';edLines();$('eq').focus()}
+function edSet(i,f,v){const P=ed.k=='purchase',l=ed.lines[i],it=item(l.item);if(f=='unit'){l.unit=+v;l.price=(P?it.cost:it.price)*fac(it,l.unit)}else l[f]=Math.max(0,+v);edLines()}
+function edQ(i,d){ed.lines[i].qty=Math.max(1,ed.lines[i].qty+d);edLines()}
+function edLines(){const P=ed.k=='purchase';let bad=false;
+ $('lines').innerHTML=ed.lines.length?ed.lines.map((l,i)=>{const it=item(l.item),av=bal(it.id).qty,over=!P&&l.qty*fac(it,l.unit)>av+1e-9;if(over)bad=true;
+ return `<div class="ln"><div class="nm">${AV(it.name,'',it.img)}<div><b>${esc(it.name)}</b><span class="${over?'warn':''}">${over?'Only ':'In stock: '}${n(av,2)} ${lbl('unitMaster',it.unit)}${over?' available':''}</span></div></div><select onchange="edSet(${i},'unit',this.value)">${unitsOf(it).map(u=>`<option value="${u}" ${u==l.unit?'selected':''}>${lbl('unitMaster',u)}</option>`).join('')}</select><div class="stp"><button onclick="edQ(${i},-1)">−</button><input type="number" value="${l.qty}" onchange="edSet(${i},'qty',this.value)"><button onclick="edQ(${i},1)">+</button></div><input type="number" value="${l.price}" title="${P?'Unit cost':'Unit price'}" onchange="edSet(${i},'price',this.value)"><b style="text-align:right">${n(l.qty*l.price)}</b><button class="x" onclick="ed.lines.splice(${i},1);edLines()">×</button></div>`}).join('')+(bad?'<p class="warn">Some quantities are more than you have in stock, so posting will be blocked.</p>':''):`<div class="empty"><b>No items yet</b>Search above and press Enter to add your first item.</div>`;
+ $('tot').textContent='Total: '+lbl('currency',ed.cur)+' '+n(tot(ed))}
+function edSave(andPost){const k=ed.k,P=k=='purchase';
+ if(!ed.lines.length)return toast('Add at least one item',1);if(!P&&!ed.party)return toast('Enter a customer name',1);if(ed.lines.some(l=>!(l.qty>0)))return toast('Quantities must be above zero',1);
+ const b=$(andPost?'esp':'esd');b.disabled=true;b.innerHTML='<i class="spn"></i> '+(andPost?'Posting…':'Saving…');lo(1);
+ setTimeout(()=>{const d={id:nid(),no:(P?'PI-':'IS-')+String(D[k].length+101).padStart(4,'0'),date:ed.date,party:ed.party,type:ed.type,cur:ed.cur,status:'Draft',lines:ed.lines,docs:ed.docs||[],cr:now()};
+  D[k].push(d);closeM();view=k;tf='All';lo(0);toast(d.no+' saved as draft');if(andPost)post(k,d.id);else render()},450)}
+
+/* posting logic */
+function post(k,id){
+ const P=k=='purchase',d=D[k].find(x=>x.id==id);
+ if(!P){const need={};d.lines.forEach(l=>{need[l.item]=(need[l.item]||0)+l.qty*fac(item(l.item),l.unit)});
+  for(const i in need){if(bal(+i).qty<need[i]-1e-9)return toast('Not enough stock for '+item(+i).name+' (available '+n(bal(+i).qty,4)+')',1)}}
+ d.lines.forEach(l=>{const it=item(l.item),f=fac(it,l.unit),q=l.qty*f,b=bal(it.id);
+  if(P){const c=l.price/f,nq=b.qty+q;b.avg=nq?(b.qty*b.avg+q*c)/nq:c;b.qty=nq;b.last=c;D.move.push({id:nid(),date:d.date,item:it.id,type:'PurchaseIn',qty:q,cost:c,after:b.qty,ref:d.no})}
+  else{l.cost=b.avg;b.qty-=q;D.move.push({id:nid(),date:d.date,item:it.id,type:d.type=='Sale'?'SaleOut':'IssueOut',qty:-q,cost:b.avg,after:b.qty,ref:d.no})}});
+ d.status='Posted';closeD();toast(d.no+' posted. Stock levels are updated.');render()}
+function cancel(k,id){
+ const P=k=='purchase',d=D[k].find(x=>x.id==id);
+ if(P){for(const l of d.lines){const it=item(l.item);if(bal(it.id).qty<l.qty*fac(it,l.unit)-1e-9)return toast('Cannot cancel: stock already used for '+it.name,1)}}
+ d.lines.forEach(l=>{const it=item(l.item),q=l.qty*fac(it,l.unit),b=bal(it.id),s=P?-q:q;b.qty+=s;D.move.push({id:nid(),date:today(),item:it.id,type:P?'PurchaseReturnOut':'SaleReturnIn',qty:s,cost:l.cost||b.avg,after:b.qty,ref:d.no+' (cancel)'})});
+ d.status='Cancelled';closeD();toast(d.no+' cancelled. Reversing entries written.');render()}
+
+
+/* ---------- themes ---------- */
+const ACC={blue:'#2563eb',red:'#dc2626',orange:'#ea580c',yellow:'#ca8a04',green:'#059669',teal:'#0d9488',purple:'#7c3aed',pink:'#db2777'},MODES={light:'Day',dark:'Dark',black:'Midnight'};
+let TH={mode:(window.matchMedia&&matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light',acc:'blue'};
+try{const t=JSON.parse(localStorage.getItem('sp_theme'));if(t&&MODES[t.mode]&&ACC[t.acc])TH=t}catch(e){}
+function applyTheme(){const r=document.documentElement;r.dataset.theme=TH.mode;r.dataset.accent=TH.acc;try{localStorage.setItem('sp_theme',JSON.stringify(TH))}catch(e){}}
+function themeMenu(keep){const m=$('thm');if(!m)return;if(m.innerHTML&&!keep){m.innerHTML='';return}
+ m.innerHTML=`<div class="mn" style="min-width:236px;padding:10px" onclick="event.stopPropagation()"><div class="mu" style="margin:0 4px 6px">Mode</div><div class="tm">${Object.entries(MODES).map(([k,l])=>`<button class="${TH.mode==k?'on':''}" onclick="setTheme('mode','${k}')">${ic(k=='light'?'sun':'moon',14)}${l}</button>`).join('')}</div><div class="mu" style="margin:12px 4px 6px">Accent colour</div><div class="sw">${Object.entries(ACC).map(([k,c])=>`<button title="${k}" class="${TH.acc==k?'on':''}" style="background:${c}" onclick="setTheme('acc','${k}')"></button>`).join('')}</div></div>`}
+function setTheme(k,v){TH[k]=v;applyTheme();themeMenu(true)}
+applyTheme();
+
+/* ---------- profile ---------- */
+let WEL=false,ME={name:'Admin User',email:'admin@acmetraders.com',phone:'+880 1700 000000',title:'Administrator',img:''};
+try{const m=JSON.parse(localStorage.getItem('sp_me'));if(m&&m.name)ME=Object.assign(ME,m)}catch(e){}
+const meSave=()=>{try{localStorage.setItem('sp_me',JSON.stringify(ME))}catch(e){}},meIn=()=>ME.img?`<img src="${ME.img}" alt="">`:esc(ME.name.split(' ').filter(Boolean).slice(0,2).map(w=>w[0]).join('').toUpperCase()||'A');
+function profileMenu(){const m=$('pm');if(m.innerHTML){m.innerHTML='';return}
+ const it=(i,t,f,c)=>`<a class="${c||''}" onclick="pmx(${f})">${ic(i,16)}${t}</a>`;
+ m.innerHTML=`<div class="mn" style="min-width:260px;padding:0" onclick="event.stopPropagation()"><div class="pmh"><div class="me">${meIn()}</div><div style="min-width:0"><b>${esc(ME.name)}</b><div class="mu">${esc(ME.email)}</div><div class="mu">${esc(ME.title)} · Acme Traders</div></div></div><div style="padding:6px">${it('user','Edit profile','editProfile')}${it('camera','Change profile picture','picModal')}${it('lock','Change password','pwModal')}${it('compass','Take a tour','()=>tour(0)')}</div><div style="padding:6px;border-top:1px solid var(--bd)">${it('logout','Sign out','logoutAsk','out')}</div></div>`}
+const pmx=f=>{$('pm').innerHTML='';f()};
+function editProfile(){const F=(k,l,v,t)=>`<label>${l}<input id="pf_${k}" type="${t||'text'}" value="${esc(v)}"></label>`;
+ modal('Edit profile',`<div class="fm">${F('name','Full name <span class="req">*</span>',ME.name)}${F('title','Job title',ME.title)}${F('email','Email',ME.email,'email')}${F('phone','Phone',ME.phone)}</div>`,['Save changes'],()=>{
+  const nm=$('pf_name').value.trim(),em=$('pf_email').value.trim();if(!nm){toast('Please enter your name',1);return false}if(em&&!/^\S+@\S+\.\S+$/.test(em)){toast('Enter a valid email address',1);return false}
+  Object.assign(ME,{name:nm,title:$('pf_title').value.trim(),email:em,phone:$('pf_phone').value.trim()});meSave();topbar();if(view=='dash')render();toast('Profile updated')})}
+function picModal(){IMGT=ME.img||'';modal('Change profile picture',`<div class="ac" style="align-items:flex-start"><div id="imgp">${IMGT?`<img class="th lg" src="${IMGT}" alt=""> <button type="button" class="lnk" onclick="IMGT='';imgPrev()">Remove</button>`:'<span class="mu">No picture</span>'}</div></div><label class="fl" style="margin-top:12px">Picture<input type="file" accept="image/*" onchange="imgPick(this)"></label><p class="mu" style="margin-bottom:0">Square images look best. Large images are resized automatically.</p>`,['Save picture'],()=>{ME.img=IMGT;meSave();topbar();toast(IMGT?'Profile picture updated':'Profile picture removed')})}
+function pwModal(){const F=(k,l)=>`<label class="fl" style="margin-bottom:10px">${l}<input id="${k}" type="password" autocomplete="off"></label>`;
+ modal('Change password',F('pw0','Current password')+F('pw1','New password')+F('pw2','Confirm new password'),['Change password'],()=>{const a=$('pw0').value,b=$('pw1').value,c=$('pw2').value;
+  if(!a){toast('Enter your current password',1);return false}if(b.length<6){toast('New password must be at least 6 characters',1);return false}if(b!==c){toast('Passwords do not match',1);return false}
+  return busy('Saving…',()=>toast('Password changed'))})}
+function logoutAsk(){modal('Sign out?','<p style="margin:0">You will need to sign in again.</p>',['Sign out','d'],()=>busy('Signing out…',logout))}
+function logout(){closeD();const t=$('tr');if(t)t.remove();TI=-1;view='dash';if(!$('login'))loginUI();toast('You have been signed out')}
+
+/* ---------- loading ---------- */
+const lo=on=>{const b=$('pb');if(b)b.className=on?'on':''};
+function skel(){$('pg').innerHTML=`<div class="sk" style="height:26px;width:200px;margin-bottom:14px"></div><div class="kp">${'<div><div class="sk" style="height:12px;width:90px;margin-bottom:10px"></div><div class="sk" style="height:22px;width:120px"></div></div>'.repeat(4)}</div><div class="card">${'<div class="sk" style="height:14px;margin:12px 0"></div>'.repeat(7)}</div>`}
+function go(v){view=v;tf='All';closeD();nav();skel();lo(1);clearTimeout(go.t);go.t=setTimeout(()=>{lo(0);render()},320)}
+function cu(){document.querySelectorAll('[data-cu]').forEach(e=>{const t=+e.dataset.cu,p=e.dataset.pre||'',t0=performance.now(),f=x=>{const k=Math.min(1,(x-t0)/800);e.textContent=p+n(t*(1-Math.pow(1-k,3)),0);if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f)})}
+const KI=(i,c,b)=>`<i class="ki" style="color:${c};background:${b}">${ic(i,16)}</i>`;
+
+/* ---------- pictures ---------- */
+let IMGT='';
+function imgPick(i){const f=i.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,220/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.max(1,im.width*k);c.height=Math.max(1,im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);IMGT=c.toDataURL('image/jpeg',.82);imgPrev()};im.src=r.result};r.readAsDataURL(f)}
+function imgPrev(){const p=$('imgp');if(p)p.innerHTML=IMGT?`<img class="th lg" src="${IMGT}" alt=""> <button type="button" class="lnk" onclick="IMGT='';imgPrev()">Remove</button>`:'<span class="mu">No picture</span>'}
+
+/* ---------- PI documents ---------- */
+const FTA='.pdf,.png,.jpg,.jpeg,.webp,.docx,.xlsx,.csv,.txt',FT=/\.(pdf|png|jpe?g|webp|docx|xlsx|csv|txt)$/i,fsz=b=>b>1e6?n(b/1e6,1)+' MB':n(b/1e3,0)+' KB';
+function readFiles(files,cb){[...files].forEach(f=>{if(!FT.test(f.name))return toast(f.name+': file type not supported',1);if(f.size>3e6)return toast(f.name+' is larger than 3 MB',1);const r=new FileReader();r.onload=()=>cb({id:nid(),name:f.name,size:f.size,type:f.type,data:r.result,added:now(),by:who()});r.readAsDataURL(f)})}
+function edDocAdd(i){readFiles(i.files,d=>{ed.docs.push(d);edDocs()});i.value=''}
+function edDocs(){const e=$('edocs');if(e)e.innerHTML=ed.docs.map((d,i)=>`<div class="li"><div class="nm"><div class="av" style="background:var(--ac2);color:var(--ac)">${ic('file',15)}</div><div><b>${esc(d.name)}</b><span>${fsz(d.size)}</span></div></div><button class="lnk" onclick="ed.docs.splice(${i},1);edDocs()">Remove</button></div>`).join('')}
+function PIDOCS(k,d){if(k!='purchase')return '';return `<h3 style="margin:16px 0 6px">Documents</h3>`+((d.docs||[]).map(f=>`<div class="li"><div class="nm"><div class="av" style="background:var(--ac2);color:var(--ac)">${ic('file',15)}</div><div><b>${esc(f.name)}</b><span>${fsz(f.size)} · ${f.added} · ${f.by}</span></div></div><div class="ac"><button class="btn s" onclick="docOpen(${d.id},${f.id})">${/^image\//.test(f.type)?'View':'Download'}</button><button class="lnk" onclick="docRm(${d.id},${f.id})">Remove</button></div></div>`).join('')||'<p class="mu">No documents attached yet.</p>')+`<label class="btn s" style="margin-top:8px">${ic('up',15)}Add document<input type="file" multiple hidden accept="${FTA}" onchange="piAdd(${d.id},this)"></label>`}
+function piAdd(id,i){const d=D.purchase.find(x=>x.id==id);readFiles(i.files,f=>{(d.docs=d.docs||[]).push(f);render();viewDoc('purchase',id);toast('Document added to '+d.no)});i.value=''}
+function docRm(id,fid){const d=D.purchase.find(x=>x.id==id),f=d.docs.find(x=>x.id==fid);d.docs=d.docs.filter(x=>x.id!=fid);render();viewDoc('purchase',id);toast('Document removed',0,['Undo',()=>{d.docs.push(f);render();viewDoc('purchase',id)}])}
+async function docDl(f){lo(1);const b=await (await fetch(f.data)).arrayBuffer();lo(0);return save(f.name,b)}
+function docOpen(id,fid){const f=D.purchase.find(x=>x.id==id).docs.find(x=>x.id==fid);if(/^image\//.test(f.type))modal(esc(f.name),`<img src="${f.data}" alt="" style="max-width:100%;display:block;margin:auto">`,['Download'],()=>{docDl(f);return false},true);else docDl(f)}
+
+/* ---------- language ---------- */
+let LANG='en';try{LANG=localStorage.getItem('sp_lang')||'en'}catch(e){}
+const LN={en:'English',bn:'বাংলা',hi:'हिन्दी'},TM={bn:{},hi:{}};
+const TT=[
+['Dashboard','ড্যাশবোর্ড','डैशबोर्ड'],['Items','আইটেম','आइटम'],['Purchases','ক্রয়','खरीद'],['Sales & issues','বিক্রয় ও ইস্যু','बिक्री और इश्यू'],['Stock history','স্টক ইতিহাস','स्टॉक इतिहास'],['Suppliers','সরবরাহকারী','आपूर्तिकर्ता'],['Reports','রিপোর্ট','रिपोर्ट'],['Setup','সেটআপ','सेटअप'],['Take a tour','ট্যুর নিন','टूर लें'],
+['All data is tenant-isolated and fully audited.','সব ডেটা টেন্যান্ট-ভিত্তিক আলাদা ও সম্পূর্ণ অডিটকৃত।','सारा डेटा टेनेंट-अलग और पूरी तरह ऑडिटेड है।'],['Tenant','টেন্যান্ট','टेनेंट'],['Search items, pages, actions…','আইটেম, পেজ, অ্যাকশন খুঁজুন…','आइटम, पेज, एक्शन खोजें…'],['New','নতুন','नया'],['Admin','অ্যাডমিন','एडमिन'],['Staff','স্টাফ','स्टाफ'],
+['Receive stock','স্টক গ্রহণ','स्टॉक प्राप्त करें'],['Sell or issue stock','স্টক বিক্রয় বা ইস্যু','स्टॉक बेचें या इश्यू करें'],['Add an item','আইটেম যোগ করুন','आइटम जोड़ें'],['Add a supplier','সরবরাহকারী যোগ করুন','आपूर्तिकर्ता जोड़ें'],
+['Good day, Admin','শুভ দিন, অ্যাডমিন','नमस्ते, एडमिन'],['Here is how your stock looks today.','আজ আপনার স্টকের অবস্থা এইরকম।','आज आपका स्टॉक ऐसा दिखता है।'],['Sell or issue','বিক্রয় বা ইস্যু','बेचें या इश्यू करें'],
+['Stock value','স্টকের মূল্য','स्टॉक मूल्य'],['Stock in (14 days)','স্টক ইন (১৪ দিন)','स्टॉक इन (14 दिन)'],['Stock out (14 days)','স্টক আউট (১৪ দিন)','स्टॉक आउट (14 दिन)'],['Needs attention','মনোযোগ প্রয়োজন','ध्यान चाहिए'],['Purchases received','প্রাপ্ত ক্রয়','प्राप्त खरीद'],['Sales and issues at cost','ক্রয়মূল্যে বিক্রয় ও ইস্যু','लागत पर बिक्री और इश्यू'],
+['Stock in vs out · last 14 days','স্টক ইন বনাম আউট · শেষ ১৪ দিন','स्टॉक इन बनाम आउट · पिछले 14 दिन'],['Stock health','স্টকের অবস্থা','स्टॉक की स्थिति'],['Needs your attention','আপনার মনোযোগ প্রয়োজন','आपके ध्यान की जरूरत'],['Recent activity','সাম্প্রতিক কার্যক্রম','हाल की गतिविधि'],
+['In stock','স্টকে আছে','स्टॉक में'],['Low stock','কম স্টক','कम स्टॉक'],['Out of stock','স্টক নেই','स्टॉक खत्म'],['Stock in','স্টক ইন','स्टॉक इन'],['Stock out','স্টক আউট','स्टॉक आउट'],['Draft','খসড়া','ड्राफ्ट'],['Posted','পোস্টেড','पोस्टेड'],['Cancelled','বাতিল','रद्द'],['Reorder','পুনরায় অর্ডার','दोबारा ऑर्डर'],['Review','পর্যালোচনা','समीक्षा'],['You are all caught up.','সবকিছু হালনাগাদ আছে।','सब कुछ अप टू डेट है।'],
+['Click an item to see its stock, history and quick actions.','স্টক, ইতিহাস ও দ্রুত অ্যাকশন দেখতে আইটেমে ক্লিক করুন।','स्टॉक, इतिहास और त्वरित एक्शन देखने के लिए आइटम पर क्लिक करें।'],['Add item','আইটেম যোগ','आइटम जोड़ें'],['All','সব','सभी'],['Needs reorder','রিঅর্ডার দরকার','री-ऑर्डर चाहिए'],
+['Code','কোড','कोड'],['Item','আইটেম','आइटम'],['Category','ক্যাটাগরি','श्रेणी'],['On hand','মজুদ','उपलब्ध'],['Unit','একক','इकाई'],['Level','স্তর','स्तर'],['Value','মূল্য','मूल्य'],['Status','অবস্থা','स्थिति'],['Search…','খুঁজুন…','खोजें…'],['Export Excel','এক্সেল এক্সপোর্ট','एक्सेल एक्सपोर्ट'],['Rows','সারি','पंक्तियाँ'],['‹ Prev','‹ আগে','‹ पिछला'],['Next ›','পরে ›','अगला ›'],
+['No records found','কোনো রেকর্ড পাওয়া যায়নি','कोई रिकॉर्ड नहीं मिला'],['Nothing here yet.','এখনো কিছু নেই।','अभी यहाँ कुछ नहीं है।'],['Try a different search.','অন্যভাবে খুঁজুন।','कोई दूसरी खोज आज़माएँ।'],
+['Avg cost','গড় খরচ','औसत लागत'],['Sale price','বিক্রয়মূল্য','बिक्री मूल्य'],['Reorder level','রিঅর্ডার স্তর','री-ऑर्डर स्तर'],['Base unit','মূল একক','मूल इकाई'],['Buy / sell in','ক্রয় / বিক্রয় একক','खरीद / बिक्री इकाई'],['Issue / sell','ইস্যু / বিক্রয়','इश्यू / बेचें'],['Edit item','আইটেম সম্পাদনা','आइटम संपादित करें'],['Created','তৈরি','बनाया गया'],['Last modified','সর্বশেষ পরিবর্তন','अंतिम बदलाव'],
+['Opening stock','প্রারম্ভিক স্টক','प्रारंभिक स्टॉक'],['Received','গৃহীত','प्राप्त'],['Sold','বিক্রিত','बिका'],['Issued','ইস্যুকৃত','इश्यू किया'],['Returned to supplier','সরবরাহকারীকে ফেরত','आपूर्तिकर्ता को वापस'],['Customer return','ক্রেতার ফেরত','ग्राहक वापसी'],
+['Goods received from suppliers. Posting a document updates stock.','সরবরাহকারীর কাছ থেকে প্রাপ্ত পণ্য। ডকুমেন্ট পোস্ট করলে স্টক হালনাগাদ হয়।','आपूर्तिकर्ताओं से प्राप्त माल। दस्तावेज़ पोस्ट करने पर स्टॉक अपडेट होता है।'],['Goods sold or issued out of stock. Posting a document updates stock.','স্টক থেকে বিক্রি বা ইস্যু করা পণ্য। ডকুমেন্ট পোস্ট করলে স্টক হালনাগাদ হয়।','स्टॉक से बेचा या इश्यू किया गया माल। दस्तावेज़ पोस्ट करने पर स्टॉक अपडेट होता है।'],
+['Import from Excel','এক্সেল থেকে ইমপোর্ট','एक्सेल से इम्पोर्ट'],['New sale / issue','নতুন বিক্রয় / ইস্যু','नई बिक्री / इश्यू'],['Number','নম্বর','नंबर'],['Date','তারিখ','तारीख'],['Supplier','সরবরাহকারী','आपूर्तिकर्ता'],['Customer','ক্রেতা','ग्राहक'],['Total','মোট','कुल'],['Documents','ডকুমেন্ট','दस्तावेज़'],
+['Every stock in and out, with the balance after each change. This log is never edited.','প্রতিটি স্টক ইন-আউট ও পরিবর্তনের পর ব্যালেন্স। এই লগ কখনো সম্পাদনা হয় না।','हर स्टॉक इन-आउट और हर बदलाव के बाद शेष। इस लॉग को कभी संपादित नहीं किया जाता।'],['What happened','কী ঘটেছে','क्या हुआ'],['Quantity','পরিমাণ','मात्रा'],['Unit cost','একক খরচ','इकाई लागत'],['Balance after','পরের ব্যালেন্স','बाद का शेष'],['Reference','রেফারেন্স','संदर्भ'],
+['The reference lists that items, suppliers and documents use.','আইটেম, সরবরাহকারী ও ডকুমেন্টে ব্যবহৃত রেফারেন্স তালিকা।','आइटम, आपूर्तिकर्ता और दस्तावेज़ों में उपयोग की जाने वाली संदर्भ सूचियाँ।'],
+['Categories','ক্যাটাগরি','श्रेणियाँ'],['Sub-categories','উপ-ক্যাটাগরি','उप-श्रेणियाँ'],['Unit groups','ইউনিট গ্রুপ','इकाई समूह'],['Units','ইউনিট','इकाइयाँ'],['Unit conversions','ইউনিট রূপান্তর','इकाई रूपांतरण'],['Currencies','মুদ্রা','मुद्राएँ'],['Exchange rates','বিনিময় হার','विनिमय दरें'],['Countries','দেশ','देश'],
+['Add category','ক্যাটাগরি যোগ','श्रेणी जोड़ें'],['Add sub-category','উপ-ক্যাটাগরি যোগ','उप-श्रेणी जोड़ें'],['Add unit group','ইউনিট গ্রুপ যোগ','इकाई समूह जोड़ें'],['Add unit','ইউনিট যোগ','इकाई जोड़ें'],['Add unit conversion','রূপান্তর যোগ','रूपांतरण जोड़ें'],['Add currency','মুদ্রা যোগ','मुद्रा जोड़ें'],['Add exchange rate','বিনিময় হার যোগ','विनिमय दर जोड़ें'],['Add country','দেশ যোগ','देश जोड़ें'],['Add supplier','সরবরাহকারী যোগ','आपूर्तिकर्ता जोड़ें'],
+['Name','নাম','नाम'],['Phone code','ফোন কোড','फोन कोड'],['Symbol','প্রতীক','प्रतीक'],['Decimals','দশমিক','दशमलव'],['Base currency','মূল মুদ্রা','मूल मुद्रा'],['From','থেকে','से'],['To','পর্যন্ত','तक'],['Rate','হার','दर'],['Effective date','কার্যকর তারিখ','प्रभावी तिथि'],['Unit group','ইউনিট গ্রুপ','इकाई समूह'],['Factor','গুণক','गुणक'],['Contact','যোগাযোগ','संपर्क'],['Phone','ফোন','फोन'],['Country','দেশ','देश'],['Currency','মুদ্রা','मुद्रा'],['Payment days','পরিশোধের দিন','भुगतान दिन'],['Sub-category','উপ-ক্যাটাগরি','उप-श्रेणी'],['Cost price','ক্রয়মূল্য','लागत मूल्य'],['Picture','ছবি','चित्र'],
+['Edit','সম্পাদনা','संपादित करें'],['Delete','মুছুন','हटाएँ'],['Restore','পুনরুদ্ধার','बहाल करें'],['Deleting only marks a record as deleted, so Undo always works.','মুছলে রেকর্ড শুধু মুছে-যাওয়া হিসেবে চিহ্নিত হয়, তাই Undo সবসময় কাজ করে।','हटाने पर रिकॉर्ड केवल हटाया गया चिह्नित होता है, इसलिए Undo हमेशा काम करता है।'],
+['Cancel','বাতিল করুন','रद्द करें'],['Save','সংরক্ষণ','सहेजें'],['Save changes','পরিবর্তন সংরক্ষণ','बदलाव सहेजें'],['Discard','বর্জন','छोड़ें'],['Save draft','খসড়া সংরক্ষণ','ड्राफ्ट सहेजें'],['Save & post','সংরক্ষণ ও পোস্ট','सहेजें और पोस्ट करें'],['Type','ধরন','प्रकार'],['Add items','আইটেম যোগ করুন','आइटम जोड़ें'],
+['Search by name or code, then press Enter…','নাম বা কোড দিয়ে খুঁজুন, তারপর Enter চাপুন…','नाम या कोड से खोजें, फिर Enter दबाएँ…'],['No items yet','এখনো কোনো আইটেম নেই','अभी कोई आइटम नहीं'],['Search above and press Enter to add your first item.','উপরে খুঁজে Enter চেপে প্রথম আইটেম যোগ করুন।','ऊपर खोजें और पहला आइटम जोड़ने के लिए Enter दबाएँ।'],
+['Record a purchase from a supplier','সরবরাহকারীর কাছ থেকে ক্রয় নথিভুক্ত করুন','आपूर्तिकर्ता से खरीद दर्ज करें'],['Record items leaving your stock','স্টক থেকে বের হওয়া আইটেম নথিভুক্ত করুন','स्टॉक से जाने वाले आइटम दर्ज करें'],['Post to stock','স্টকে পোস্ট করুন','स्टॉक में पोस्ट करें'],['Cancel & reverse','বাতিল ও রিভার্স','रद्द करके उलटें'],
+['Attach documents (optional)','ডকুমেন্ট সংযুক্ত করুন (ঐচ্ছিক)','दस्तावेज़ जोड़ें (वैकल्पिक)'],['Add document','ডকুমেন্ট যোগ করুন','दस्तावेज़ जोड़ें'],['Remove','সরান','हटाएँ'],['View','দেখুন','देखें'],['Download','ডাউনলোড','डाउनलोड'],['No documents attached yet.','এখনো কোনো ডকুমেন্ট সংযুক্ত নেই।','अभी कोई दस्तावेज़ संलग्न नहीं।'],['Picture (optional)','ছবি (ঐচ্ছিক)','चित्र (वैकल्पिक)'],['No picture','ছবি নেই','कोई चित्र नहीं'],
+['Choose a report, set the filters, then print it or export it to Excel.','একটি রিপোর্ট বেছে ফিল্টার দিন, তারপর প্রিন্ট বা এক্সেলে এক্সপোর্ট করুন।','रिपोर्ट चुनें, फ़िल्टर सेट करें, फिर प्रिंट करें या एक्सेल में एक्सपोर्ट करें।'],['Stock item list','স্টক আইটেম তালিকা','स्टॉक आइटम सूची'],['Item ledger','আইটেম লেজার','आइटम खाता-बही'],['Invoice list','ইনভয়েস তালিকা','चालान सूची'],['Sales list','বিক্রয় তালিকা','बिक्री सूची'],['Invoice to sales','ইনভয়েস থেকে বিক্রয়','चालान से बिक्री'],
+['Save printable copy','প্রিন্টযোগ্য কপি সংরক্ষণ','प्रिंट योग्य प्रति सहेजें'],['Print','প্রিন্ট','प्रिंट'],['All items','সব আইটেম','सभी आइटम'],['All categories','সব ক্যাটাগরি','सभी श्रेणियाँ'],['All suppliers','সব সরবরাহকারী','सभी आपूर्तिकर्ता'],
+['Welcome back','স্বাগতম','वापसी पर स्वागत है'],['Sign in to your workspace','আপনার ওয়ার্কস্পেসে সাইন ইন করুন','अपने वर्कस्पेस में साइन इन करें'],['Username','ব্যবহারকারীর নাম','उपयोगकर्ता नाम'],['Password','পাসওয়ার্ড','पासवर्ड'],['Sign in','সাইন ইন','साइन इन'],['Signing in…','সাইন ইন হচ্ছে…','साइन इन हो रहा है…'],['Posting…','পোস্ট হচ্ছে…','पोस्ट हो रहा है…'],['Saving…','সংরক্ষণ হচ্ছে…','सहेजा जा रहा है…'],['Creating…','তৈরি হচ্ছে…','बनाया जा रहा है…'],['Reading file…','ফাইল পড়া হচ্ছে…','फ़ाइल पढ़ी जा रही है…'],
+['Welcome to StockPilot','StockPilot-এ স্বাগতম','StockPilot में आपका स्वागत है'],['Would you like a one-minute tour of how to run the system?','সিস্টেম কীভাবে চালাতে হয় তার এক মিনিটের ট্যুর নিতে চান?','क्या आप सिस्टम चलाने का एक मिनट का टूर लेना चाहेंगे?'],['Start the tour','ট্যুর শুরু করুন','टूर शुरू करें'],
+['This one-minute tour shows how to receive stock, sell it and read your reports.','এই এক মিনিটের ট্যুরে স্টক গ্রহণ, বিক্রয় ও রিপোর্ট দেখা শিখবেন।','यह एक मिनट का टूर स्टॉक प्राप्त करना, बेचना और रिपोर्ट देखना सिखाता है।'],
+['Menu','মেনু','मेनू'],['Move between Dashboard, Items, Purchases, Sales, Stock history, Suppliers, Reports and Setup.','ড্যাশবোর্ড, আইটেম, ক্রয়, বিক্রয়, স্টক ইতিহাস, সরবরাহকারী, রিপোর্ট ও সেটআপের মধ্যে যান।','डैशबोर्ड, आइटम, खरीद, बिक्री, स्टॉक इतिहास, आपूर्तिकर्ता, रिपोर्ट और सेटअप के बीच जाएँ।'],
+['Start with Setup','সেটআপ দিয়ে শুরু করুন','सेटअप से शुरू करें'],['First add categories, units, currencies and suppliers. Pictures are optional.','প্রথমে ক্যাটাগরি, ইউনিট, মুদ্রা ও সরবরাহকারী যোগ করুন। ছবি ঐচ্ছিক।','पहले श्रेणियाँ, इकाइयाँ, मुद्राएँ और आपूर्तिकर्ता जोड़ें। चित्र वैकल्पिक हैं।'],
+['New button','নতুন বোতাম','नया बटन'],['Create anything from here: receive stock, sell stock, add an item or a supplier.','এখান থেকে সবকিছু তৈরি করুন: স্টক গ্রহণ, বিক্রয়, আইটেম বা সরবরাহকারী যোগ।','यहाँ से सब बनाएँ: स्टॉक प्राप्त करें, बेचें, आइटम या आपूर्तिकर्ता जोड़ें।'],
+['Your numbers','আপনার সংখ্যা','आपके आँकड़े'],['Stock value, stock in and out, and what needs attention, updated live.','স্টকের মূল্য, ইন-আউট এবং কী মনোযোগ চায় — লাইভ হালনাগাদ।','स्टॉक मूल्य, इन-आउट और किस पर ध्यान चाहिए — लाइव अपडेट।'],
+['Click an item to see its stock and history, then receive or issue it.','আইটেমে ক্লিক করে স্টক ও ইতিহাস দেখুন, তারপর গ্রহণ বা ইস্যু করুন।','आइटम पर क्लिक करके स्टॉक और इतिहास देखें, फिर प्राप्त या इश्यू करें।'],
+['Search, sort, export','খুঁজুন, সাজান, এক্সপোর্ট','खोजें, क्रमबद्ध करें, एक्सपोर्ट'],['Every table has search, sortable headers, scrolling, paging and Export Excel.','প্রতিটি টেবিলে সার্চ, সর্ট, স্ক্রল, পেজিং ও এক্সেল এক্সপোর্ট আছে।','हर तालिका में खोज, सॉर्ट, स्क्रॉल, पेजिंग और एक्सेल एक्सपोर्ट है।'],
+['Create a purchase invoice, attach documents, or import many invoices from Excel.','ক্রয় ইনভয়েস তৈরি করুন, ডকুমেন্ট সংযুক্ত করুন বা এক্সেল থেকে অনেক ইনভয়েস ইমপোর্ট করুন।','खरीद चालान बनाएँ, दस्तावेज़ जोड़ें या एक्सेल से कई चालान इम्पोर्ट करें।'],
+['Pick items, watch the stock warning, then post to reduce stock.','আইটেম বেছে স্টক সতর্কতা দেখুন, তারপর পোস্ট করে স্টক কমান।','आइटम चुनें, स्टॉक चेतावनी देखें, फिर पोस्ट करके स्टॉक घटाएँ।'],['Run, print or export five reports.','পাঁচটি রিপোর্ট চালান, প্রিন্ট বা এক্সপোর্ট করুন।','पाँच रिपोर्ट चलाएँ, प्रिंट या एक्सपोर्ट करें।'],
+['Language','ভাষা','भाषा'],['Switch the interface language here.','এখানে ইন্টারফেসের ভাষা বদলান।','यहाँ इंटरफ़ेस की भाषा बदलें।'],['Change the colours here: Day, Dark or Midnight, plus eight accent colours.','এখানে রঙ বদলান: দিন, ডার্ক বা মিডনাইট, সাথে আটটি অ্যাকসেন্ট রঙ।','यहाँ रंग बदलें: दिन, डार्क या मिडनाइट, साथ में आठ एक्सेंट रंग।'],['All sub-categories','সব উপ-ক্যাটাগরি','सभी उप-श्रेणियाँ'],['All customers','সব ক্রেতা','सभी ग्राहक'],['All unit groups','সব ইউনিট গ্রুপ','सभी इकाई समूह'],['Any from unit','যেকোনো উৎস ইউনিট','कोई भी स्रोत इकाई'],['Any to unit','যেকোনো গন্তব্য ইউনিট','कोई भी गंतव्य इकाई'],['Any from currency','যেকোনো উৎস মুদ্রা','कोई भी स्रोत मुद्रा'],['Any to currency','যেকোনো গন্তব্য মুদ্রা','कोई भी गंतव्य मुद्रा'],['Reset','রিসেট','रीसेट'],['Edit profile','প্রোফাইল সম্পাদনা','प्रोफ़ाइल संपादित करें'],['Change profile picture','প্রোফাইল ছবি পরিবর্তন','प्रोफ़ाइल चित्र बदलें'],['Change password','পাসওয়ার্ড পরিবর্তন','पासवर्ड बदलें'],['Sign out','সাইন আউট','साइन आउट'],['Full name','পূর্ণ নাম','पूरा नाम'],['Email','ইমেইল','ईमेल'],['Job title','পদবি','पद'],['Current password','বর্তমান পাসওয়ার্ড','वर्तमान पासवर्ड'],['New password','নতুন পাসওয়ার্ড','नया पासवर्ड'],['Confirm new password','নতুন পাসওয়ার্ড নিশ্চিত করুন','नया पासवर्ड पुष्टि करें'],['Save picture','ছবি সংরক্ষণ','चित्र सहेजें'],['You will need to sign in again.','আবার সাইন ইন করতে হবে।','आपको फिर से साइन इन करना होगा।'],['Sign out?','সাইন আউট করবেন?','साइन आउट करें?'],['Signing out…','সাইন আউট হচ্ছে…','साइन आउट हो रहा है…'],['Good day,','শুভ দিন,','नमस्ते,'],['Square images look best. Large images are resized automatically.','বর্গাকার ছবি সবচেয়ে ভালো দেখায়। বড় ছবি স্বয়ংক্রিয়ভাবে ছোট হয়।','वर्गाकार चित्र सबसे अच्छे दिखते हैं। बड़े चित्र अपने आप छोटे हो जाते हैं।'],['Your profile','আপনার প্রোফাইল','आपकी प्रोफ़ाइल'],['Edit your profile, change your picture or password, and sign out from here.','এখান থেকে প্রোফাইল সম্পাদনা, ছবি বা পাসওয়ার্ড পরিবর্তন এবং সাইন আউট করুন।','यहाँ से प्रोफ़ाइल संपादित करें, चित्र या पासवर्ड बदलें और साइन आउट करें।'],['Theme','থিম','थीम'],['Mode','মোড','मोड'],['Day','দিন','दिन'],['Dark','ডার্ক','डार्क'],['Midnight','মিডনাইট','मिडनाइट'],['Accent colour','অ্যাকসেন্ট রঙ','एक्सेंट रंग'],['All types','সব ধরন','सभी प्रकार'],['Export PDF','পিডিএফ এক্সপোর্ট','पीडीएफ एक्सपोर्ट'],['Skip tour','ট্যুর এড়িয়ে যান','टूर छोड़ें'],['Back','পেছনে','पीछे'],['Next','পরবর্তী','अगला'],['Finish','শেষ','समाप्त']];
+TT.forEach(r=>{TM.bn[r[0]]=r[1];TM.hi[r[0]]=r[2]});
+function trAll(){const mp=TM[LANG];if(!mp)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:x=>/^(SCRIPT|STYLE)$/.test(x.parentNode.nodeName)?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT});let nd;
+ while(nd=w.nextNode()){const v=nd.nodeValue,t=v.trim();if(!t)continue;const gd=/^Good day, (.+)$/.exec(t);if(gd&&mp['Good day,']){nd.nodeValue=v.replace(t,mp['Good day,']+' '+gd[1]);continue}const m=/^(.*?)((?: \(\d+\))|(?: [▲▼]))?$/.exec(t),x=mp[m[1]];if(x!==undefined)nd.nodeValue=v.replace(t,x+(m[2]||''))}
+ document.querySelectorAll('[placeholder],[title]').forEach(e=>['placeholder','title'].forEach(a=>{const v=e.getAttribute(a);if(v&&mp[v])e.setAttribute(a,mp[v])}))}
+new MutationObserver(()=>{if(LANG!='en')trAll()}).observe(document.body,{childList:true,subtree:true});
+function langMenu(){const m=$('lm');if(m.innerHTML){m.innerHTML='';return}m.innerHTML=`<div class="mn" style="min-width:150px">`+Object.keys(LN).map(k=>`<a onclick="setLang('${k}')">${LN[k]}${k==LANG?' ✓':''}</a>`).join('')+`</div>`}
+function setLang(l){LANG=l;try{localStorage.setItem('sp_lang',l)}catch(e){}document.documentElement.lang=l;closeM();closeD();const lg=$('login');if(lg){lg.remove();loginUI()}render();trAll()}
+
+/* ---------- login + tour ---------- */
+function loginUI(){const l=document.createElement('div');l.id='login';
+ l.innerHTML=`<div class="lc"><div class="brand"><div class="lg">${ic('items',18)}</div>StockPilot</div><h2>Welcome back</h2><p class="mu" style="margin:0 0 6px">Sign in to your workspace</p><label class="fl">Tenant<input value="Acme Traders"></label><label class="fl">Username<input value="admin"></label><label class="fl">Password<input type="password" value="123456"></label><button class="btn l" id="lbt" onclick="signin()" style="justify-content:center;margin-top:8px">Sign in</button><div class="lng">${Object.keys(LN).map(k=>`<button class="${k==LANG?'on':''}" onclick="setLang('${k}')">${LN[k]}</button>`).join('')}</div></div>`;document.body.appendChild(l)}
+function signin(){const b=$('lbt');b.disabled=true;b.innerHTML='<i class="spn"></i> Signing in…';lo(1);setTimeout(()=>{lo(0);const l=$('login');l.classList.add('out');setTimeout(()=>l.remove(),350);view='dash';skel();setTimeout(()=>{render();if(!WEL){WEL=true;setTimeout(welcome,500)}},500)},900)}
+function welcome(){modal('Welcome to StockPilot','<p style="margin:0">Would you like a one-minute tour of how to run the system?</p>',['Start the tour'],()=>{setTimeout(()=>tour(0),150)})}
+const TOUR=[['','dash','Welcome to StockPilot','This one-minute tour shows how to receive stock, sell it and read your reports.'],
+['#nav','dash','Menu','Move between Dashboard, Items, Purchases, Sales, Stock history, Suppliers, Reports and Setup.'],
+['#nav a[data-v=setup]','dash','Start with Setup','First add categories, units, currencies and suppliers. Pictures are optional.'],
+['#top .btn','dash','New button','Create anything from here: receive stock, sell stock, add an item or a supplier.'],
+['.kp','dash','Your numbers','Stock value, stock in and out, and what needs attention, updated live.'],
+['#pg .hd','items','Items','Click an item to see its stock and history, then receive or issue it.'],
+['#pg .gt','items','Search, sort, export','Every table has search, sortable headers, scrolling, paging and Export Excel.'],
+['#pg .hd .ac','purchase','Receive stock','Create a purchase invoice, attach documents, or import many invoices from Excel.'],
+['#pg .hd .ac','sale','Sell or issue','Pick items, watch the stock warning, then post to reduce stock.'],
+['.rpc','reports','Reports','Run, print or export five reports.'],
+['#top .tl','dash','Language','Switch the interface language here.'],['#thc','dash','Theme','Change the colours here: Day, Dark or Midnight, plus eight accent colours.'],['#top .me','dash','Your profile','Edit your profile, change your picture or password, and sign out from here.']];
+let TI=-1;
+function tour(i){closeM();closeD();const s=TOUR[i];if(!s)return tourEnd(true);TI=i;if(s[1]&&view!=s[1]){view=s[1];render()}
+ let h=$('tr');if(!h){h=document.createElement('div');h.id='tr';document.body.appendChild(h)}
+ const el=s[0]?document.querySelector(s[0]):null;if(el&&el.scrollIntoView)el.scrollIntoView({block:'center'});
+ requestAnimationFrame(()=>{const r=el?el.getBoundingClientRect():null,W=innerWidth,H2=innerHeight,pw=Math.min(340,W-24);let x=(W-pw)/2,y=H2/2-100;
+  if(r){x=Math.min(Math.max(12,r.left),W-pw-12);y=r.bottom+14;if(y+190>H2)y=Math.max(12,r.top-200)}
+  h.innerHTML=(r?`<div class="hl" style="left:${r.left-6}px;top:${r.top-6}px;width:${r.width+12}px;height:${r.height+12}px"></div>`:'<div class="ov2"></div>')+`<div class="tp" style="left:${x}px;top:${y}px;width:${pw}px"><div class="mu">${i+1} / ${TOUR.length}</div><h3>${s[2]}</h3><p>${s[3]}</p><div class="ac" style="justify-content:space-between"><button class="lnk mu" onclick="tourEnd()">Skip tour</button><div class="ac">${i?`<button class="btn s" onclick="tour(${i-1})">Back</button>`:''}<button class="btn" onclick="tour(${i+1})">${i==TOUR.length-1?'Finish':'Next'}</button></div></div></div>`})}
+function tourEnd(done){TI=-1;const h=$('tr');if(h)h.remove();view='dash';render();toast(done?'Tour finished. Restart it anytime from Take a tour.':'Tour closed. Restart it anytime from Take a tour.')}
+addEventListener('resize',()=>{if(TI>=0)tour(TI)});
+document.addEventListener('keydown',e=>{if(TI<0)return;if(e.key=='ArrowRight')tour(TI+1);if(e.key=='ArrowLeft'&&TI>0)tour(TI-1);if(e.key=='Escape')tourEnd()});
+
+/* ---------- filter definitions ---------- */
+const sf=(k,all,t,get)=>({k,t:'sel',all,opts:D[t].filter(x=>!x.del).map(x=>[x.id,lbl(t,x.id)]),get});
+const MF={itemSubCategory:()=>[sf('cat','All categories','itemCategory',r=>r.cat)],unitMaster:()=>[sf('set','All unit groups','unitSet',r=>r.set)],
+ unitConversion:()=>[sf('from','Any from unit','unitMaster',r=>r.from),sf('to','Any to unit','unitMaster',r=>r.to)],
+ currencyConversion:()=>[sf('from','Any from currency','currency',r=>r.from),sf('to','Any to currency','currency',r=>r.to)]};
+const DF=k=>[{k:'from',t:'from',l:'From',get:r=>r.date},{k:'to',t:'to',l:'To',get:r=>r.date},k=='purchase'?sf('p','All suppliers','supplier',r=>r.partyId):{k:'p',t:'sel',all:'All customers',opts:[...new Set(D.sale.map(x=>x.party))].filter(Boolean).map(x=>[x,x]),get:r=>r.party}];
+const MV=()=>[{k:'from',t:'from',l:'From',get:r=>r.date},{k:'to',t:'to',l:'To',get:r=>r.date},sf('item','All items','itemMaster',r=>r.itemId),{k:'type',t:'sel',all:'All types',opts:Object.entries(TY),get:r=>r.type}];
+const IF=()=>[sf('cat','All categories','itemCategory',r=>r.catId),sf('sub','All sub-categories','itemSubCategory',r=>r.subId)];
+
+/* ---------- data grid: search, sort, paginate, export ---------- */
+const G={},GS={};
+const C=(k,l)=>({k,l,v:r=>r[k]==null?'':r[k]}),CN=(k,l)=>({k,l,r:1,v:r=>r[k]==null?'':r[k],h:r=>r[k]==null||r[k]===''?'':n(r[k])});
+function grid(id,cols,rows,o){G[id]={cols,rows,o:o||{}};GS[id]=GS[id]||{sort:null,dir:1,page:1,size:50,q:'',f:{}};GS[id].f=GS[id].f||{};
+ return `<div class="card tw"><div class="gt" id="gt_${id}">${gToolbar(id)}</div><div id="gb_${id}"></div></div>`}
+function gToolbar(id){const g=G[id],s=GS[id],o=g.o,fl=o.filters||[];
+ return fl.map(x=>x.t=='sel'?`<select class="fs" onchange="gf('${id}','${x.k}',this.value)"><option value="">${x.all}</option>${x.opts.map(([v,l])=>`<option value="${esc(v)}" ${String(s.f[x.k])==String(v)?'selected':''}>${esc(l)}</option>`).join('')}</select>`:`<label class="gl">${x.l}<input type="date" value="${s.f[x.k]||''}" onchange="gf('${id}','${x.k}',this.value)"></label>`).join('')+
+ `<input class="sr" placeholder="Search…" value="${esc(s.q)}" oninput="gq('${id}',this.value)"><span class="sp"></span>`+(fl.length?`<button class="btn s" onclick="gc('${id}')">Reset</button>`:'')+`<button class="btn s" onclick="gx('${id}')">${ic('dl',15)}Export Excel</button>`+(o.pdf?`<button class="btn s" onclick="gpdf('${id}')">${ic('print',15)}Export PDF</button>`:'')}
+const gf=(id,k,v)=>{GS[id].f[k]=v;GS[id].page=1;gRender(id)};
+function gc(id){const s=GS[id];s.q='';s.f={};s.page=1;$('gt_'+id).innerHTML=gToolbar(id);gRender(id)}
+async function gpdf(id){const g=G[id],cs=g.cols.filter(c=>!c.noexp),rows=gData(id);
+ if(!(window.jspdf&&window.jspdf.jsPDF))return toast('The PDF library did not load. Check your connection.',1);
+ lo(1);const nm=g.o.name||id,doc=new window.jspdf.jsPDF({orientation:cs.length>6?'landscape':'portrait',unit:'pt',format:'a4'}),pw=doc.internal.pageSize.getWidth(),ph=doc.internal.pageSize.getHeight(),cst={};
+ cs.forEach((c,i)=>{if(c.r)cst[i]={halign:'right'}});
+ doc.setFontSize(15);doc.text(nm,40,40);doc.setFontSize(9);doc.setTextColor(110);doc.text('Acme Traders · Printed '+now()+' · '+rows.length+' record'+(rows.length==1?'':'s'),40,56);
+ doc.autoTable({startY:68,head:[cs.map(c=>c.l)],body:rows.map(r=>cs.map(c=>{const v=c.v(r);return typeof v=='number'?n(v):String(v==null?'':v)})),styles:{fontSize:8,cellPadding:4},headStyles:{fillColor:[1,3,5].map(i=>parseInt(ACC[TH.acc].substr(i,2),16))},columnStyles:cst,margin:{left:40,right:40},didDrawPage:()=>{doc.setFontSize(8);doc.setTextColor(110);doc.text('Page '+doc.internal.getNumberOfPages(),pw-70,ph-20)}});
+ lo(0);return save(nm.replace(/\W+/g,'_')+'.pdf',doc.output('arraybuffer'))}
+function gData(id){const g=G[id],s=GS[id];let r=g.rows;
+ (g.o.filters||[]).forEach(x=>{const v=s.f[x.k];if(v===undefined||v==='')return;r=r.filter(row=>{const a=String(x.get(row));return x.t=='from'?a>=v:x.t=='to'?a<=v:a===String(v)})});
+ if(s.q){const q=s.q.toLowerCase();r=r.filter(x=>g.cols.some(c=>c.v&&String(c.v(x)).toLowerCase().includes(q)))}
+ if(s.sort){const c=g.cols.find(c=>c.k==s.sort);r=r.slice().sort((a,b)=>{const x=c.v(a),y=c.v(b);return (typeof x=='number'&&typeof y=='number'?x-y:String(x).localeCompare(String(y),undefined,{numeric:true}))*s.dir})}
+ return r}
+function gRender(id){const g=G[id],s=GS[id],el=$('gb_'+id);if(!el)return;
+ const all=gData(id),tot=all.length,pages=Math.max(1,Math.ceil(tot/s.size));s.page=Math.min(Math.max(1,s.page),pages);const st=(s.page-1)*s.size,rows=all.slice(st,st+s.size);
+ el.innerHTML=(tot?`<div class="tw"><table><thead><tr>`+g.cols.map(c=>`<th class="${c.r?'r':''} ${c.nosort?'':'srt'}" ${c.nosort?'':`onclick="gs('${id}','${c.k}')"`}>${c.l}${s.sort==c.k?(s.dir>0?' ▲':' ▼'):''}</th>`).join('')+`</tr></thead><tbody>`+
+ rows.map(r=>`<tr class="${g.o.cls?g.o.cls(r):''} ${g.o.click?'row':''}" ${g.o.click?`onclick="${g.o.click(r)}"`:''}>`+g.cols.map(c=>`<td class="${c.r?'r':''}" ${c.nosort&&c.noexp?'onclick="event.stopPropagation()"':''}>${c.h?c.h(r):esc(c.v(r))}</td>`).join('')+`</tr>`).join('')+`</tbody></table></div>`:`<div class="empty"><b>No records found</b>${s.q?'Try a different search.':'Nothing here yet.'}</div>`)+
+ `<div class="pgr"><span class="mu">${tot?`${st+1}–${Math.min(st+s.size,tot)} of ${tot}`:'0 records'}</span><span class="sp"></span><label class="mu">Rows <select onchange="gz('${id}',+this.value)">${[10,25,50,100].map(z=>`<option ${z==s.size?'selected':''}>${z}</option>`).join('')}</select></label><button class="btn s" ${s.page<=1?'disabled':''} onclick="gp('${id}',-1)">‹ Prev</button><span class="mu">Page ${s.page} of ${pages}</span><button class="btn s" ${s.page>=pages?'disabled':''} onclick="gp('${id}',1)">Next ›</button></div>`}
+const gq=(id,v)=>{GS[id].q=v;GS[id].page=1;gRender(id)},gp=(id,d)=>{GS[id].page+=d;gRender(id)},gz=(id,z)=>{GS[id].size=z;GS[id].page=1;gRender(id)};
+function gs(id,k){const s=GS[id];if(s.sort==k)s.dir=-s.dir;else{s.sort=k;s.dir=1}gRender(id)}
+function gx(id){const g=G[id],cs=g.cols.filter(c=>!c.noexp);return xl(g.o.name||id,cs.map(c=>c.l),gData(id).map(r=>cs.map(c=>c.v(r))))}
+async function save(fn,data){const dl=window.claude&&window.claude.use?await window.claude.use('downloads'):null;if(!dl)return toast('Saving files is not available in this view',1);try{await dl.save({filename:fn,data});toast('Saved '+fn)}catch(e){if(!e||e.code!='declined')toast('Could not save the file',1)}}
+async function xl(name,head,rows,file){if(!window.XLSX)return toast('The Excel library did not load. Check your connection.',1);
+ lo(1);const ws=XLSX.utils.aoa_to_sheet([head].concat(rows));ws['!cols']=head.map((h,i)=>({wch:Math.min(45,Math.max(String(h).length,...rows.slice(0,200).map(r=>String(r[i]==null?'':r[i]).length))+2)}));
+ const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,name.slice(0,31).replace(/[\\\/?*\[\]:]/g,''));
+ lo(0);await save(file||name.replace(/\W+/g,'_')+'.xlsx',XLSX.write(wb,{type:'array',bookType:'xlsx'}))}
+function shell(h,b,f,c){closeM();const m=document.createElement('div');m.id='mo';m.className='mo';m.innerHTML=`<div class="md ${c||''}"><div class="mh">${h}<button class="x" onclick="closeM()">×</button></div><div class="mb">${b}</div><div class="mf">${f}</div></div>`;document.body.appendChild(m)}
+
+/* ---------- Excel import for Receive stock ---------- */
+let IMP=[];
+function openImport(){closeD();IMP=[];shell('<b>Import receipts from Excel</b>',`<p style="margin-top:0">Upload an .xlsx or .csv file. One <b>purchase invoice</b> is created for every distinct <b>InvoiceNo</b> in the file.</p><div class="card" style="padding:12px;margin-bottom:14px"><span class="mu">Columns:</span> InvoiceNo, InvoiceDate, SupplierCode, ItemCode, Unit, Quantity, UnitCost, Currency (optional). Invoice numbers that already exist are skipped.</div><div class="ac"><input type="file" id="impf" accept=".xlsx,.xls,.csv" onchange="impFile(this.files[0])"><button class="btn s" onclick="impTpl()">${ic('dl',15)}Download template</button></div><div id="impv" style="margin-top:16px"></div>`,
+ `<button class="btn s" onclick="closeM()">Cancel</button><button class="btn" id="impd" disabled onclick="impCreate(false)">Create drafts</button><button class="btn g" id="impp" disabled onclick="impCreate(true)">Create &amp; post</button>`,'xl')}
+function impTpl(){return xl('Receive stock',['InvoiceNo','InvoiceDate','SupplierCode','ItemCode','Unit','Quantity','UnitCost','Currency'],[['INV-1001',today(),'SUP-001','ITM-003','BOX',5,1440,'BDT'],['INV-1001',today(),'SUP-001','ITM-004','PCS',10,1500,'BDT'],['INV-1002',today(),'SUP-002','ITM-005','KG',20,600,'BDT']],'receive-stock-template.xlsx')}
+async function impFile(f){if(!f)return;if(!window.XLSX)return toast('The Excel library did not load. Check your connection.',1);
+ $('impv').innerHTML='<div class="ld"><i class="spn"></i> Reading file…</div>';lo(1);try{const wb=XLSX.read(await f.arrayBuffer(),{type:'array',cellDates:true});impBuild(XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{defval:'',raw:true}))}catch(e){toast('Could not read that file',1)}lo(0)}
+const dstr=v=>v instanceof Date?new Date(v.getTime()+432e5).toISOString().slice(0,10):typeof v=='number'?new Date(Math.round((v-25569)*864e5)+432e5).toISOString().slice(0,10):String(v).trim().slice(0,10);
+function impBuild(rows){
+ const g=(r,ns)=>{for(const k in r){if(ns.includes(k.toLowerCase().replace(/[^a-z]/g,'')))return r[k]}return ''},T=v=>String(v).trim().toLowerCase(),docs={},order=[];
+ rows.forEach((r,i)=>{const no=String(g(r,['invoiceno','documentno','docno','invoicenumber','documentnumber','invoice'])).trim(),ic0=T(g(r,['itemcode','item','sku']));if(!no&&!ic0)return;
+  const d=docs[no]||(docs[no]={no,date:'',sup:null,supl:'',cur:1,lines:[],errs:[]},order.push(no),docs[no]),ln='Row '+(i+2)+': ';
+  if(!no)d.errs.push(ln+'missing InvoiceNo');
+  const dv=g(r,['invoicedate','date','documentdate']),ds=dv===''?today():dstr(dv);if(!/^\d{4}-\d{2}-\d{2}$/.test(ds))d.errs.push(ln+'invalid date');else if(!d.date)d.date=ds;
+  const st=T(g(r,['suppliercode','supplier','suppliername'])),sp=D.supplier.find(x=>!x.del&&(T(x.code)==st||T(x.name)==st));
+  if(!sp)d.errs.push(ln+'unknown supplier "'+st+'"');else if(d.sup&&d.sup!=sp.id)d.errs.push(ln+'different supplier within the same invoice');else{d.sup=sp.id;d.supl=sp.name}
+  const cc=T(g(r,['currency','currencycode']));if(cc){const cu=D.currency.find(x=>!x.del&&T(x.code)==cc);if(cu)d.cur=cu.id;else d.errs.push(ln+'unknown currency "'+cc+'"')}
+  const it=D.itemMaster.find(x=>!x.del&&(T(x.code)==ic0||T(x.name)==ic0));if(!it)return d.errs.push(ln+'unknown item "'+ic0+'"');
+  const ut=T(g(r,['unit','uom','unitcode'])),un=ut?unitsOf(it).find(x=>T(lbl('unitMaster',x))==ut):it.unit;if(!un)return d.errs.push(ln+'unit "'+ut+'" is not valid for '+it.name);
+  const q=+g(r,['quantity','qty']);if(!(q>0))return d.errs.push(ln+'quantity must be above zero');
+  const cv=g(r,['unitcost','cost','price','unitprice']),pr=cv===''?it.cost*fac(it,un):+cv;if(isNaN(pr)||pr<0)return d.errs.push(ln+'invalid unit cost');
+  d.lines.push({item:it.id,unit:un,qty:q,price:pr})});
+ IMP=order.map(no=>{const d=docs[no],ex=!!no&&D.purchase.some(p=>p.no.toLowerCase()==no.toLowerCase());if(!d.lines.length&&!d.errs.length)d.errs.push('No valid lines');
+  return Object.assign(d,{st:d.errs.length?'Error':ex?'Exists':'Ready',msg:d.errs.length?d.errs[0]+(d.errs.length>1?' (+'+(d.errs.length-1)+' more)':''):ex?'Already in the system, skipped':'',total:tot(d),n:d.lines.length,no:no||'(no number)'})});
+ delete GS.imp;const ok=IMP.filter(d=>d.st=='Ready').length;
+ $('impv').innerHTML=`<p><b>${ok}</b> invoice${ok==1?'':'s'} ready, <b>${IMP.length-ok}</b> skipped or with errors.</p>`+(IMP.length?grid('imp',[C('no','Invoice no'),C('date','Date'),C('supl','Supplier'),CN('n','Lines'),CN('total','Total'),{k:'st',l:'Result',v:r=>r.st+(r.msg?': '+r.msg:''),h:r=>`<span class="b ${r.st=='Ready'?'OK':r.st=='Exists'?'Draft':'Out'}">${r.st}</span> <span class="mu">${esc(r.msg)}</span>`}],IMP,{name:'Import preview'}):'<div class="empty"><b>No rows found</b>Check that the first row has the column headings.</div>');
+ gRender('imp');$('impd').disabled=$('impp').disabled=!ok}
+function impCreate(p){const b=$(p?'impp':'impd');b.disabled=true;b.innerHTML='<i class="spn"></i> Creating…';lo(1);setTimeout(()=>{lo(0);impDo(p)},500)}
+function impDo(p){const ok=IMP.filter(d=>d.st=='Ready');
+ ok.forEach(d=>{const doc={id:nid(),no:d.no,date:d.date||today(),party:d.sup,cur:d.cur,status:'Draft',lines:d.lines,cr:now()};D.purchase.push(doc);if(p)post('purchase',doc.id)});
+ closeM();view='purchase';tf='All';render();toast(ok.length+' invoice'+(ok.length==1?'':'s')+(p?' created and posted':' created as drafts'))}
+
+/* ---------- reports ---------- */
+let RP={k:'stock',from:day(-30),to:day(0),item:'',supplier:'',status:'',cat:'',type:''},RPB=null;
+const inR=d=>d>=RP.from&&d<=RP.to;
+function fifo(){const L={};D.move.slice().sort((a,b)=>a.id-b.id).forEach(m=>{const a=L[m.item]=L[m.item]||[];
+ if(m.type=='Opening'||m.type=='PurchaseIn')a.push({ref:m.ref,date:m.date,item:m.item,rec:m.qty,sold:0,cost:m.cost,op:m.type=='Opening'});
+ else if(m.type=='SaleOut'||m.type=='IssueOut'){let q=-m.qty;for(const l of a){const f=Math.min(q,l.rec-l.sold);if(f>0){l.sold+=f;q-=f}if(q<=1e-9)break}}
+ else if(m.type=='PurchaseReturnOut'){const l=a.find(x=>x.ref==m.ref.replace(' (cancel)',''));if(l)l.rec+=m.qty}
+ else if(m.type=='SaleReturnIn'){let q=m.qty;for(let i=a.length-1;i>=0&&q>0;i--){const f=Math.min(q,a[i].sold);a[i].sold-=f;q-=f}}});
+ return [].concat(...Object.values(L)).filter(l=>!l.op)}
+const REP={
+stock:{name:'Stock item list',desc:'Current stock, cost and value of every item.',p:['cat','stat'],build(){
+ const rows=D.itemMaster.filter(i=>!i.del&&(RP.cat===''||i.cat==RP.cat)).map(i=>{const b=bal(i.id);return {code:i.code,name:i.name,cat:lbl('itemCategory',i.cat),unit:lbl('unitMaster',i.unit),qty:b.qty,avg:b.avg,val:b.qty*b.avg,re:i.reorder,st:SL[stat(b)]}}).filter(r=>!RP.status||r.st==RP.status);
+ return {cols:[C('code','Code'),C('name','Item'),C('cat','Category'),C('unit','Unit'),CN('qty','On hand'),CN('avg','Avg cost'),CN('val','Value'),CN('re','Reorder level'),C('st','Status')],rows,tot:[['Items',rows.length],['Total value','৳ '+n(rows.reduce((s,r)=>s+r.val,0))]]}}},
+ledger:{name:'Item ledger',desc:'Every movement of one item with a running balance.',p:['dates','item'],build(){
+ const id=RP.item===''?D.itemMaster.find(i=>!i.del).id:RP.item,it=item(id),ms=D.move.filter(m=>m.item==id).sort((a,b)=>a.date<b.date?-1:a.date>b.date?1:a.id-b.id),open=ms.filter(m=>m.date<RP.from).reduce((s,m)=>s+m.qty,0);let bl=open;
+ const rows=[{date:RP.from,ref:'',desc:'Opening balance',inq:null,outq:null,cost:null,bal:open}];
+ ms.filter(m=>inR(m.date)).forEach(m=>{bl+=m.qty;rows.push({date:m.date,ref:m.ref,desc:TY[m.type],inq:m.qty>0?m.qty:null,outq:m.qty<0?-m.qty:null,cost:m.cost,bal:bl})});
+ const ti=rows.reduce((s,r)=>s+(r.inq||0),0),to=rows.reduce((s,r)=>s+(r.outq||0),0);
+ return {cols:[C('date','Date'),C('ref','Reference'),C('desc','Description'),CN('inq','In'),CN('outq','Out'),CN('cost','Unit cost'),CN('bal','Balance')],rows,tot:[['Item',it.name+' ('+lbl('unitMaster',it.unit)+')'],['Opening',n(open)],['Total in',n(ti)],['Total out',n(to)],['Closing',n(bl)]]}}},
+invoices:{name:'Invoice list',desc:'Purchase invoices in a date range.',p:['dates','supplier','status'],build(){
+ const rows=D.purchase.filter(d=>inR(d.date)&&(RP.supplier===''||d.party==RP.supplier)&&(!RP.status||d.status==RP.status)).map(d=>({no:d.no,date:d.date,sup:lbl('supplier',d.party),items:d.lines.length,cur:lbl('currency',d.cur),tot:tot(d),st:d.status}));
+ return {cols:[C('no','Invoice no'),C('date','Date'),C('sup','Supplier'),CN('items','Items'),C('cur','Currency'),CN('tot','Total'),C('st','Status')],rows,tot:[['Invoices',rows.length],['Total (excluding cancelled)',n(rows.filter(r=>r.st!='Cancelled').reduce((s,r)=>s+r.tot,0))]]}}},
+sales:{name:'Sales list',desc:'Sales and issues with cost and margin.',p:['dates','status','type'],build(){
+ const rows=D.sale.filter(d=>inR(d.date)&&(!RP.status||d.status==RP.status)&&(!RP.type||d.type==RP.type)).map(d=>{const po=d.status=='Posted',t=tot(d),c=po?d.lines.reduce((s,l)=>s+l.qty*fac(item(l.item),l.unit)*(l.cost||0),0):0;return {no:d.no,date:d.date,cus:d.party,type:d.type,items:d.lines.length,tot:t,cost:c,mar:po?t-c:0,st:d.status}});
+ const P=rows.filter(r=>r.st=='Posted');
+ return {cols:[C('no','Number'),C('date','Date'),C('cus','Customer'),C('type','Type'),CN('items','Items'),CN('tot','Total'),CN('cost','Cost'),CN('mar','Margin'),C('st','Status')],rows,tot:[['Documents',rows.length],['Sales total',n(rows.filter(r=>r.st!='Cancelled').reduce((s,r)=>s+r.tot,0))],['Cost (posted)',n(P.reduce((s,r)=>s+r.cost,0))],['Margin (posted)',n(P.reduce((s,r)=>s+r.mar,0))]]}}},
+i2s:{name:'Invoice to sales',desc:'How much of each purchase invoice has been sold (first in, first out).',p:['dates','itemAll'],build(){
+ const rows=fifo().filter(l=>inR(l.date)&&(RP.item===''||l.item==RP.item)).map(l=>{const it=item(l.item),sp=it.price,rem=l.rec-l.sold;return {ref:l.ref,date:l.date,item:it.name,unit:lbl('unitMaster',it.unit),rec:l.rec,sold:l.sold,rem,cost:l.cost,csold:l.sold*l.cost,sval:l.sold*sp,mar:l.sold*(sp-l.cost)}});
+ return {cols:[C('ref','Invoice'),C('date','Date'),C('item','Item'),C('unit','Unit'),CN('rec','Received'),CN('sold','Sold'),CN('rem','Remaining'),CN('cost','Unit cost'),CN('csold','Cost of sold'),CN('sval','Sales value*'),CN('mar','Margin*')],rows,tot:[['Invoices lines',rows.length],['Cost of sold',n(rows.reduce((s,r)=>s+r.csold,0))],['Sales value*',n(rows.reduce((s,r)=>s+r.sval,0))],['Margin*',n(rows.reduce((s,r)=>s+r.mar,0))],['* at current sale price','']]}}}
+};
+function rpPick(k){RP.k=k;RP.item=k=='ledger'?D.itemMaster.find(i=>!i.del).id:'';RP.status=RP.type=RP.supplier=RP.cat='';delete GS.rp;render()}
+function rpS(k,v){RP[k]=['item','supplier','cat'].includes(k)&&v!==''?+v:v;delete GS.rp;render()}
+const op=(a,s)=>a.map(([v,l])=>`<option value="${v}" ${String(v)==String(s)?'selected':''}>${esc(l)}</option>`).join('');
+function rpParams(){const p=REP[RP.k].p,o=[],L=(l,h)=>`<label class="fl">${l}${h}</label>`;
+ if(p.includes('dates'))o.push(L('From',`<input type="date" value="${RP.from}" onchange="rpS('from',this.value)">`),L('To',`<input type="date" value="${RP.to}" onchange="rpS('to',this.value)">`));
+ if(p.includes('item'))o.push(L('Item',`<select onchange="rpS('item',this.value)">${op(D.itemMaster.filter(i=>!i.del).map(i=>[i.id,i.name]),RP.item)}</select>`));
+ if(p.includes('itemAll'))o.push(L('Item',`<select onchange="rpS('item',this.value)">${op([['','All items']].concat(D.itemMaster.filter(i=>!i.del).map(i=>[i.id,i.name])),RP.item)}</select>`));
+ if(p.includes('cat'))o.push(L('Category',`<select onchange="rpS('cat',this.value)">${op([['','All categories']].concat(D.itemCategory.filter(i=>!i.del).map(i=>[i.id,i.name])),RP.cat)}</select>`));
+ if(p.includes('supplier'))o.push(L('Supplier',`<select onchange="rpS('supplier',this.value)">${op([['','All suppliers']].concat(D.supplier.filter(i=>!i.del).map(i=>[i.id,i.name])),RP.supplier)}</select>`));
+ if(p.includes('stat'))o.push(L('Status',`<select onchange="rpS('status',this.value)">${op([['','All'],['In stock','In stock'],['Low stock','Low stock'],['Out of stock','Out of stock']],RP.status)}</select>`));
+ if(p.includes('status'))o.push(L('Status',`<select onchange="rpS('status',this.value)">${op([['','All'],['Draft','Draft'],['Posted','Posted'],['Cancelled','Cancelled']],RP.status)}</select>`));
+ if(p.includes('type'))o.push(L('Type',`<select onchange="rpS('type',this.value)">${op([['','All'],['Sale','Sale'],['InternalIssue','Internal use'],['Damage','Damaged'],['Sample','Sample']],RP.type)}</select>`));
+ return o.join('')}
+function ptxt(){const p=REP[RP.k].p,a=[];if(p.includes('dates'))a.push('Period: '+RP.from+' to '+RP.to);if((p.includes('item')||p.includes('itemAll'))&&RP.item!=='')a.push('Item: '+lbl('itemMaster',RP.item));if(p.includes('supplier')&&RP.supplier!=='')a.push('Supplier: '+lbl('supplier',RP.supplier));if(p.includes('cat')&&RP.cat!=='')a.push('Category: '+lbl('itemCategory',RP.cat));if((p.includes('status')||p.includes('stat'))&&RP.status)a.push('Status: '+RP.status);if(p.includes('type')&&RP.type)a.push('Type: '+RP.type);return a.join(' · ')||'All records'}
+function reports(){const rep=REP[RP.k];RPB=rep.build();
+ return `<div class="hd"><div><h1>Reports</h1><p class="sub">Choose a report, set the filters, then print it or export it to Excel.</p></div></div>
+ <div class="rpc">${Object.keys(REP).map(k=>`<button class="${RP.k==k?'on':''}" onclick="rpPick('${k}')"><b>${REP[k].name}</b><span>${REP[k].desc}</span></button>`).join('')}</div>
+ <div class="card"><div class="fg" style="display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end">${rpParams()}<span class="sp"></span><button class="btn s" onclick="rpSave()">${ic('dl',15)}Save printable copy</button><button class="btn" onclick="rpPrint()">${ic('print',15)}Print</button></div></div>
+ <div class="sm">${RPB.tot.map(t=>`<div><span>${esc(t[0])}</span><b>${esc(t[1])}</b></div>`).join('')}</div>`+grid('rp',RPB.cols,RPB.rows,{name:rep.name})+(RP.k=='i2s'?'<p class="mu">* Sales value and margin use each item’s current sale price, because stock history stores cost only.</p>':'')}
+function sheet(){const rep=REP[RP.k],rows=gData('rp'),cs=G.rp.cols.filter(c=>!c.noexp);
+ return `<div class="sh"><div class="shh"><div><h1>${rep.name}</h1><b>Acme Traders</b></div><div style="text-align:right">Printed ${now()}<br>${esc(ptxt())}</div></div><table><thead><tr>${cs.map(c=>`<th class="${c.r?'r':''}">${c.l}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${cs.map(c=>`<td class="${c.r?'r':''}">${c.h?c.h(r):esc(c.v(r))}</td>`).join('')}</tr>`).join('')}</tbody></table><p><b>${RPB.tot.map(t=>esc(t[0])+(t[1]===''?'':': '+esc(t[1]))).join(' · ')}</b></p></div>`}
+function rpPrint(){$('prn').innerHTML=sheet();setTimeout(()=>{try{window.print()}catch(e){toast('Printing is blocked in this view. Use Save printable copy.',1)}},60)}
+function rpSave(){const css='body{font:12px Arial,sans-serif;margin:24px;color:#000}.shh{display:flex;justify-content:space-between;border-bottom:2px solid #000;padding-bottom:8px;margin-bottom:10px}h1{font-size:18px;margin:0}table{width:100%;border-collapse:collapse}th{background:#eee;border-bottom:1px solid #000;padding:4px 6px;text-align:left}td{padding:4px 6px;border-bottom:1px solid #ddd}.r{text-align:right}';
+ return save(REP[RP.k].name.replace(/\W+/g,'_')+'.html','<!DOCTYPE html><html><head><meta charset="utf-8"><title>'+REP[RP.k].name+'</title><style>'+css+'</style></head><body>'+sheet()+'</body></html>')}
+
+function render(){nav();topbar();const f={dash,items,purchase:()=>docs('purchase'),sale:()=>docs('sale'),move:moves,supplier:()=>listPage('supplier'),reports,setup}[view];$('pg').innerHTML=f();Object.keys(G).forEach(id=>{if($('gb_'+id))gRender(id)});window.scrollTo(0,0);cu()}
+loginUI();render();
+</script></body></html>

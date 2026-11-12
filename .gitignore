@@ -1,0 +1,27 @@
+# Build output
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+*.user
+*.suo
+.vs/
+
+# NuGet packages (restored by `msbuild -t:restore -p:RestorePackagesConfig=true`)
+packages/
+
+# Frontend dependencies
+node_modules/
+
+# Local-only settings and secrets
+StockPilot.Web/AppSettings.Local.config
+.claude/*-account.json
+.claude/settings.local.json
+
+# Publish profiles other than the safe one (never publish into this folder)
+StockPilot.Web/Properties/PublishProfiles/*.pubxml.user
+StockPilot.Web/Properties/PublishProfiles/FolderProfile*.pubxml
+
+# Logs
+*.log
+StockPilot.Web/App_Data/Logs/

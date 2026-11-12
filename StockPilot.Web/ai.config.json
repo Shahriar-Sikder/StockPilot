@@ -1,0 +1,27 @@
+{
+  // AI assistant configuration. Committed with NO secrets: api keys left empty here
+  // are read from environment variables (OLLAMA_API_KEY, OPENAI_API_KEY,
+  // GEMINI_API_KEY, GROQ_API_KEY, ANTHROPIC_API_KEY). Switch backends by changing
+  // "provider" (or the AI_PROVIDER environment variable) - nothing else changes.
+  //
+  // "claude" is the default because the small local Ollama models answer poorly and
+  // call tools unreliably. It needs ANTHROPIC_API_KEY set in the environment (or the
+  // key pasted into "apiKey" below); with neither, the assistant reports a missing key.
+  "provider": "claude",
+
+  "ollamaLocal":  { "endpoint": "http://localhost:11434", "model": "qwen2.5:3b", "timeoutSeconds": 600 },
+  "ollamaCloud":  { "endpoint": "https://ollama.com", "model": "gpt-oss:120b-cloud", "apiKey": "", "timeoutSeconds": 300 },
+  "openai":       { "endpoint": "https://api.openai.com/v1", "model": "gpt-4o-mini", "apiKey": "" },
+  "gemini":       { "endpoint": "https://generativelanguage.googleapis.com/v1beta/openai/", "model": "gemini-2.0-flash", "apiKey": "" },
+  "groq":         { "endpoint": "https://api.groq.com/openai/v1", "model": "llama-3.3-70b-versatile", "apiKey": "" },
+  "claude":       { "endpoint": "https://api.anthropic.com", "model": "claude-haiku-4-5", "apiKey": "", "timeoutSeconds": 300, "maxTokens": 4096 },
+
+  // The embedded MCP server (informational - tools are dispatched in-process).
+  "mcp": { "endpoint": "http://localhost:6240/api/mcp" },
+
+  "systemPrompt": "You are the zPOS assistant. Answer ONLY using the provided tools; never invent data. Show currency and units exactly as returned by tools. If a tool returns nothing, say you couldn't find a match. Keep answers concise.",
+
+  "maxToolRounds": 6,
+  "maxHistoryMessages": 40,
+  "rateLimit": { "permitPerMinute": 20, "queueLimit": 0 }
+}

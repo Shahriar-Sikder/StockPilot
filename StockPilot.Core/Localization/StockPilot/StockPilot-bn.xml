@@ -1,0 +1,1252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<localizationDictionary culture="bn"><texts>
+  <text name="Dashboard" value="ড্যাশবোর্ড" />
+  <text name="Items" value="আইটেম" />
+  <text name="Purchases" value="ক্রয়" />
+  <text name="Sales &amp; issues" value="বিক্রয় ও ইস্যু" />
+  <text name="Stock history" value="স্টক ইতিহাস" />
+  <text name="Suppliers" value="সরবরাহকারী" />
+  <text name="Reports" value="রিপোর্ট" />
+  <text name="Setup" value="সেটআপ" />
+  <text name="Take a tour" value="ট্যুর নিন" />
+  <text name="All data is tenant-isolated and fully audited." value="সব ডেটা টেন্যান্ট-ভিত্তিক আলাদা ও সম্পূর্ণ অডিটকৃত।" />
+  <text name="Tenant" value="টেন্যান্ট" />
+  <text name="Search items, pages, actions…" value="আইটেম, পেজ, অ্যাকশন খুঁজুন…" />
+  <text name="New" value="নতুন" />
+  <text name="Admin" value="অ্যাডমিন" />
+  <text name="Staff" value="স্টাফ" />
+  <text name="Receive stock" value="স্টক গ্রহণ" />
+  <text name="Sell or issue stock" value="স্টক বিক্রয় বা ইস্যু" />
+  <text name="Add an item" value="আইটেম যোগ করুন" />
+  <text name="Add a supplier" value="সরবরাহকারী যোগ করুন" />
+  <text name="Good day, Admin" value="শুভ দিন, অ্যাডমিন" />
+  <text name="Here is how your stock looks today." value="আজ আপনার স্টকের অবস্থা এইরকম।" />
+  <text name="Sell or issue" value="বিক্রয় বা ইস্যু" />
+  <text name="Stock value" value="স্টকের মূল্য" />
+  <text name="Stock in (14 days)" value="স্টক ইন (১৪ দিন)" />
+  <text name="Stock out (14 days)" value="স্টক আউট (১৪ দিন)" />
+  <text name="Needs attention" value="মনোযোগ প্রয়োজন" />
+  <text name="Purchases received" value="প্রাপ্ত ক্রয়" />
+  <text name="Sales and issues at cost" value="ক্রয়মূল্যে বিক্রয় ও ইস্যু" />
+  <text name="Stock in vs out · last 14 days" value="স্টক ইন বনাম আউট · শেষ ১৪ দিন" />
+  <text name="Stock health" value="স্টকের অবস্থা" />
+  <text name="Needs your attention" value="আপনার মনোযোগ প্রয়োজন" />
+  <text name="Recent activity" value="সাম্প্রতিক কার্যক্রম" />
+  <text name="In stock" value="স্টকে আছে" />
+  <text name="Low stock" value="কম স্টক" />
+  <text name="Out of stock" value="স্টক নেই" />
+  <text name="Stock in" value="স্টক ইন" />
+  <text name="Stock out" value="স্টক আউট" />
+  <text name="Draft" value="খসড়া" />
+  <text name="Posted" value="পোস্টেড" />
+  <text name="Cancelled" value="বাতিল" />
+  <text name="Reorder" value="পুনরায় অর্ডার" />
+  <text name="Review" value="পর্যালোচনা" />
+  <text name="You are all caught up." value="সবকিছু হালনাগাদ আছে।" />
+  <text name="Click an item to see its stock, history and quick actions." value="স্টক, ইতিহাস ও দ্রুত অ্যাকশন দেখতে আইটেমে ক্লিক করুন।" />
+  <text name="Add item" value="আইটেম যোগ" />
+  <text name="All" value="সব" />
+  <text name="Needs reorder" value="রিঅর্ডার দরকার" />
+  <text name="Code" value="কোড" />
+  <text name="Item" value="আইটেম" />
+  <text name="Category" value="ক্যাটাগরি" />
+  <text name="On hand" value="মজুদ" />
+  <text name="Unit" value="একক" />
+  <text name="Level" value="স্তর" />
+  <text name="Value" value="মূল্য" />
+  <text name="Status" value="অবস্থা" />
+  <text name="Search…" value="খুঁজুন…" />
+  <text name="Export Excel" value="এক্সেল এক্সপোর্ট" />
+  <text name="Rows" value="সারি" />
+  <text name="‹ Prev" value="‹ আগে" />
+  <text name="Next ›" value="পরে ›" />
+  <text name="No records found" value="কোনো রেকর্ড পাওয়া যায়নি" />
+  <text name="Nothing here yet." value="এখনো কিছু নেই।" />
+  <text name="Try a different search." value="অন্যভাবে খুঁজুন।" />
+  <text name="Avg cost" value="গড় খরচ" />
+  <text name="Sale price" value="বিক্রয়মূল্য" />
+  <text name="Reorder level" value="রিঅর্ডার স্তর" />
+  <text name="Base unit" value="মূল একক" />
+  <text name="Buy / sell in" value="ক্রয় / বিক্রয় একক" />
+  <text name="Issue / sell" value="ইস্যু / বিক্রয়" />
+  <text name="Edit item" value="আইটেম সম্পাদনা" />
+  <text name="Created" value="তৈরি" />
+  <text name="Last modified" value="সর্বশেষ পরিবর্তন" />
+  <text name="Opening stock" value="প্রারম্ভিক স্টক" />
+  <text name="Received" value="গৃহীত" />
+  <text name="Sold" value="বিক্রিত" />
+  <text name="Issued" value="ইস্যুকৃত" />
+  <text name="Returned to supplier" value="সরবরাহকারীকে ফেরত" />
+  <text name="Customer return" value="ক্রেতার ফেরত" />
+  <text name="Goods received from suppliers. Posting a document updates stock." value="সরবরাহকারীর কাছ থেকে প্রাপ্ত পণ্য। ডকুমেন্ট পোস্ট করলে স্টক হালনাগাদ হয়।" />
+  <text name="Goods sold or issued out of stock. Posting a document updates stock." value="স্টক থেকে বিক্রি বা ইস্যু করা পণ্য। ডকুমেন্ট পোস্ট করলে স্টক হালনাগাদ হয়।" />
+  <text name="Import from Excel" value="এক্সেল থেকে ইমপোর্ট" />
+  <text name="New sale / issue" value="নতুন বিক্রয় / ইস্যু" />
+  <text name="Number" value="নম্বর" />
+  <text name="Date" value="তারিখ" />
+  <text name="Supplier" value="সরবরাহকারী" />
+  <text name="Customer" value="ক্রেতা" />
+  <text name="Total" value="মোট" />
+  <text name="Documents" value="ডকুমেন্ট" />
+  <text name="Every stock in and out, with the balance after each change. This log is never edited." value="প্রতিটি স্টক ইন-আউট ও পরিবর্তনের পর ব্যালেন্স। এই লগ কখনো সম্পাদনা হয় না।" />
+  <text name="What happened" value="কী ঘটেছে" />
+  <text name="Quantity" value="পরিমাণ" />
+  <text name="Unit cost" value="একক খরচ" />
+  <text name="Balance after" value="পরের ব্যালেন্স" />
+  <text name="Reference" value="রেফারেন্স" />
+  <text name="The reference lists that items, suppliers and documents use." value="আইটেম, সরবরাহকারী ও ডকুমেন্টে ব্যবহৃত রেফারেন্স তালিকা।" />
+  <text name="Categories" value="ক্যাটাগরি" />
+  <text name="Sub-categories" value="উপ-ক্যাটাগরি" />
+  <text name="Unit groups" value="ইউনিট গ্রুপ" />
+  <text name="Units" value="ইউনিট" />
+  <text name="Unit conversions" value="ইউনিট রূপান্তর" />
+  <text name="Currencies" value="মুদ্রা" />
+  <text name="Exchange rates" value="বিনিময় হার" />
+  <text name="Countries" value="দেশ" />
+  <text name="Add category" value="ক্যাটাগরি যোগ" />
+  <text name="Add sub-category" value="উপ-ক্যাটাগরি যোগ" />
+  <text name="Add unit group" value="ইউনিট গ্রুপ যোগ" />
+  <text name="Add unit" value="ইউনিট যোগ" />
+  <text name="Add unit conversion" value="রূপান্তর যোগ" />
+  <text name="Add currency" value="মুদ্রা যোগ" />
+  <text name="Add exchange rate" value="বিনিময় হার যোগ" />
+  <text name="Add country" value="দেশ যোগ" />
+  <text name="Add supplier" value="সরবরাহকারী যোগ" />
+  <text name="Name" value="নাম" />
+  <text name="Phone code" value="ফোন কোড" />
+  <text name="Symbol" value="প্রতীক" />
+  <text name="Decimals" value="দশমিক" />
+  <text name="Base currency" value="মূল মুদ্রা" />
+  <text name="From" value="থেকে" />
+  <text name="To" value="পর্যন্ত" />
+  <text name="Rate" value="হার" />
+  <text name="Effective date" value="কার্যকর তারিখ" />
+  <text name="Unit group" value="ইউনিট গ্রুপ" />
+  <text name="Factor" value="গুণক" />
+  <text name="Contact" value="যোগাযোগ" />
+  <text name="Phone" value="ফোন" />
+  <text name="Country" value="দেশ" />
+  <text name="Currency" value="মুদ্রা" />
+  <text name="Payment days" value="পরিশোধের দিন" />
+  <text name="Sub-category" value="উপ-ক্যাটাগরি" />
+  <text name="Cost price" value="ক্রয়মূল্য" />
+  <text name="Picture" value="ছবি" />
+  <text name="Edit" value="সম্পাদনা" />
+  <text name="Delete" value="মুছুন" />
+  <text name="Restore" value="পুনরুদ্ধার" />
+  <text name="Deleting only marks a record as deleted, so Undo always works." value="মুছলে রেকর্ড শুধু মুছে-যাওয়া হিসেবে চিহ্নিত হয়, তাই Undo সবসময় কাজ করে।" />
+  <text name="Cancel" value="বাতিল করুন" />
+  <text name="Save" value="সংরক্ষণ" />
+  <text name="Save changes" value="পরিবর্তন সংরক্ষণ" />
+  <text name="Discard" value="বর্জন" />
+  <text name="Save draft" value="খসড়া সংরক্ষণ" />
+  <text name="Save &amp; post" value="সংরক্ষণ ও পোস্ট" />
+  <text name="Type" value="ধরন" />
+  <text name="Add items" value="আইটেম যোগ করুন" />
+  <text name="Search by name or code, then press Enter…" value="নাম বা কোড দিয়ে খুঁজুন, তারপর Enter চাপুন…" />
+  <text name="No items yet" value="এখনো কোনো আইটেম নেই" />
+  <text name="Search above and press Enter to add your first item." value="উপরে খুঁজে Enter চেপে প্রথম আইটেম যোগ করুন।" />
+  <text name="Record a purchase from a supplier" value="সরবরাহকারীর কাছ থেকে ক্রয় নথিভুক্ত করুন" />
+  <text name="Record items leaving your stock" value="স্টক থেকে বের হওয়া আইটেম নথিভুক্ত করুন" />
+  <text name="Post to stock" value="স্টকে পোস্ট করুন" />
+  <text name="Cancel &amp; reverse" value="বাতিল ও রিভার্স" />
+  <text name="Attach documents (optional)" value="ডকুমেন্ট সংযুক্ত করুন (ঐচ্ছিক)" />
+  <text name="Add document" value="ডকুমেন্ট যোগ করুন" />
+  <text name="Remove" value="সরান" />
+  <text name="View" value="দেখুন" />
+  <text name="Download" value="ডাউনলোড" />
+  <text name="No documents attached yet." value="এখনো কোনো ডকুমেন্ট সংযুক্ত নেই।" />
+  <text name="Picture (optional)" value="ছবি (ঐচ্ছিক)" />
+  <text name="No picture" value="ছবি নেই" />
+  <text name="Choose a report, set the filters, then print it or export it to Excel." value="একটি রিপোর্ট বেছে ফিল্টার দিন, তারপর প্রিন্ট বা এক্সেলে এক্সপোর্ট করুন।" />
+  <text name="Stock item list" value="স্টক আইটেম তালিকা" />
+  <text name="Item ledger" value="আইটেম লেজার" />
+  <text name="Invoice list" value="ইনভয়েস তালিকা" />
+  <text name="Sales list" value="বিক্রয় তালিকা" />
+  <text name="Invoice to sales" value="ইনভয়েস থেকে বিক্রয়" />
+  <text name="Save printable copy" value="প্রিন্টযোগ্য কপি সংরক্ষণ" />
+  <text name="Print" value="প্রিন্ট" />
+  <text name="All items" value="সব আইটেম" />
+  <text name="All categories" value="সব ক্যাটাগরি" />
+  <text name="All suppliers" value="সব সরবরাহকারী" />
+  <text name="Welcome back" value="স্বাগতম" />
+  <text name="Sign in to your workspace" value="আপনার ওয়ার্কস্পেসে সাইন ইন করুন" />
+  <text name="Username" value="ব্যবহারকারীর নাম" />
+  <text name="Password" value="পাসওয়ার্ড" />
+  <text name="Sign in" value="সাইন ইন" />
+  <text name="Signing in…" value="সাইন ইন হচ্ছে…" />
+  <text name="Posting…" value="পোস্ট হচ্ছে…" />
+  <text name="Saving…" value="সংরক্ষণ হচ্ছে…" />
+  <text name="Creating…" value="তৈরি হচ্ছে…" />
+  <text name="Reading file…" value="ফাইল পড়া হচ্ছে…" />
+  <text name="Welcome to StockPilot" value="StockPilot-এ স্বাগতম" />
+  <text name="Would you like a one-minute tour of how to run the system?" value="সিস্টেম কীভাবে চালাতে হয় তার এক মিনিটের ট্যুর নিতে চান?" />
+  <text name="Start the tour" value="ট্যুর শুরু করুন" />
+  <text name="This one-minute tour shows how to receive stock, sell it and read your reports." value="এই এক মিনিটের ট্যুরে স্টক গ্রহণ, বিক্রয় ও রিপোর্ট দেখা শিখবেন।" />
+  <text name="Menu" value="মেনু" />
+  <text name="Move between Dashboard, Items, Purchases, Sales, Stock history, Suppliers, Reports and Setup." value="ড্যাশবোর্ড, আইটেম, ক্রয়, বিক্রয়, স্টক ইতিহাস, সরবরাহকারী, রিপোর্ট ও সেটআপের মধ্যে যান।" />
+  <text name="Start with Setup" value="সেটআপ দিয়ে শুরু করুন" />
+  <text name="First add categories, units, currencies and suppliers. Pictures are optional." value="প্রথমে ক্যাটাগরি, ইউনিট, মুদ্রা ও সরবরাহকারী যোগ করুন। ছবি ঐচ্ছিক।" />
+  <text name="New button" value="নতুন বোতাম" />
+  <text name="Create anything from here: receive stock, sell stock, add an item or a supplier." value="এখান থেকে সবকিছু তৈরি করুন: স্টক গ্রহণ, বিক্রয়, আইটেম বা সরবরাহকারী যোগ।" />
+  <text name="Your numbers" value="আপনার সংখ্যা" />
+  <text name="Stock value, stock in and out, and what needs attention, updated live." value="স্টকের মূল্য, ইন-আউট এবং কী মনোযোগ চায় — লাইভ হালনাগাদ।" />
+  <text name="Click an item to see its stock and history, then receive or issue it." value="আইটেমে ক্লিক করে স্টক ও ইতিহাস দেখুন, তারপর গ্রহণ বা ইস্যু করুন।" />
+  <text name="Search, sort, export" value="খুঁজুন, সাজান, এক্সপোর্ট" />
+  <text name="Every table has search, sortable headers, scrolling, paging and Export Excel." value="প্রতিটি টেবিলে সার্চ, সর্ট, স্ক্রল, পেজিং ও এক্সেল এক্সপোর্ট আছে।" />
+  <text name="Create a purchase invoice, attach documents, or import many invoices from Excel." value="ক্রয় ইনভয়েস তৈরি করুন, ডকুমেন্ট সংযুক্ত করুন বা এক্সেল থেকে অনেক ইনভয়েস ইমপোর্ট করুন।" />
+  <text name="Pick items, watch the stock warning, then post to reduce stock." value="আইটেম বেছে স্টক সতর্কতা দেখুন, তারপর পোস্ট করে স্টক কমান।" />
+  <text name="Run, print or export five reports." value="পাঁচটি রিপোর্ট চালান, প্রিন্ট বা এক্সপোর্ট করুন।" />
+  <text name="Language" value="ভাষা" />
+  <text name="Switch the interface language here." value="এখানে ইন্টারফেসের ভাষা বদলান।" />
+  <text name="Change the colours here: Day, Dark or Midnight, plus eight accent colours." value="এখানে রঙ বদলান: দিন, ডার্ক বা মিডনাইট, সাথে আটটি অ্যাকসেন্ট রঙ।" />
+  <text name="All sub-categories" value="সব উপ-ক্যাটাগরি" />
+  <text name="All customers" value="সব ক্রেতা" />
+  <text name="All unit groups" value="সব ইউনিট গ্রুপ" />
+  <text name="Any from unit" value="যেকোনো উৎস ইউনিট" />
+  <text name="Any to unit" value="যেকোনো গন্তব্য ইউনিট" />
+  <text name="Any from currency" value="যেকোনো উৎস মুদ্রা" />
+  <text name="Any to currency" value="যেকোনো গন্তব্য মুদ্রা" />
+  <text name="Reset" value="রিসেট" />
+  <text name="Edit profile" value="প্রোফাইল সম্পাদনা" />
+  <text name="Change profile picture" value="প্রোফাইল ছবি পরিবর্তন" />
+  <text name="Change password" value="পাসওয়ার্ড পরিবর্তন" />
+  <text name="Sign out" value="সাইন আউট" />
+  <text name="Full name" value="পূর্ণ নাম" />
+  <text name="Email" value="ইমেইল" />
+  <text name="Job title" value="পদবি" />
+  <text name="Current password" value="বর্তমান পাসওয়ার্ড" />
+  <text name="New password" value="নতুন পাসওয়ার্ড" />
+  <text name="Confirm new password" value="নতুন পাসওয়ার্ড নিশ্চিত করুন" />
+  <text name="Save picture" value="ছবি সংরক্ষণ" />
+  <text name="You will need to sign in again." value="আবার সাইন ইন করতে হবে।" />
+  <text name="Sign out?" value="সাইন আউট করবেন?" />
+  <text name="Signing out…" value="সাইন আউট হচ্ছে…" />
+  <text name="Good day," value="শুভ দিন," />
+  <text name="Square images look best. Large images are resized automatically." value="বর্গাকার ছবি সবচেয়ে ভালো দেখায়। বড় ছবি স্বয়ংক্রিয়ভাবে ছোট হয়।" />
+  <text name="Your profile" value="আপনার প্রোফাইল" />
+  <text name="Edit your profile, change your picture or password, and sign out from here." value="এখান থেকে প্রোফাইল সম্পাদনা, ছবি বা পাসওয়ার্ড পরিবর্তন এবং সাইন আউট করুন।" />
+  <text name="Theme" value="থিম" />
+  <text name="Mode" value="মোড" />
+  <text name="Day" value="দিন" />
+  <text name="Dark" value="ডার্ক" />
+  <text name="Midnight" value="মিডনাইট" />
+  <text name="Accent colour" value="অ্যাকসেন্ট রঙ" />
+  <text name="All types" value="সব ধরন" />
+  <text name="Export PDF" value="পিডিএফ এক্সপোর্ট" />
+  <text name="Skip tour" value="ট্যুর এড়িয়ে যান" />
+  <text name="Back" value="পেছনে" />
+  <text name="Next" value="পরবর্তী" />
+  <text name="Finish" value="শেষ" />
+  <text name="(+{0} more)" value="(+আরও {0}টি)" />
+  <text name="(no number)" value="(নম্বর নেই)" />
+  <text name="(optional). Invoice numbers that already exist are skipped." value="(ঐচ্ছিক)। যে ইনভয়েস নম্বর আগে থেকেই আছে সেগুলো বাদ দেওয়া হয়।" />
+  <text name="* Sales value and margin use each item’s current sale price, because stock history stores cost only." value="* বিক্রয় মূল্য ও মার্জিন প্রতিটি আইটেমের বর্তমান বিক্রয়মূল্য ধরে হিসাব করা হয়, কারণ স্টক ইতিহাসে শুধু খরচ রাখা হয়।" />
+  <text name="* at current sale price" value="* বর্তমান বিক্রয়মূল্যে" />
+  <text name="0 records" value="০টি রেকর্ড" />
+  <text name="1 of" value="১টি" />
+  <text name="Action" value="কাজ" />
+  <text name="Add at least one item" value="অন্তত একটি আইটেম যোগ করুন" />
+  <text name="Adjustment in" value="সমন্বয় (ইন)" />
+  <text name="Adjustment out" value="সমন্বয় (আউট)" />
+  <text name="Administration" value="প্রশাসন" />
+  <text name="All records" value="সব রেকর্ড" />
+  <text name="Already in the system, skipped" value="সিস্টেমে আগে থেকেই আছে, বাদ দেওয়া হয়েছে" />
+  <text name="Approvals" value="অনুমোদন" />
+  <text name="Are you sure?" value="আপনি কি নিশ্চিত?" />
+  <text name="Audit logs" value="অডিট লগ" />
+  <text name="Balance" value="ব্যালেন্স" />
+  <text name="Cancel document" value="ডকুমেন্ট বাতিল করুন" />
+  <text name="Cancel {0}?" value="{0} বাতিল করবেন?" />
+  <text name="Cancelled: reversing entries were written to stock history." value="বাতিল: স্টক ইতিহাসে রিভার্স এন্ট্রি লেখা হয়েছে।" />
+  <text name="Cancelling…" value="বাতিল হচ্ছে…" />
+  <text name="Check that the first row has the column headings." value="প্রথম সারিতে কলামের শিরোনাম আছে কিনা দেখুন।" />
+  <text name="Choose a supplier" value="একজন সরবরাহকারী বেছে নিন" />
+  <text name="Closing" value="সমাপনী" />
+  <text name="Columns:" value="কলাম:" />
+  <text name="Cost" value="খরচ" />
+  <text name="Cost (posted)" value="খরচ (পোস্টকৃত)" />
+  <text name="Cost of sold" value="বিক্রীত পণ্যের খরচ" />
+  <text name="Create &amp; post" value="তৈরি ও পোস্ট" />
+  <text name="Create a store" value="স্টোর তৈরি করুন" />
+  <text name="Create drafts" value="খসড়া তৈরি করুন" />
+  <text name="Current stock, cost and value of every item." value="প্রতিটি আইটেমের বর্তমান স্টক, খরচ ও মূল্য।" />
+  <text name="Damaged" value="ক্ষতিগ্রস্ত" />
+  <text name="Deleted" value="মুছে ফেলা হয়েছে" />
+  <text name="Description" value="বিবরণ" />
+  <text name="Document added to {0}" value="{0}-এ ডকুমেন্ট যোগ হয়েছে" />
+  <text name="Document removed" value="ডকুমেন্ট সরানো হয়েছে" />
+  <text name="Done" value="সম্পন্ন" />
+  <text name="Download template" value="টেমপ্লেট ডাউনলোড" />
+  <text name="Draft: nothing has changed in stock yet." value="খসড়া: স্টকে এখনো কিছু পরিবর্তন হয়নি।" />
+  <text name="Edit category" value="ক্যাটাগরি সম্পাদনা" />
+  <text name="Edit country" value="দেশ সম্পাদনা" />
+  <text name="Edit currency" value="মুদ্রা সম্পাদনা" />
+  <text name="Edit exchange rate" value="বিনিময় হার সম্পাদনা" />
+  <text name="Edit sub-category" value="উপ-ক্যাটাগরি সম্পাদনা" />
+  <text name="Edit supplier" value="সরবরাহকারী সম্পাদনা" />
+  <text name="Edit unit" value="ইউনিট সম্পাদনা" />
+  <text name="Edit unit conversion" value="রূপান্তর সম্পাদনা" />
+  <text name="Edit unit group" value="ইউনিট গ্রুপ সম্পাদনা" />
+  <text name="Enter a customer name" value="ক্রেতার নাম লিখুন" />
+  <text name="Every movement of one item with a running balance." value="একটি আইটেমের প্রতিটি লেনদেন, চলমান ব্যালেন্সসহ।" />
+  <text name="Exists" value="আছে" />
+  <text name="Go to" value="যান" />
+  <text name="Good day, {0}" value="শুভ দিন, {0}" />
+  <text name="Help" value="সাহায্য" />
+  <text name="Host" value="হোস্ট" />
+  <text name="How much of each purchase invoice has been sold (first in, first out)." value="প্রতিটি ক্রয় ইনভয়েসের কতটা বিক্রি হয়েছে (আগে আসা, আগে যাওয়া)।" />
+  <text name="Import receipts from Excel" value="এক্সেল থেকে প্রাপ্তি ইমপোর্ট" />
+  <text name="In" value="ইন" />
+  <text name="In stock: {0}" value="স্টকে: {0}" />
+  <text name="Information" value="তথ্য" />
+  <text name="Internal use" value="অভ্যন্তরীণ ব্যবহার" />
+  <text name="Invoice" value="ইনভয়েস" />
+  <text name="Invoice no" value="ইনভয়েস নং" />
+  <text name="Invoices" value="ইনভয়েস" />
+  <text name="Invoices lines" value="ইনভয়েস লাইন" />
+  <text name="Leave blank for the host administrator" value="হোস্ট অ্যাডমিনিস্ট্রেটরের জন্য খালি রাখুন" />
+  <text name="Lines" value="লাইন" />
+  <text name="Maintenance" value="রক্ষণাবেক্ষণ" />
+  <text name="Margin" value="মার্জিন" />
+  <text name="Margin (posted)" value="মার্জিন (পোস্টকৃত)" />
+  <text name="Margin*" value="মার্জিন*" />
+  <text name="My settings" value="আমার সেটিংস" />
+  <text name="No" value="না" />
+  <text name="No matches" value="কিছু মেলেনি" />
+  <text name="No rows found" value="কোনো সারি পাওয়া যায়নি" />
+  <text name="Not stocked" value="স্টক রাখা হয় না" />
+  <text name="OK" value="ঠিক আছে" />
+  <text name="Only {0} available" value="মাত্র {0} আছে" />
+  <text name="Opening" value="প্রারম্ভিক" />
+  <text name="Opening balance" value="প্রারম্ভিক ব্যালেন্স" />
+  <text name="Out" value="আউট" />
+  <text name="Page" value="পৃষ্ঠা" />
+  <text name="Page {0} of {1}" value="পৃষ্ঠা {0} / {1}" />
+  <text name="Period: {0} to {1}" value="সময়কাল: {0} থেকে {1}" />
+  <text name="Please check" value="অনুগ্রহ করে দেখুন" />
+  <text name="Please fill in {0}" value="অনুগ্রহ করে {0} পূরণ করুন" />
+  <text name="Post {0}?" value="{0} পোস্ট করবেন?" />
+  <text name="Posted: stock was updated. Cancelling adds reversing entries." value="পোস্টকৃত: স্টক হালনাগাদ হয়েছে। বাতিল করলে রিভার্স এন্ট্রি যোগ হয়।" />
+  <text name="Printed" value="মুদ্রিত" />
+  <text name="Printing is blocked in this view. Use Save printable copy." value="এই ভিউতে প্রিন্ট বন্ধ। প্রিন্টযোগ্য কপি সংরক্ষণ ব্যবহার করুন।" />
+  <text name="Profile" value="প্রোফাইল" />
+  <text name="Purchase" value="ক্রয়" />
+  <text name="Purchase invoices in a date range." value="একটি তারিখ সীমার ক্রয় ইনভয়েস।" />
+  <text name="Quantities must be above zero" value="পরিমাণ শূন্যের বেশি হতে হবে" />
+  <text name="Ready" value="প্রস্তুত" />
+  <text name="Reload the page to try again." value="আবার চেষ্টা করতে পৃষ্ঠাটি রিলোড করুন।" />
+  <text name="Remaining" value="অবশিষ্ট" />
+  <text name="Restored" value="পুনরুদ্ধার হয়েছে" />
+  <text name="Result" value="ফলাফল" />
+  <text name="Roles" value="রোল" />
+  <text name="Row {0}: {1}" value="সারি {0}: {1}" />
+  <text name="Sale" value="বিক্রয়" />
+  <text name="Sale / issue" value="বিক্রয় / ইস্যু" />
+  <text name="Sales and issues with cost and margin." value="খরচ ও মার্জিনসহ বিক্রয় ও ইস্যু।" />
+  <text name="Sales total" value="মোট বিক্রয়" />
+  <text name="Sales value*" value="বিক্রয় মূল্য*" />
+  <text name="Sample" value="নমুনা" />
+  <text name="Save category" value="ক্যাটাগরি সংরক্ষণ" />
+  <text name="Save country" value="দেশ সংরক্ষণ" />
+  <text name="Save currency" value="মুদ্রা সংরক্ষণ" />
+  <text name="Save exchange rate" value="বিনিময় হার সংরক্ষণ" />
+  <text name="Save item" value="আইটেম সংরক্ষণ" />
+  <text name="Save sub-category" value="উপ-ক্যাটাগরি সংরক্ষণ" />
+  <text name="Save supplier" value="সরবরাহকারী সংরক্ষণ" />
+  <text name="Save unit" value="ইউনিট সংরক্ষণ" />
+  <text name="Save unit conversion" value="রূপান্তর সংরক্ষণ" />
+  <text name="Save unit group" value="ইউনিট গ্রুপ সংরক্ষণ" />
+  <text name="Saved category" value="ক্যাটাগরি সংরক্ষিত" />
+  <text name="Saved country" value="দেশ সংরক্ষিত" />
+  <text name="Saved currency" value="মুদ্রা সংরক্ষিত" />
+  <text name="Saved exchange rate" value="বিনিময় হার সংরক্ষিত" />
+  <text name="Saved item" value="আইটেম সংরক্ষিত" />
+  <text name="Saved sub-category" value="উপ-ক্যাটাগরি সংরক্ষিত" />
+  <text name="Saved supplier" value="সরবরাহকারী সংরক্ষিত" />
+  <text name="Saved unit" value="ইউনিট সংরক্ষিত" />
+  <text name="Saved unit conversion" value="রূপান্তর সংরক্ষিত" />
+  <text name="Saved unit group" value="ইউনিট গ্রুপ সংরক্ষিত" />
+  <text name="Search or jump to" value="খুঁজুন বা যান" />
+  <text name="Settings" value="সেটিংস" />
+  <text name="Sign in is unavailable right now." value="এই মুহূর্তে সাইন ইন করা যাচ্ছে না।" />
+  <text name="Sign in succeeded but the server did not return an access token." value="সাইন ইন সফল, কিন্তু সার্ভার অ্যাক্সেস টোকেন দেয়নি।" />
+  <text name="Signed in successfully." value="সফলভাবে সাইন ইন হয়েছে।" />
+  <text name="Some quantities are more than you have in stock, so posting will be blocked." value="কিছু পরিমাণ আপনার স্টকের চেয়ে বেশি, তাই পোস্ট করা আটকে যাবে।" />
+  <text name="Something went wrong" value="কিছু একটা সমস্যা হয়েছে" />
+  <text name="The PDF library did not load. Check your connection." value="PDF লাইব্রেরি লোড হয়নি। আপনার সংযোগ দেখুন।" />
+  <text name="The picture could not be read." value="ছবিটি পড়া যায়নি।" />
+  <text name="These stock changes will be reversed:" value="এই স্টক পরিবর্তনগুলো উল্টে দেওয়া হবে:" />
+  <text name="This updates stock immediately:" value="এটি সঙ্গে সঙ্গে স্টক হালনাগাদ করে:" />
+  <text name="Today" value="আজ" />
+  <text name="Total (excluding cancelled)" value="মোট (বাতিল ছাড়া)" />
+  <text name="Total in" value="মোট ইন" />
+  <text name="Total out" value="মোট আউট" />
+  <text name="Total value" value="মোট মূল্য" />
+  <text name="Total: {0}" value="মোট: {0}" />
+  <text name="Tour closed. Restart it anytime from Take a tour." value="ট্যুর বন্ধ। যেকোনো সময় ‘ট্যুর নিন’ থেকে আবার শুরু করুন।" />
+  <text name="Tour finished. Restart it anytime from Take a tour." value="ট্যুর শেষ। যেকোনো সময় ‘ট্যুর নিন’ থেকে আবার শুরু করুন।" />
+  <text name="Transfer in" value="স্থানান্তর (ইন)" />
+  <text name="Transfer out" value="স্থানান্তর (আউট)" />
+  <text name="Type an item, page or action…" value="আইটেম, পৃষ্ঠা বা কাজ লিখুন…" />
+  <text name="Undo" value="পূর্বাবস্থা" />
+  <text name="Unit price" value="একক মূল্য" />
+  <text name="Updated category" value="ক্যাটাগরি হালনাগাদ হয়েছে" />
+  <text name="Updated country" value="দেশ হালনাগাদ হয়েছে" />
+  <text name="Updated currency" value="মুদ্রা হালনাগাদ হয়েছে" />
+  <text name="Updated exchange rate" value="বিনিময় হার হালনাগাদ হয়েছে" />
+  <text name="Updated item" value="আইটেম হালনাগাদ হয়েছে" />
+  <text name="Updated sub-category" value="উপ-ক্যাটাগরি হালনাগাদ হয়েছে" />
+  <text name="Updated supplier" value="সরবরাহকারী হালনাগাদ হয়েছে" />
+  <text name="Updated unit" value="ইউনিট হালনাগাদ হয়েছে" />
+  <text name="Updated unit conversion" value="রূপান্তর হালনাগাদ হয়েছে" />
+  <text name="Updated unit group" value="ইউনিট গ্রুপ হালনাগাদ হয়েছে" />
+  <text name="Upload an .xlsx or .csv file. One &lt;b&gt;purchase invoice&lt;/b&gt; is created for every distinct &lt;b&gt;InvoiceNo&lt;/b&gt; in the file." value="একটি .xlsx বা .csv ফাইল আপলোড করুন। ফাইলের প্রতিটি আলাদা &lt;b&gt;InvoiceNo&lt;/b&gt;-এর জন্য একটি &lt;b&gt;ক্রয় ইনভয়েস&lt;/b&gt; তৈরি হয়।" />
+  <text name="Users" value="ব্যবহারকারী" />
+  <text name="We could not sign you in. Check your workspace name and account details, then try again." value="আপনাকে সাইন ইন করানো গেল না। ওয়ার্কস্পেসের নাম ও অ্যাকাউন্টের তথ্য দেখে আবার চেষ্টা করুন।" />
+  <text name="Yes" value="হ্যাঁ" />
+  <text name="Yesterday" value="গতকাল" />
+  <text name="You can cancel it later; that writes reversing entries." value="পরে এটি বাতিল করতে পারবেন; তখন রিভার্স এন্ট্রি লেখা হবে।" />
+  <text name="Your workspace is registered. Check your email if activation is required, then sign in with your workspace name." value="আপনার ওয়ার্কস্পেস নিবন্ধিত হয়েছে। সক্রিয়করণ প্রয়োজন হলে ইমেইল দেখুন, তারপর ওয়ার্কস্পেসের নাম দিয়ে সাইন ইন করুন।" />
+  <text name="bal {0}" value="ব্যালেন্স {0}" />
+  <text name="e.g. Walk-in customer" value="যেমন: সরাসরি আসা ক্রেতা" />
+  <text name="equals (in)" value="সমান (এককে)" />
+  <text name="invoice ready," value="টি ইনভয়েস প্রস্তুত," />
+  <text name="invoices ready," value="টি ইনভয়েস প্রস্তুত," />
+  <text name="items" value="আইটেম" />
+  <text name="not posted yet" value="এখনো পোস্ট হয়নি" />
+  <text name="skipped or with errors." value="টি বাদ পড়েছে বা ত্রুটিযুক্ত।" />
+  <text name="{0} cancelled. Reversing entries written." value="{0} বাতিল হয়েছে। রিভার্স এন্ট্রি লেখা হয়েছে।" />
+  <text name="{0} days ago" value="{0} দিন আগে" />
+  <text name="{0} in stock" value="স্টকে {0}" />
+  <text name="{0} invoice created and posted" value="{0}টি ইনভয়েস তৈরি ও পোস্ট হয়েছে" />
+  <text name="{0} invoice created as drafts" value="{0}টি ইনভয়েস খসড়া হিসেবে তৈরি হয়েছে" />
+  <text name="{0} invoices created and posted" value="{0}টি ইনভয়েস তৈরি ও পোস্ট হয়েছে" />
+  <text name="{0} invoices created as drafts" value="{0}টি ইনভয়েস খসড়া হিসেবে তৈরি হয়েছে" />
+  <text name="{0} is larger than 3 MB" value="{0} ৩ MB-এর চেয়ে বড়" />
+  <text name="{0} items tracked" value="{0}টি আইটেম ট্র্যাক করা হচ্ছে" />
+  <text name="{0} left · reorder at {1}" value="{0} বাকি · {1}-এ পুনঃঅর্ডার" />
+  <text name="{0} low · {1} waiting to post" value="{0}টি কম · {1}টি পোস্টের অপেক্ষায়" />
+  <text name="{0} posted. Stock levels are updated." value="{0} পোস্ট হয়েছে। স্টক হালনাগাদ হয়েছে।" />
+  <text name="{0} record" value="{0}টি রেকর্ড" />
+  <text name="{0} records" value="{0}টি রেকর্ড" />
+  <text name="{0} saved as draft" value="{0} খসড়া হিসেবে সংরক্ষিত" />
+  <text name="{0} stock" value="{0} স্টক" />
+  <text name="{0}: file could not be read" value="{0}: ফাইল পড়া যায়নি" />
+  <text name="{0}: file type not supported" value="{0}: এই ধরনের ফাইল সমর্থিত নয়" />
+  <text name="{0}–{1} of {2}" value="{2}টির মধ্যে {0}–{1}" />
+  <text name="AdjustmentQuantityCannotBeZero" value="সমন্বয়ের পরিমাণ শূন্য হতে পারে না।" />
+  <text name="AdjustmentReasonRequired" value="স্টক সমন্বয়ের জন্য একটি কারণ দিতে হবে।" />
+  <text name="AttachmentContentDoesNotMatchType" value="{0}-এর বিষয়বস্তু এর ফাইলের ধরনের সাথে মেলে না।" />
+  <text name="AttachmentEmptyOrInvalid" value="{0} খালি অথবা পড়া যায়নি।" />
+  <text name="AttachmentFileMissing" value="{0}-এর ফাইলটি পাওয়া যাচ্ছে না।" />
+  <text name="AttachmentTooLarge" value="{0} {1} MB-এর চেয়ে বড়।" />
+  <text name="AttachmentTypeNotAllowed" value="এই ধরনের ফাইল সংযুক্ত করা যায় না। অনুমোদিত: {0}।" />
+  <text name="AuditLogs" value="অডিট লগ" />
+  <text name="BaseCurrencyAlreadyExists" value="{0} ইতিমধ্যে মূল মুদ্রা। আগে সেটি বাদ দিন।" />
+  <text name="BaseCurrencyCannotBeDeleted" value="{0} মূল মুদ্রা, তাই মোছা যাবে না।" />
+  <text name="BaseUnitAlreadyExists" value="{0} ইতিমধ্যে এই ইউনিট গ্রুপের মূল ইউনিট।" />
+  <text name="BaseUnitNotInUnitSet" value="আইটেম {0}-এর মূল ইউনিট আইটেমের ইউনিট গ্রুপের অংশ নয়।" />
+  <text name="CancelledDocumentRemark" value="বাতিল ডকুমেন্টের রিভার্স" />
+  <text name="CannotCancelPurchaseStockUsed" value="ক্রয় {0} বাতিল করা যাবে না, কারণ পোস্টের পর থেকে {1}-এর স্টক ইস্যু, বিক্রি বা সমন্বয়ে বের হয়ে গেছে।" />
+  <text name="ChangingFeatures" value="ফিচার পরিবর্তন" />
+  <text name="ChangingPermissions" value="অনুমতি পরিবর্তন" />
+  <text name="ChangingTexts" value="লেখা পরিবর্তন" />
+  <text name="ClosingBalance" value="সমাপনী ব্যালেন্স" />
+  <text name="ClosingValue" value="সমাপনী মূল্য" />
+  <text name="CodeAlreadyExists" value="কোড {0} ইতিমধ্যে ব্যবহৃত হচ্ছে।" />
+  <text name="ColActive" value="সক্রিয়" />
+  <text name="ColAttachments" value="ডকুমেন্ট" />
+  <text name="ColAvgCost" value="গড় খরচ" />
+  <text name="ColBalance" value="ব্যালেন্স" />
+  <text name="ColBalanceAfter" value="পরের ব্যালেন্স" />
+  <text name="ColBarcode" value="বারকোড" />
+  <text name="ColBaseCurrency" value="মূল মুদ্রা" />
+  <text name="ColBaseUnit" value="মূল ইউনিট" />
+  <text name="ColCategory" value="ক্যাটাগরি" />
+  <text name="ColCity" value="শহর" />
+  <text name="ColCode" value="কোড" />
+  <text name="ColContact" value="যোগাযোগ" />
+  <text name="ColCost" value="খরচ" />
+  <text name="ColCostOfSold" value="বিক্রীত পণ্যের খরচ" />
+  <text name="ColCountry" value="দেশ" />
+  <text name="ColCurrency" value="মুদ্রা" />
+  <text name="ColCurrentSalePrice" value="বর্তমান বিক্রয়মূল্য" />
+  <text name="ColCustomer" value="ক্রেতা" />
+  <text name="ColDate" value="তারিখ" />
+  <text name="ColDecimals" value="দশমিক" />
+  <text name="ColDescription" value="বিবরণ" />
+  <text name="ColDiscount" value="ছাড়" />
+  <text name="ColEffectiveDate" value="কার্যকর তারিখ" />
+  <text name="ColEmail" value="ইমেইল" />
+  <text name="ColEqualsIn" value="সমান (এককে)" />
+  <text name="ColExchangeRate" value="বিনিময় হার" />
+  <text name="ColFactor" value="গুণক" />
+  <text name="ColFrom" value="থেকে" />
+  <text name="ColIn" value="ইন" />
+  <text name="ColIssued" value="ইস্যুকৃত" />
+  <text name="ColItem" value="আইটেম" />
+  <text name="ColLines" value="লাইন" />
+  <text name="ColMargin" value="মার্জিন" />
+  <text name="ColMarginPercent" value="মার্জিন %" />
+  <text name="ColName" value="নাম" />
+  <text name="ColNetSalesBase" value="নিট বিক্রয় (মূল মুদ্রায়)" />
+  <text name="ColNumber" value="নম্বর" />
+  <text name="ColOnHand" value="হাতে আছে" />
+  <text name="ColOneOf" value="১টি" />
+  <text name="ColOtherCharges" value="অন্যান্য খরচ" />
+  <text name="ColOtherOut" value="অন্যান্য আউট" />
+  <text name="ColOut" value="আউট" />
+  <text name="ColPaymentDays" value="পরিশোধের দিন" />
+  <text name="ColPhone" value="ফোন" />
+  <text name="ColPhoneCode" value="ফোন কোড" />
+  <text name="ColPicture" value="ছবি" />
+  <text name="ColPostedTime" value="পোস্টের সময়" />
+  <text name="ColQuantity" value="পরিমাণ" />
+  <text name="ColRate" value="হার" />
+  <text name="ColReceived" value="গৃহীত" />
+  <text name="ColReference" value="রেফারেন্স" />
+  <text name="ColRemaining" value="অবশিষ্ট" />
+  <text name="ColRemarks" value="মন্তব্য" />
+  <text name="ColReorderLevel" value="পুনঃঅর্ডার স্তর" />
+  <text name="ColReturned" value="ফেরত" />
+  <text name="ColSalePrice" value="বিক্রয়মূল্য" />
+  <text name="ColSalesValue" value="বিক্রয় মূল্য" />
+  <text name="ColSold" value="বিক্রিত" />
+  <text name="ColStatus" value="অবস্থা" />
+  <text name="ColSubCategory" value="উপ-ক্যাটাগরি" />
+  <text name="ColSubTotal" value="উপ-মোট" />
+  <text name="ColSupplier" value="সরবরাহকারী" />
+  <text name="ColSupplierInvoiceNo" value="সরবরাহকারীর ইনভয়েস নং" />
+  <text name="ColSymbol" value="প্রতীক" />
+  <text name="ColTax" value="কর" />
+  <text name="ColTo" value="পর্যন্ত" />
+  <text name="ColTotal" value="মোট" />
+  <text name="ColTotalBase" value="মোট (মূল মুদ্রায়)" />
+  <text name="ColType" value="ধরন" />
+  <text name="ColUnit" value="ইউনিট" />
+  <text name="ColUnitCost" value="একক খরচ" />
+  <text name="ColUnitGroup" value="ইউনিট গ্রুপ" />
+  <text name="ColValue" value="মূল্য" />
+  <text name="ColWhat" value="কী ঘটেছে" />
+  <text name="ContactPerson" value="যোগাযোগের ব্যক্তি" />
+  <text name="CostCannotBeNegative" value="খরচ ঋণাত্মক হতে পারে না।" />
+  <text name="CountryId" value="দেশ" />
+  <text name="CountryNotFound" value="দেশটি পাওয়া যায়নি।" />
+  <text name="CreatingNewEdition" value="নতুন সংস্করণ তৈরি" />
+  <text name="CreatingNewLanguage" value="নতুন ভাষা তৈরি" />
+  <text name="CreatingNewRole" value="নতুন রোল তৈরি" />
+  <text name="CreatingNewTenant" value="নতুন টেন্যান্ট তৈরি" />
+  <text name="CreatingNewUser" value="নতুন ব্যবহারকারী তৈরি" />
+  <text name="CreationTime" value="তৈরির সময়" />
+  <text name="CurrencyConversionSameCurrency" value="থেকে ও পর্যন্ত মুদ্রা আলাদা হতে হবে।" />
+  <text name="CurrencyConversions" value="বিনিময় হার" />
+  <text name="CurrencyId" value="মুদ্রা" />
+  <text name="CurrencyNotFound" value="মুদ্রাটি পাওয়া যায়নি।" />
+  <text name="CurrencyRateAlreadyExistsForDate" value="{0} তারিখে এই মুদ্রাগুলোর একটি হার আগে থেকেই আছে।" />
+  <text name="CustomerName" value="ক্রেতার নাম" />
+  <text name="DeletingEdition" value="সংস্করণ মোছা" />
+  <text name="DeletingRole" value="রোল মোছা" />
+  <text name="DeletingTenant" value="টেন্যান্ট মোছা" />
+  <text name="DeletingUser" value="ব্যবহারকারী মোছা" />
+  <text name="DocumentDate" value="ডকুমেন্টের তারিখ" />
+  <text name="DocumentHasNoLines" value="ডকুমেন্ট {0}-এ কোনো লাইন নেই।" />
+  <text name="DocumentLineNotFound" value="এই ডকুমেন্টের একটি লাইন পাওয়া যায়নি। ডকুমেন্টটি আবার লোড করে চেষ্টা করুন।" />
+  <text name="DocumentMustBeDraftToPost" value="ডকুমেন্ট {0} খসড়া নয়, তাই পোস্ট করা যাবে না।" />
+  <text name="DocumentMustBePostedToCancel" value="ডকুমেন্ট {0} পোস্ট করা হয়নি, তাই বাতিল করা যাবে না।" />
+  <text name="DocumentNo" value="ডকুমেন্ট নং" />
+  <text name="DocumentNumberAlreadyExists" value="নম্বর {0} অন্য একটি ডকুমেন্টে ব্যবহৃত হয়েছে।" />
+  <text name="DocumentNumberBusy" value="অন্য ব্যবহারকারীরা একই সময়ে ডকুমেন্ট তৈরি করছেন, তাই নম্বর পাওয়া গেল না। আবার চেষ্টা করুন।" />
+  <text name="DocumentStatus_Cancelled" value="বাতিল" />
+  <text name="DocumentStatus_Draft" value="খসড়া" />
+  <text name="DocumentStatus_Posted" value="পোস্টকৃত" />
+  <text name="EditingEdition" value="সংস্করণ সম্পাদনা" />
+  <text name="EditingLanguage" value="ভাষা সম্পাদনা" />
+  <text name="EditingRole" value="রোল সম্পাদনা" />
+  <text name="EditingTenant" value="টেন্যান্ট সম্পাদনা" />
+  <text name="EditingUser" value="ব্যবহারকারী সম্পাদনা" />
+  <text name="Editions" value="সংস্করণ" />
+  <text name="EffectiveDate" value="কার্যকর তারিখ" />
+  <text name="ExchangeRateMustBePositive" value="ডকুমেন্ট {0}-এর বিনিময় হার শূন্যের বেশি হতে হবে।" />
+  <text name="FactorMustBePositive" value="গুণক শূন্যের বেশি হতে হবে।" />
+  <text name="ImportAlreadyExists" value="সিস্টেমে আগে থেকেই আছে, বাদ দেওয়া হয়েছে।" />
+  <text name="ImportCurrencyRequired" value="কোনো মুদ্রা দেওয়া হয়নি এবং কোনো মূল মুদ্রাও সেট করা নেই।" />
+  <text name="ImportDifferentCurrency" value="একই ইনভয়েসে ভিন্ন মুদ্রা।" />
+  <text name="ImportDifferentSupplier" value="একই ইনভয়েসে ভিন্ন সরবরাহকারী।" />
+  <text name="ImportFileInvalid" value="ফাইলটি খালি অথবা পড়া যায়নি।" />
+  <text name="ImportFileTooLarge" value="ফাইলটি {0} MB-এর চেয়ে ছোট হতে হবে।" />
+  <text name="ImportFileTypeNotSupported" value="একটি .xlsx বা .csv ফাইল আপলোড করুন। পুরোনো .xls ফাইল আগে .xlsx হিসেবে সংরক্ষণ করুন।" />
+  <text name="ImportFileUnreadable" value="ফাইলটি পড়া যায়নি। এটি সঠিক .xlsx বা .csv ফাইল কিনা দেখুন।" />
+  <text name="ImportInvalidDate" value="অবৈধ তারিখ &quot;{0}&quot;। yyyy-mm-dd ব্যবহার করুন।" />
+  <text name="ImportInvalidUnitCost" value="অবৈধ একক খরচ &quot;{0}&quot;।" />
+  <text name="ImportItemUnitsInvalid" value="{0}-এর ইউনিটগুলো ঠিকমতো সেট করা নেই।" />
+  <text name="ImportMissingInvoiceNo" value="InvoiceNo নেই।" />
+  <text name="ImportNoExchangeRate" value="{1} বা তার আগে {0}-এর কোনো বিনিময় হার নেই।" />
+  <text name="ImportNoValidLines" value="কোনো বৈধ লাইন নেই।" />
+  <text name="ImportQuantityMustBePositive" value="পরিমাণ শূন্যের বেশি হতে হবে।" />
+  <text name="ImportTooManyRows" value="ফাইলে {0}টির বেশি সারি আছে। ছোট ছোট ফাইলে ভাগ করুন।" />
+  <text name="ImportUnitNotValid" value="ইউনিট &quot;{0}&quot; {1}-এর জন্য বৈধ নয়।" />
+  <text name="ImportUnknownCurrency" value="অজানা মুদ্রা &quot;{0}&quot;।" />
+  <text name="ImportUnknownItem" value="অজানা আইটেম &quot;{0}&quot;।" />
+  <text name="ImportUnknownSupplier" value="অজানা সরবরাহকারী &quot;{0}&quot;।" />
+  <text name="InsufficientStock" value="পর্যাপ্ত স্টক নেই।" />
+  <text name="InsufficientStockForItems" value="{0}-এর পর্যাপ্ত স্টক নেই। কিছুই পোস্ট করা হয়নি।" />
+  <text name="InvalidPictureFile" value="ফাইলটি বৈধ ছবি নয়।" />
+  <text name="Inventory" value="ইনভেন্টরি" />
+  <text name="InvoiceDate" value="ইনভয়েসের তারিখ" />
+  <text name="InvoiceNo" value="ইনভয়েস নং" />
+  <text name="InvoiceToSalesNote" value="বিক্রিত স্টক আগে আসা, আগে যাওয়া নিয়মে ক্রয় ইনভয়েসের সাথে মেলানো হয়। বিক্রয় মূল্য ও মার্জিন প্রতিটি আইটেমের বর্তমান বিক্রয়মূল্য ধরে হিসাব করা হয়, প্রতিটি বিক্রয়ের আসল দাম নয়।" />
+  <text name="IsActive" value="সক্রিয়?" />
+  <text name="IssueSaleType_Damage" value="ক্ষতিগ্রস্ত" />
+  <text name="IssueSaleType_InternalIssue" value="অভ্যন্তরীণ ব্যবহার" />
+  <text name="IssueSaleType_Sale" value="বিক্রয়" />
+  <text name="IssueSaleType_Sample" value="নমুনা" />
+  <text name="IssueType" value="ইস্যুর ধরন" />
+  <text name="ItemCategoryNotFound" value="আইটেম ক্যাটাগরি পাওয়া যায়নি।" />
+  <text name="ItemCode" value="আইটেম কোড" />
+  <text name="ItemHasStockHistory" value="{0}-এর স্টক ইতিহাস আছে, তাই মোছা যাবে না। এর বদলে নিষ্ক্রিয় করুন।" />
+  <text name="ItemIsNotStockItem" value="{0} স্টক আইটেম নয়।" />
+  <text name="ItemName" value="আইটেমের নাম" />
+  <text name="ItemNotFound" value="আইটেম পাওয়া যায়নি" />
+  <text name="ItemOnOpenDocuments" value="{0} খসড়া বা পোস্টকৃত ডকুমেন্টে আছে, তাই মোছা যাবে না।" />
+  <text name="ItemShortDetail" value="{0}: দরকার {1} {3}, আছে মাত্র {2} {3}।" />
+  <text name="ItemStockSettingsLockedAfterMovements" value="{0}-এর ইতিমধ্যে স্টক ইতিহাস আছে, তাই এর ইউনিট গ্রুপ, মূল ইউনিট ও স্টক-আইটেম সেটিং বদলানো যাবে না।" />
+  <text name="ItemStockStatus_Low" value="কম স্টক" />
+  <text name="ItemStockStatus_NotStocked" value="স্টক রাখা হয় না" />
+  <text name="ItemStockStatus_Ok" value="স্টকে আছে" />
+  <text name="ItemStockStatus_Out" value="স্টক নেই" />
+  <text name="ItemSubCategories" value="উপ-ক্যাটাগরি" />
+  <text name="Languages" value="ভাষা" />
+  <text name="LineQuantityMustBePositive" value="{0}-এর পরিমাণ শূন্যের বেশি হতে হবে।" />
+  <text name="LineValueCannotBeNegative" value="{0}-এর ছাড় লাইনের মূল্যের চেয়ে বেশি।" />
+  <text name="LoginForTenants" value="টেন্যান্ট হিসেবে লগইন" />
+  <text name="ManagingMembers" value="সদস্য ব্যবস্থাপনা" />
+  <text name="ManagingOrganizationTree" value="প্রতিষ্ঠান কাঠামো ব্যবস্থাপনা" />
+  <text name="MaxStockBelowMinStock" value="সর্বোচ্চ স্টক সর্বনিম্ন স্টকের চেয়ে কম হতে পারে না।" />
+  <text name="NoConversionToBaseUnit" value="ইউনিট {0} থেকে আইটেম {1}-এর মূল ইউনিটে কোনো রূপান্তর নেই।" />
+  <text name="NoExchangeRateFound" value="{2} বা তার আগে {0} থেকে {1}-এ কোনো বিনিময় হার নেই।" />
+  <text name="Note" value="নোট" />
+  <text name="OnlyDraftCanBeChanged" value="{0} খসড়া নয়, তাই আর বদলানো বা মোছা যাবে না।" />
+  <text name="OpeningBalance" value="প্রারম্ভিক ব্যালেন্স" />
+  <text name="OpeningOnlyBeforeOtherMovements" value="{0}-এর প্রারম্ভিক স্টক শুধু অন্য কোনো স্টক লেনদেনের আগে দেওয়া যায়।" />
+  <text name="OrganizationUnits" value="প্রতিষ্ঠানের ইউনিট" />
+  <text name="Pages" value="পৃষ্ঠা" />
+  <text name="PictureTooLarge" value="ছবিটি {0} MB-এর চেয়ে ছোট হতে হবে।" />
+  <text name="QuantityMustBePositive" value="পরিমাণ শূন্যের বেশি হতে হবে।" />
+  <text name="RateMustBePositive" value="হার শূন্যের বেশি হতে হবে।" />
+  <text name="RecordInUseCannotDelete" value="{0} মোছা যাবে না, কারণ এটি {1}-এ ব্যবহৃত হচ্ছে।" />
+  <text name="RecordNotFound" value="রেকর্ডটি পাওয়া যায়নি।" />
+  <text name="ReferenceNo" value="রেফারেন্স নং" />
+  <text name="ReportInvoiceList" value="ইনভয়েস তালিকা" />
+  <text name="ReportInvoiceToSales" value="ইনভয়েস থেকে বিক্রয়" />
+  <text name="ReportItemLedger" value="আইটেম লেজার" />
+  <text name="ReportSalesList" value="বিক্রয় তালিকা" />
+  <text name="ReportStockItemList" value="স্টক আইটেম তালিকা" />
+  <text name="SalePrice" value="বিক্রয়মূল্য" />
+  <text name="SalesAndIssues" value="বিক্রয় ও ইস্যু" />
+  <text name="Sequence" value="ক্রম" />
+  <text name="StockChangedByAnotherUser" value="আপনি সংরক্ষণ করার সময় অন্য একজন ব্যবহারকারী স্টক বদলেছেন। আবার চেষ্টা করুন।" />
+  <text name="StockHistory" value="স্টক ইতিহাস" />
+  <text name="StockMovementType_AdjustmentIn" value="সমন্বয় (ইন)" />
+  <text name="StockMovementType_AdjustmentOut" value="সমন্বয় (আউট)" />
+  <text name="StockMovementType_IssueOut" value="ইস্যুকৃত" />
+  <text name="StockMovementType_Opening" value="প্রারম্ভিক স্টক" />
+  <text name="StockMovementType_PurchaseIn" value="গৃহীত" />
+  <text name="StockMovementType_PurchaseReturnOut" value="সরবরাহকারীকে ফেরত" />
+  <text name="StockMovementType_SaleOut" value="বিক্রিত" />
+  <text name="StockMovementType_SaleReturnIn" value="ক্রেতার ফেরত" />
+  <text name="StockMovementType_TransferIn" value="স্থানান্তর (ইন)" />
+  <text name="StockMovementType_TransferOut" value="স্থানান্তর (আউট)" />
+  <text name="SubCategoryCannotChangeCategoryInUse" value="উপ-ক্যাটাগরি {0} অন্য ক্যাটাগরিতে নেওয়া যাবে না, কারণ আইটেম এটি ব্যবহার করছে।" />
+  <text name="SubCategoryNotInCategory" value="উপ-ক্যাটাগরিটি বেছে নেওয়া ক্যাটাগরির অংশ নয়।" />
+  <text name="SupplierCode" value="সরবরাহকারীর কোড" />
+  <text name="SupplierHasInvoicesDeactivateInstead" value="{0}-এর ক্রয় ইনভয়েস আছে, তাই মোছা যাবে না। এর বদলে নিষ্ক্রিয় করুন।" />
+  <text name="SupplierId" value="সরবরাহকারী" />
+  <text name="SupplierName" value="সরবরাহকারীর নাম" />
+  <text name="SupplierNotFound" value="সরবরাহকারী পাওয়া যায়নি।" />
+  <text name="Tenants" value="টেন্যান্ট" />
+  <text name="TotalAmount" value="মোট পরিমাণ" />
+  <text name="TotalCostOfSold" value="বিক্রীত পণ্যের মোট খরচ" />
+  <text name="TotalDocuments" value="ডকুমেন্ট" />
+  <text name="TotalDrafts" value="খসড়ার মোট" />
+  <text name="TotalIn" value="মোট ইন" />
+  <text name="TotalInvoices" value="ইনভয়েস" />
+  <text name="TotalItems" value="আইটেম" />
+  <text name="TotalMargin" value="মোট মার্জিন" />
+  <text name="TotalOut" value="মোট আউট" />
+  <text name="TotalPosted" value="পোস্টকৃতের মোট" />
+  <text name="TotalPostedCostOfSales" value="পোস্টকৃত বিক্রয়ের খরচ" />
+  <text name="TotalPostedDocuments" value="পোস্টকৃত ডকুমেন্ট" />
+  <text name="TotalPostedInvoices" value="পোস্টকৃত ইনভয়েস" />
+  <text name="TotalPostedIssueCost" value="পোস্টকৃত ইস্যুর খরচ" />
+  <text name="TotalPostedMargin" value="পোস্টকৃত মার্জিন" />
+  <text name="TotalPostedSales" value="পোস্টকৃত নিট বিক্রয়" />
+  <text name="TotalSalesValue" value="মোট বিক্রয় মূল্য" />
+  <text name="TotalValue" value="মোট মূল্য" />
+  <text name="UnitConversionAlreadyExists" value="{0} ও {1}-এর মধ্যে একটি রূপান্তর আগে থেকেই আছে।" />
+  <text name="UnitConversionDifferentSets" value="{0} ও {1} ভিন্ন ইউনিট গ্রুপে আছে।" />
+  <text name="UnitConversionSameUnit" value="থেকে ও পর্যন্ত ইউনিট আলাদা হতে হবে।" />
+  <text name="UnitConversions" value="ইউনিট রূপান্তর" />
+  <text name="UnitCost" value="একক খরচ" />
+  <text name="UnitNotFound" value="ইউনিটটি পাওয়া যায়নি।" />
+  <text name="UnitNotInItemUnitSet" value="ইউনিট {0} আইটেম {1}-এর ইউনিট গ্রুপের অংশ নয়।" />
+  <text name="UnitSetCannotChangeInUse" value="ইউনিট {0} অন্য ইউনিট গ্রুপে নেওয়া যাবে না, কারণ এটি {1}-এ ব্যবহৃত হচ্ছে।" />
+  <text name="UnitSetNotFound" value="ইউনিট গ্রুপটি পাওয়া যায়নি।" />
+  <text name="Account lock" value="অ্যাকাউন্ট লক" />
+  <text name="All results" value="সব ফলাফল" />
+  <text name="Allow users to register themselves" value="ব্যবহারকারীদের নিজে নিবন্ধনের অনুমতি দিন" />
+  <text name="Allow workspaces to register themselves" value="ওয়ার্কস্পেসগুলোকে নিজে নিবন্ধনের অনুমতি দিন" />
+  <text name="Ask for a second code after the password." value="পাসওয়ার্ডের পরে একটি দ্বিতীয় কোড চাওয়া হবে।" />
+  <text name="Browser" value="ব্রাউজার" />
+  <text name="Client" value="ক্লায়েন্ট" />
+  <text name="Close" value="বন্ধ করুন" />
+  <text name="Custom data" value="কাস্টম ডেটা" />
+  <text name="Date and time" value="তারিখ ও সময়" />
+  <text name="Dates and times are shown in this time zone. Leave it on the default to follow the server." value="তারিখ ও সময় এই টাইম জোনে দেখানো হয়। সার্ভার অনুসরণ করতে ডিফল্ট রাখুন।" />
+  <text name="Default" value="ডিফল্ট" />
+  <text name="Domain" value="ডোমেইন" />
+  <text name="Duration (ms)" value="সময়কাল (ms)" />
+  <text name="Email address must be confirmed to sign in" value="সাইন ইন করতে ইমেইল ঠিকানা নিশ্চিত করতে হবে" />
+  <text name="Error" value="ত্রুটি" />
+  <text name="Every call to the server: who made it, when, how long it took and whether it failed." value="সার্ভারে প্রতিটি অনুরোধ: কে করেছে, কখন, কত সময় লেগেছে এবং ব্যর্থ হয়েছে কিনা।" />
+  <text name="Failed attempts before locking" value="লক হওয়ার আগে ব্যর্থ চেষ্টা" />
+  <text name="Features" value="ফিচার" />
+  <text name="From address" value="প্রেরকের ঠিকানা" />
+  <text name="From name" value="প্রেরকের নাম" />
+  <text name="General" value="সাধারণ" />
+  <text name="How new users join this workspace and what they need before they can sign in." value="নতুন ব্যবহারকারীরা কীভাবে এই ওয়ার্কস্পেসে যোগ দেয় এবং সাইন ইনের আগে তাদের কী লাগে।" />
+  <text name="How new workspaces are created." value="নতুন ওয়ার্কস্পেস কীভাবে তৈরি হয়।" />
+  <text name="IP address" value="IP ঠিকানা" />
+  <text name="Image server address" value="ইমেজ সার্ভারের ঠিকানা" />
+  <text name="Image storage" value="ছবি সংরক্ষণ" />
+  <text name="Impersonated by user" value="যে ব্যবহারকারী ছদ্মবেশে প্রবেশ করেছেন" />
+  <text name="Keep pictures on Cloudinary" value="ছবি Cloudinary-তে রাখুন" />
+  <text name="Keep pictures on an image server" value="ছবি একটি ইমেজ সার্ভারে রাখুন" />
+  <text name="LDAP" value="LDAP" />
+  <text name="LDAP sign-in" value="LDAP সাইন ইন" />
+  <text name="Let users remember this browser" value="ব্যবহারকারীদের এই ব্রাউজার মনে রাখতে দিন" />
+  <text name="Let users sign in with their directory account." value="ব্যবহারকারীরা তাদের ডিরেক্টরি অ্যাকাউন্ট দিয়ে সাইন ইন করতে পারবে।" />
+  <text name="Lock accounts after failed sign-ins" value="ব্যর্থ সাইন ইনের পরে অ্যাকাউন্ট লক করুন" />
+  <text name="Lock an account for a while after too many wrong passwords." value="অনেকবার ভুল পাসওয়ার্ড দিলে কিছু সময়ের জন্য অ্যাকাউন্ট লক করুন।" />
+  <text name="Lock for (seconds)" value="লকের সময় (সেকেন্ড)" />
+  <text name="Maximum length" value="সর্বোচ্চ দৈর্ঘ্য" />
+  <text name="Maximum user count" value="সর্বোচ্চ ব্যবহারকারী সংখ্যা" />
+  <text name="Minimum length" value="সর্বনিম্ন দৈর্ঘ্য" />
+  <text name="Needs a lower-case letter" value="একটি ছোট হাতের অক্ষর লাগবে" />
+  <text name="Needs a number" value="একটি সংখ্যা লাগবে" />
+  <text name="Needs a symbol" value="একটি চিহ্ন লাগবে" />
+  <text name="Needs an upper-case letter" value="একটি বড় হাতের অক্ষর লাগবে" />
+  <text name="New registered users are active by default" value="নতুন নিবন্ধিত ব্যবহারকারীরা ডিফল্টভাবে সক্রিয়" />
+  <text name="New workspaces are active by default" value="নতুন ওয়ার্কস্পেস ডিফল্টভাবে সক্রিয়" />
+  <text name="No features" value="কোনো ফিচার নেই" />
+  <text name="No features are defined for this workspace." value="এই ওয়ার্কস্পেসের জন্য কোনো ফিচার নির্ধারিত নেই।" />
+  <text name="Parameters" value="প্যারামিটার" />
+  <text name="Password rules" value="পাসওয়ার্ডের নিয়ম" />
+  <text name="Pictures" value="ছবি" />
+  <text name="Port" value="পোর্ট" />
+  <text name="SMTP server" value="SMTP সার্ভার" />
+  <text name="Save settings" value="সেটিংস সংরক্ষণ করুন" />
+  <text name="Security" value="নিরাপত্তা" />
+  <text name="Send the code by SMS" value="SMS-এ কোড পাঠান" />
+  <text name="Send the code by email" value="ইমেইলে কোড পাঠান" />
+  <text name="Sender" value="প্রেরক" />
+  <text name="Service" value="সার্ভিস" />
+  <text name="Settings for the whole application." value="পুরো অ্যাপ্লিকেশনের সেটিংস।" />
+  <text name="Settings for this workspace." value="এই ওয়ার্কস্পেসের সেটিংস।" />
+  <text name="Settings saved." value="সেটিংস সংরক্ষিত হয়েছে।" />
+  <text name="Sign-up and sign-in" value="নিবন্ধন ও সাইন ইন" />
+  <text name="Success" value="সফল" />
+  <text name="The address and name emails are sent from." value="যে ঠিকানা ও নাম থেকে ইমেইল পাঠানো হয়।" />
+  <text name="The mail server that sends the emails." value="যে মেইল সার্ভার ইমেইল পাঠায়।" />
+  <text name="Time zone" value="টাইম জোন" />
+  <text name="Turn on LDAP sign-in" value="LDAP সাইন ইন চালু করুন" />
+  <text name="Turn on two-factor sign-in" value="টু-ফ্যাক্টর সাইন ইন চালু করুন" />
+  <text name="Two-factor sign-in" value="টু-ফ্যাক্টর সাইন ইন" />
+  <text name="Unlimited" value="সীমাহীন" />
+  <text name="Unsaved changes" value="অসংরক্ষিত পরিবর্তন" />
+  <text name="Use SSL" value="SSL ব্যবহার করুন" />
+  <text name="Use a security check (captcha) on registration" value="নিবন্ধনে নিরাপত্তা যাচাই (ক্যাপচা) ব্যবহার করুন" />
+  <text name="Use default credentials" value="ডিফল্ট ক্রেডেনশিয়াল ব্যবহার করুন" />
+  <text name="Use the default rules" value="ডিফল্ট নিয়ম ব্যবহার করুন" />
+  <text name="User" value="ব্যবহারকারী" />
+  <text name="User management" value="ব্যবহারকারী ব্যবস্থাপনা" />
+  <text name="User name" value="ব্যবহারকারীর নাম" />
+  <text name="Website address" value="ওয়েবসাইটের ঠিকানা" />
+  <text name="What a new password must contain." value="নতুন পাসওয়ার্ডে কী থাকতে হবে।" />
+  <text name="What this workspace is allowed to use. Only the host can change these." value="এই ওয়ার্কস্পেস কী কী ব্যবহার করতে পারবে। শুধু হোস্ট এগুলো বদলাতে পারে।" />
+  <text name="Where item and category pictures are kept." value="আইটেম ও ক্যাটাগরির ছবি কোথায় রাখা হয়।" />
+  <text name="Workspace registration" value="ওয়ার্কস্পেস নিবন্ধন" />
+  <text name="Workspaces" value="ওয়ার্কস্পেস" />
+  <text name="HideCostAndValues" value="খরচ ও মূল্য লুকান" />
+  <text name="HideCostAndValues_Description" value="পাতা, প্রিন্ট ও এক্সপোর্টে সব টাকার অঙ্ক লুকায়: একক খরচ, গড় খরচ, স্টকের মূল্য, ক্রয় ও বিক্রয় মূল্য, মোট ও মুনাফা। ড্যাশবোর্ডে শুধু পরিমাণ দেখায়, এবং নতুন ক্রয় ও বিক্রয়ে কোনো মূল্যের ঘর থাকে না (প্রতিটি লাইনে পণ্যের স্ট্যান্ডার্ড খরচ বা বিক্রয় মূল্য ব্যবহৃত হয়)। প্রয়োগ করতে পাতাটি আবার লোড করুন।" />
+  <text name="Current stock of every item." value="প্রতিটি আইটেমের বর্তমান স্টক।" />
+  <text name="Sales and issues in a date range." value="একটি তারিখের সীমার মধ্যে বিক্রি ও ইস্যু।" />
+  <text name="Items in stock, what came in and went out, and what needs attention, updated live." value="স্টকে থাকা আইটেম, কী এসেছে আর কী গেছে, এবং কী মনোযোগ চায়, সাথে সাথে হালনাগাদ।" />
+  <text name="(movements)" value="(লেনদেন)" />
+  <text name="Active stock items" value="সক্রিয় স্টক আইটেম" />
+  <text name="Most in" value="সবচেয়ে বেশি এসেছে" />
+  <text name="Most out" value="সবচেয়ে বেশি গেছে" />
+  <text name="No sales yet this month." value="এই মাসে এখনো কোনো বিক্রি নেই।" />
+  <text name="No suggestions right now. Stock in and out look balanced." value="এই মুহূর্তে কোনো পরামর্শ নেই। স্টক আসা-যাওয়া সুষম দেখাচ্ছে।" />
+  <text name="Nothing came in" value="কিছু আসেনি" />
+  <text name="Nothing received yet this month." value="এই মাসে এখনো কিছু গ্রহণ করা হয়নি।" />
+  <text name="Nothing went out" value="কিছু যায়নি" />
+  <text name="Nothing yet" value="এখনো কিছু নেই" />
+  <text name="Reorder {0}" value="{0} রিঅর্ডার করুন" />
+  <text name="Suggestions" value="পরামর্শ" />
+  <text name="Top 5 received this month" value="এই মাসে সবচেয়ে বেশি গৃহীত ৫টি" />
+  <text name="Top 5 sales this month" value="এই মাসে সবচেয়ে বেশি বিক্রিত ৫টি" />
+  <text name="Total items" value="মোট আইটেম" />
+  <text name="last 14 days" value="গত ১৪ দিন" />
+  <text name="{0} invoice" value="{0}টি ইনভয়েস" />
+  <text name="{0} invoices" value="{0}টি ইনভয়েস" />
+  <text name="{0} sale" value="{0}টি বিক্রি" />
+  <text name="{0} sales" value="{0}টি বিক্রি" />
+  <text name="Critical" value="জরুরি" />
+  <text name="Warning" value="সতর্কতা" />
+  <text name="Info" value="তথ্য" />
+  <text name="Insight_OutOfStockWithDemand" value="স্টক শেষ, অথচ গত ৩০ দিনে {0} {1} বেরিয়ে গেছে।" />
+  <text name="Insight_ReorderNow" value="মাত্র {0} {1} বাকি, রিঅর্ডার স্তর {2} বা তার নিচে।" />
+  <text name="Insight_LowCover" value="দিনে {1} {2} হারে আর প্রায় {0} দিনের স্টক আছে।" />
+  <text name="Insight_FastMover" value="দ্রুত চলছে: গত ৩০ দিনে {2}টি লেনদেনে {0} {1} বেরিয়েছে।" />
+  <text name="Insight_SlowMoving" value="স্টকে {0} {1} আছে, অথচ গত {2} দিনে কিছুই বের হয়নি।" />
+  <text name="Insight_DeadStock" value="স্টকে {0} {1} আছে, অথচ গত {2} দিনে কিছুই বের হয়নি। ছাড়ে বিক্রি বা ফেরতের কথা ভাবুন।" />
+  <text name="Insight_Overstock" value="স্টকে {0} {1}, সর্বোচ্চ {2}-এর চেয়ে বেশি।" />
+  <text name="Insight_OverstockCover" value="স্টকে {0} {1}, বর্তমান হারে প্রায় {2} দিনের।" />
+  <text name="Insight_BuyingMoreThanSelling" value="গত ৩০ দিনে {0} {2} এসেছে, কিন্তু বেরিয়েছে মাত্র {1} {2}।" />
+  <text name="Insight_OldDrafts" value="{0}টি খসড়া ৩ দিনের বেশি অপেক্ষায় আছে। সবচেয়ে পুরোনো {1}, {2} দিন আগের।" />
+  <text name="TenantRequests" value="স্টোরের অনুরোধ" />
+  <text name="ApprovingTenantRequests" value="স্টোরের অনুরোধ অনুমোদন" />
+  <text name="RejectingTenantRequests" value="স্টোরের অনুরোধ প্রত্যাখ্যান" />
+  <text name="InvalidHostLoginMode" value="হোস্ট সাইন-ইন &quot;LoginPage&quot; বা &quot;SeparatePage&quot; হতে হবে।" />
+  <text name="New stores wait for host approval" value="নতুন স্টোর হোস্টের অনুমোদনের অপেক্ষায় থাকবে" />
+  <text name="Host sign-in" value="হোস্ট সাইন-ইন" />
+  <text name="Where host users sign in. A separate page keeps the store name required on the normal sign-in page." value="হোস্ট ব্যবহারকারীরা কোথায় সাইন ইন করবেন। আলাদা পেজ রাখলে সাধারণ সাইন-ইন পেজে স্টোরের নাম বাধ্যতামূলক থাকে।" />
+  <text name="Host users sign in on" value="হোস্ট ব্যবহারকারীরা সাইন ইন করবেন" />
+  <text name="A separate host sign-in page" value="আলাদা হোস্ট সাইন-ইন পেজে" />
+  <text name="The normal sign-in page (blank store name)" value="সাধারণ সাইন-ইন পেজে (স্টোরের নাম ফাঁকা রেখে)" />
+  <text name="InvalidTenancyName" value="স্টোরের নামে শুধু অক্ষর, সংখ্যা, ড্যাশ ও আন্ডারস্কোর থাকতে পারে, এবং প্রথমে একটি অক্ষর থাকতে হবে।" />
+  <text name="TenancyNameIsAlreadyTaken" value="{0} নামের স্টোর আগে থেকেই আছে।" />
+  <text name="TenancyNameIsAlreadyRequested" value="{0} নামের স্টোরের একটি অনুরোধ আগে থেকেই অনুমোদনের অপেক্ষায় আছে।" />
+  <text name="TenantRequestNotFound" value="এই অনুরোধ নম্বর ও ইমেইল ঠিকানার সাথে কোনো স্টোরের অনুরোধ মেলেনি।" />
+  <text name="NewTenantRequestNotificationDefinition" value="নতুন স্টোরের অনুরোধ এলে" />
+  <text name="NewTenantRequestNotificationMessage" value="নতুন স্টোরের অনুরোধ {requestNo}: {storeName} ({tenancyName}) অনুমোদনের অপেক্ষায় আছে।" />
+  <text name="TenantRequestReceivedEmail_Subject" value="আপনার স্টোরের অনুরোধ {0} আমরা পেয়েছি" />
+  <text name="TenantRequestReceivedEmail_Body" value="নমস্কার {0},
+{1} স্টোরের জন্য অনুরোধ করায় ধন্যবাদ। আপনার অনুরোধ নম্বর {2}।
+স্টোর অনুমোদিত হলে আমরা আপনাকে ইমেইল করব। নিচের লিংকে অবস্থা দেখতে পারেন।" />
+  <text name="TenantRequestApprovedEmail_Subject" value="আপনার স্টোর {0} প্রস্তুত" />
+  <text name="TenantRequestApprovedEmail_Body" value="নমস্কার {0},
+আপনার স্টোর {1} অনুমোদিত হয়েছে।
+স্টোরের নাম {2} ও আপনার বেছে নেওয়া পাসওয়ার্ড দিয়ে সাইন ইন করুন। নিচের লিংক ব্যবহার করুন।" />
+  <text name="TenantRequestRejectedEmail_Subject" value="আপনার স্টোরের অনুরোধ {0} অনুমোদিত হয়নি" />
+  <text name="TenantRequestRejectedEmail_Body" value="নমস্কার {0},
+{2} স্টোরের জন্য আপনার অনুরোধ {1} অনুমোদিত হয়নি।
+কারণ: {3}" />
+  <text name="EditionNotFound" value="বেছে নেওয়া এডিশনটি আর নেই।" />
+  <text name="RejectionReasonIsRequired" value="অনুরোধটি প্রত্যাখ্যানের কারণ লিখুন। এটি অনুরোধকারীকে ইমেইল করা হবে।" />
+  <text name="TenantRequestIsNotPending" value="অনুরোধ {0} আগেই পর্যালোচনা করা হয়েছে।" />
+  <text name="OnlyClosedTenantRequestsCanBeDeleted" value="শুধু প্রত্যাখ্যাত বা বাতিল অনুরোধ মুছে ফেলা যায়।" />
+  <text name="TenantRequestsAreHostOnly" value="স্টোরের অনুরোধ শুধু হোস্ট পরিচালনা করতে পারে।" />
+  <text name="UnknownFeature" value="{0} নামে কোনো ফিচার নেই।" />
+  <text name="InvalidFeatureValue" value="{0} ফিচারের জন্য {1} সঠিক মান নয়।" />
+  <text name="TenantSubscriptionExpired" value="আপনার স্টোরের সাবস্ক্রিপশন {0} তারিখে শেষ হয়েছে। নবায়নের জন্য আমাদের সাথে যোগাযোগ করুন।" />
+  <text name="ImpersonationNotAllowed" value="আপনি এই ব্যবহারকারী হিসেবে সাইন ইন করতে পারবেন না।" />
+  <text name="Feature_Purchases" value="ক্রয়" />
+  <text name="Feature_Purchases_Description" value="ক্রয় ইনভয়েস দিয়ে স্টক গ্রহণ।" />
+  <text name="Feature_PurchaseAttachments" value="ইনভয়েসের ডকুমেন্ট" />
+  <text name="Feature_PurchaseAttachments_Description" value="ক্রয়ের সাথে সরবরাহকারীর ইনভয়েসের মতো ফাইল যুক্ত করা।" />
+  <text name="Feature_PurchaseExcelImport" value="এক্সেল থেকে ইমপোর্ট" />
+  <text name="Feature_PurchaseExcelImport_Description" value="একটি এক্সেল ফাইল থেকে একসাথে অনেক ক্রয় ইনভয়েস তৈরি।" />
+  <text name="Feature_Sales" value="বিক্রয় ও ইস্যু" />
+  <text name="Feature_Sales_Description" value="স্টক বিক্রি বা ইস্যু করা।" />
+  <text name="Feature_Reports" value="রিপোর্ট" />
+  <text name="Feature_Reports_Description" value="রিপোর্ট পেজ।" />
+  <text name="Feature_Export" value="এক্সপোর্ট ও প্রিন্ট" />
+  <text name="Feature_Export_Description" value="এক্সেল ও পিডিএফ এক্সপোর্ট, প্রিন্ট এবং প্রিন্টযোগ্য কপি সংরক্ষণ।" />
+  <text name="Feature_MultiCurrency" value="একাধিক মুদ্রা" />
+  <text name="Feature_MultiCurrency_Description" value="মূল মুদ্রা ছাড়া অন্য মুদ্রা, বিনিময় হার এবং ডকুমেন্টে মুদ্রা বেছে নেওয়া।" />
+  <text name="Feature_UnitConversions" value="একক রূপান্তর" />
+  <text name="Feature_UnitConversions_Description" value="একক রূপান্তর, এবং আইটেমের মূল একক ছাড়া অন্য এককে কেনা বা বেচা।" />
+  <text name="Feature_Pictures" value="ছবি" />
+  <text name="Feature_Pictures_Description" value="আইটেম, ক্যাটাগরি ও উপ-ক্যাটাগরির ছবি।" />
+  <text name="Feature_MaxItemCount" value="সর্বোচ্চ সক্রিয় আইটেম (0 = সীমাহীন)" />
+  <text name="Feature_MaxItemCount_Description" value="স্টোরে কতগুলো সক্রিয় আইটেম থাকতে পারবে।" />
+  <text name="Feature_MaxUserCount_Description" value="স্টোরে কতজন ব্যবহারকারী থাকতে পারবে।" />
+  <text name="MaximumUserCount" value="সর্বোচ্চ ব্যবহারকারী (0 = সীমাহীন)" />
+  <text name="MaximumUserCount_Error_Message" value="সর্বোচ্চ অনুমোদিত ব্যবহারকারীর সংখ্যায় পৌঁছে গেছেন!" />
+  <text name="MaximumUserCount_Error_Detail" value="এই স্টোরে সর্বোচ্চ {0} জন ব্যবহারকারী থাকতে পারে।" />
+  <text name="MaximumItemCount_Error_Message" value="আপনার স্টোরে সর্বোচ্চ {0}টি সক্রিয় আইটেম থাকতে পারে। একটি আইটেম নিষ্ক্রিয় করুন বা সীমা বাড়াতে আমাদের বলুন।" />
+  <text name="OnlyBaseCurrencyAllowed" value="আপনার স্টোর শুধু মূল মুদ্রা ব্যবহার করে। মূল মুদ্রা বেছে নিন।" />
+  <text name="OnlyBaseUnitAllowed" value="আপনার স্টোর প্রতিটি আইটেমের শুধু মূল একক ব্যবহার করে। {0}-এর জন্য মূল একক ব্যবহার করুন।" />
+  <text name="FeatureNotEnabledForStore" value="এই ফিচারটি আপনার স্টোরের জন্য চালু নেই।" />
+  <text name="This feature is not enabled for your store" value="এই ফিচারটি আপনার স্টোরের জন্য চালু নেই" />
+  <text name="Ask us if you need it." value="প্রয়োজন হলে আমাদের জানান।" />
+  <text name="Go to Dashboard" value="ড্যাশবোর্ডে যান" />
+  <text name="EnterYourStoreName" value="আপনার স্টোরের নাম লিখুন।" />
+  <text name="Your store name" value="আপনার স্টোরের নাম" />
+  <text name="Host sign in" value="হোস্ট সাইন ইন" />
+  <text name="For the people who run StockPilot. Store users sign in on the normal page." value="যাঁরা StockPilot চালান তাঁদের জন্য। স্টোরের ব্যবহারকারীরা সাধারণ পেজে সাইন ইন করেন।" />
+  <text name="Sign in to a store" value="একটি স্টোরে সাইন ইন করুন" />
+  <text name="RoleNotFound" value="{0} নামে কোনো রোল নেই।" />
+  <text name="No end date" value="শেষ তারিখ নেই" />
+  <text name="Expired" value="মেয়াদ শেষ" />
+  <text name="Ends soon" value="শীঘ্রই শেষ হবে" />
+  <text name="Ended {0} days ago" value="{0} দিন আগে শেষ হয়েছে" />
+  <text name="Ends today" value="আজ শেষ হবে" />
+  <text name="Ends tomorrow" value="আগামীকাল শেষ হবে" />
+  <text name="Ends in {0} days" value="{0} দিনে শেষ হবে" />
+  <text name="{0} users now" value="এখন {0} জন ব্যবহারকারী" />
+  <text name="{0} active items now" value="এখন {0}টি সক্রিয় পণ্য" />
+  <text name="No limit" value="সীমা নেই" />
+  <text name="Overridden" value="পরিবর্তিত" />
+  <text name="Use edition default" value="এডিশনের মান ব্যবহার করুন" />
+  <text name="Edition default" value="এডিশনের মান" />
+  <text name="{0}% used" value="{0}% ব্যবহৃত" />
+  <text name="{0} of {1}" value="{1}-এর মধ্যে {0}" />
+  <text name="{0} · no limit" value="{0} · সীমা নেই" />
+  <text name="Pending" value="অপেক্ষমাণ" />
+  <text name="Approved" value="অনুমোদিত" />
+  <text name="Rejected" value="প্রত্যাখ্যাত" />
+  <text name="Your stores, their requests and subscriptions at a glance." value="আপনার স্টোর, অনুরোধ ও সাবস্ক্রিপশন এক নজরে।" />
+  <text name="Store requests" value="স্টোরের অনুরোধ" />
+  <text name="Stores" value="স্টোর" />
+  <text name="Active stores" value="সক্রিয় স্টোর" />
+  <text name="Can sign in" value="সাইন ইন করতে পারে" />
+  <text name="Inactive stores" value="নিষ্ক্রিয় স্টোর" />
+  <text name="Switched off" value="বন্ধ করা" />
+  <text name="Pending requests" value="অপেক্ষমাণ অনুরোধ" />
+  <text name="Waiting for your review" value="আপনার পর্যালোচনার অপেক্ষায়" />
+  <text name="Ending soon" value="শীঘ্রই শেষ হচ্ছে" />
+  <text name="Subscriptions ending in {0} days" value="{0} দিনের মধ্যে শেষ হওয়া সাবস্ক্রিপশন" />
+  <text name="Latest pending requests" value="সর্বশেষ অপেক্ষমাণ অনুরোধ" />
+  <text name="No requests are waiting." value="কোনো অনুরোধ অপেক্ষায় নেই।" />
+  <text name="Subscriptions ending soon" value="শীঘ্রই শেষ হওয়া সাবস্ক্রিপশন" />
+  <text name="No subscription ends in the next {0} days." value="আগামী {0} দিনে কোনো সাবস্ক্রিপশন শেষ হচ্ছে না।" />
+  <text name="Stores near a limit" value="সীমার কাছাকাছি স্টোর" />
+  <text name="No store is at {0}% of a limit." value="কোনো স্টোর সীমার {0}%-এ পৌঁছায়নি।" />
+  <text name="People who asked for a store. Review each one, then approve or reject it." value="যাঁরা স্টোর চেয়েছেন। প্রতিটি দেখে অনুমোদন বা প্রত্যাখ্যান করুন।" />
+  <text name="Store request" value="স্টোরের অনুরোধ" />
+  <text name="Received {0}" value="{0} তারিখে পাওয়া" />
+  <text name="Store details" value="স্টোরের তথ্য" />
+  <text name="Notes" value="নোট" />
+  <text name="Administrator account" value="অ্যাডমিনিস্ট্রেটর অ্যাকাউন্ট" />
+  <text name="Open the store" value="স্টোর খুলুন" />
+  <text name="Edit details" value="তথ্য সম্পাদনা" />
+  <text name="Reject" value="প্রত্যাখ্যান" />
+  <text name="Approve" value="অনুমোদন" />
+  <text name="Request saved." value="অনুরোধ সংরক্ষিত হয়েছে।" />
+  <text name="Store {0} created. The administrator was emailed." value="স্টোর {0} তৈরি হয়েছে। অ্যাডমিনিস্ট্রেটরকে ইমেইল পাঠানো হয়েছে।" />
+  <text name="Request rejected. The applicant was emailed." value="অনুরোধ প্রত্যাখ্যাত। আবেদনকারীকে ইমেইল পাঠানো হয়েছে।" />
+  <text name="Delete this request?" value="এই অনুরোধ মুছবেন?" />
+  <text name="Deleting…" value="মোছা হচ্ছে…" />
+  <text name="Request deleted." value="অনুরোধ মুছে ফেলা হয়েছে।" />
+  <text name="{0} will be removed from the list. This cannot be undone." value="{0} তালিকা থেকে সরানো হবে। এটি ফেরানো যাবে না।" />
+  <text name="Edit request {0}" value="অনুরোধ {0} সম্পাদনা" />
+  <text name="Approve {0}" value="{0} অনুমোদন" />
+  <text name="Creating the store…" value="স্টোর তৈরি হচ্ছে…" />
+  <text name="Approve and create the store" value="অনুমোদন করে স্টোর তৈরি করুন" />
+  <text name="Edition" value="এডিশন" />
+  <text name="No edition" value="এডিশন নেই" />
+  <text name="Subscription ends" value="সাবস্ক্রিপশন শেষ" />
+  <text name="Active: the store can sign in straight away" value="সক্রিয়: স্টোর সাথে সাথেই সাইন ইন করতে পারবে" />
+  <text name="Note to the applicant" value="আবেদনকারীর জন্য নোট" />
+  <text name="Optional" value="ঐচ্ছিক" />
+  <text name="{0} changed" value="{0}টি পরিবর্তিত" />
+  <text name="Start from the edition. Anything you change is saved for this store only." value="এডিশন থেকে শুরু করুন। আপনি যা বদলাবেন তা শুধু এই স্টোরের জন্য সংরক্ষিত হবে।" />
+  <text name="The store, its administrator ({0}) and the starter data are created, and the administrator gets an email." value="স্টোর, এর অ্যাডমিনিস্ট্রেটর ({0}) ও শুরুর ডেটা তৈরি হবে এবং অ্যাডমিনিস্ট্রেটর একটি ইমেইল পাবেন।" />
+  <text name="Reject {0}?" value="{0} প্রত্যাখ্যান করবেন?" />
+  <text name="Rejecting…" value="প্রত্যাখ্যান করা হচ্ছে…" />
+  <text name="Reason" value="কারণ" />
+  <text name="The applicant sees this in the email and on the status page." value="আবেদনকারী এটি ইমেইলে ও স্ট্যাটাস পাতায় দেখবেন।" />
+  <text name="Request" value="অনুরোধ" />
+  <text name="Store" value="স্টোর" />
+  <text name="City" value="শহর" />
+  <text name="Administrator" value="অ্যাডমিনিস্ট্রেটর" />
+  <text name="Store name" value="স্টোরের নাম" />
+  <text name="Workspace name" value="ওয়ার্কস্পেসের নাম" />
+  <text name="Contact person" value="যোগাযোগের ব্যক্তি" />
+  <text name="Contact phone" value="যোগাযোগের ফোন" />
+  <text name="Contact email" value="যোগাযোগের ইমেইল" />
+  <text name="Business type" value="ব্যবসার ধরন" />
+  <text name="Address" value="ঠিকানা" />
+  <text name="First name" value="নামের প্রথম অংশ" />
+  <text name="Last name" value="পদবি" />
+  <text name="Administrator email" value="অ্যাডমিনিস্ট্রেটরের ইমেইল" />
+  <text name="Mobile number" value="মোবাইল নম্বর" />
+  <text name="Active" value="সক্রিয়" />
+  <text name="Inactive" value="নিষ্ক্রিয়" />
+  <text name="Custom features" value="নিজস্ব ফিচার" />
+  <text name="Edition features" value="এডিশনের ফিচার" />
+  <text name="{0} features differ from the edition" value="{0}টি ফিচার এডিশন থেকে আলাদা" />
+  <text name="Every store, its edition, subscription and features." value="প্রতিটি স্টোর, এর এডিশন, সাবস্ক্রিপশন ও ফিচার।" />
+  <text name="Add store" value="স্টোর যোগ করুন" />
+  <text name="Store created." value="স্টোর তৈরি হয়েছে।" />
+  <text name="The administrator account is unlocked." value="অ্যাডমিনিস্ট্রেটর অ্যাকাউন্ট আনলক হয়েছে।" />
+  <text name="{0} differ from the edition" value="{0}টি এডিশন থেকে আলাদা" />
+  <text name="As the edition" value="এডিশনের মতো" />
+  <text name="Extend subscription" value="সাবস্ক্রিপশন বাড়ান" />
+  <text name="Unlock admin" value="অ্যাডমিন আনলক" />
+  <text name="Delete store" value="স্টোর মুছুন" />
+  <text name="Store saved." value="স্টোর সংরক্ষিত হয়েছে।" />
+  <text name="Subscription extended." value="সাবস্ক্রিপশন বাড়ানো হয়েছে।" />
+  <text name="Unlock the administrator?" value="অ্যাডমিনিস্ট্রেটর আনলক করবেন?" />
+  <text name="Unlock" value="আনলক" />
+  <text name="Clears failed sign-in lockouts on the store’s admin account." value="স্টোরের অ্যাডমিন অ্যাকাউন্টের ব্যর্থ সাইন-ইন লক সরিয়ে দেয়।" />
+  <text name="Store deleted." value="স্টোর মুছে ফেলা হয়েছে।" />
+  <text name="Delete {0}?" value="{0} মুছবেন?" />
+  <text name="The store and everyone in it lose access. Type the workspace name {0} to confirm." value="স্টোর ও এর সবাই অ্যাক্সেস হারাবেন। নিশ্চিত করতে ওয়ার্কস্পেসের নাম {0} লিখুন।" />
+  <text name="The name does not match." value="নাম মিলছে না।" />
+  <text name="Extend" value="বাড়ান" />
+  <text name="Ends now: {0}" value="এখন শেষ: {0}" />
+  <text name="New end date" value="নতুন শেষ তারিখ" />
+  <text name="+1 month" value="+১ মাস" />
+  <text name="+3 months" value="+৩ মাস" />
+  <text name="+6 months" value="+৬ মাস" />
+  <text name="+1 year" value="+১ বছর" />
+  <text name="Edit {0}" value="{0} সম্পাদনা" />
+  <text name="Create store" value="স্টোর তৈরি করুন" />
+  <text name="Leave empty to generate one" value="খালি রাখলে একটি তৈরি হবে" />
+  <text name="Change password at first sign-in" value="প্রথম সাইন-ইনে পাসওয়ার্ড বদলাতে হবে" />
+  <text name="Email the administrator" value="অ্যাডমিনিস্ট্রেটরকে ইমেইল করুন" />
+  <text name="Business details" value="ব্যবসার তথ্য" />
+  <text name="Features saved. The store sees them on its next page load." value="ফিচার সংরক্ষিত হয়েছে। স্টোর পরের বার পাতা লোড হলে দেখবে।" />
+  <text name="Edition: {0}. Values that differ from the edition are this store’s own." value="এডিশন: {0}। এডিশন থেকে আলাদা মানগুলো এই স্টোরের নিজস্ব।" />
+  <text name="Changes apply when the store’s users next load a page. A limit of 0 means no limit." value="স্টোরের ব্যবহারকারীরা পরের বার পাতা লোড করলে পরিবর্তন কার্যকর হবে। সীমা ০ মানে কোনো সীমা নেই।" />
+  <text name="Reset all to edition" value="সব এডিশনের মানে ফেরান" />
+  <text name="Undo changes" value="পরিবর্তন বাতিল" />
+  <text name="Save features" value="ফিচার সংরক্ষণ" />
+  <text name="Reset all features?" value="সব ফিচার রিসেট করবেন?" />
+  <text name="Resetting…" value="রিসেট হচ্ছে…" />
+  <text name="Features reset to the edition." value="ফিচার এডিশনের মানে ফেরানো হয়েছে।" />
+  <text name="{0} store-specific values are removed and the store uses its edition’s features again." value="স্টোরের নিজস্ব {0}টি মান সরানো হবে এবং স্টোর আবার এডিশনের ফিচার ব্যবহার করবে।" />
+  <text name="Active items" value="সক্রিয় পণ্য" />
+  <text name="Amber from 80% of a limit, red when it is reached. Limits are set on the Features tab." value="সীমার ৮০% থেকে হলুদ, সীমায় পৌঁছালে লাল। সীমা ফিচার ট্যাবে ঠিক করা হয়।" />
+  <text name="All stores" value="সব স্টোর" />
+  <text name="All editions" value="সব এডিশন" />
+  <text name="Any subscription" value="যেকোনো সাবস্ক্রিপশন" />
+  <text name="Any features" value="যেকোনো ফিচার" />
+  <text name="Details" value="বিস্তারিত" />
+  <text name="Usage" value="ব্যবহার" />
+  <text name="Feature sets for stores. A store follows its edition unless you change a feature for that store." value="স্টোরের ফিচার সেট। আপনি কোনো স্টোরের ফিচার না বদলালে স্টোর তার এডিশন মেনে চলে।" />
+  <text name="Add edition" value="এডিশন যোগ করুন" />
+  <text name="Edition saved. Stores see the change on their next page load." value="এডিশন সংরক্ষিত হয়েছে। স্টোরগুলো পরের বার পাতা লোড হলে পরিবর্তন দেখবে।" />
+  <text name="Edition deleted." value="এডিশন মুছে ফেলা হয়েছে।" />
+  <text name="Stores on this edition keep their own feature values only and use the defaults for the rest." value="এই এডিশনের স্টোরগুলো শুধু নিজস্ব ফিচার মান রাখবে, বাকিগুলোর জন্য ডিফল্ট ব্যবহার করবে।" />
+  <text name="Edit edition" value="এডিশন সম্পাদনা" />
+  <text name="A limit of 0 means no limit." value="সীমা ০ মানে কোনো সীমা নেই।" />
+  <text name="Checking…" value="যাচাই হচ্ছে…" />
+  <text name="No store request matches this request number and email address." value="এই অনুরোধ নম্বর ও ইমেইলের সাথে কোনো স্টোরের অনুরোধ মেলেনি।" />
+  <text name="Check your request" value="আপনার অনুরোধ দেখুন" />
+  <text name="Enter the request number and the email address you used." value="অনুরোধ নম্বর ও যে ইমেইল ব্যবহার করেছিলেন তা লিখুন।" />
+  <text name="Request number" value="অনুরোধ নম্বর" />
+  <text name="Check status" value="স্ট্যাটাস দেখুন" />
+  <text name="We'll email you when your store is approved." value="আপনার স্টোর অনুমোদিত হলে আমরা আপনাকে ইমেইল করব।" />
+  <text name="Your store is ready. Sign in with the store name {0} and the password you chose." value="আপনার স্টোর প্রস্তুত। স্টোরের নাম {0} ও আপনার বেছে নেওয়া পাসওয়ার্ড দিয়ে সাইন ইন করুন।" />
+  <text name="Waiting for approval" value="অনুমোদনের অপেক্ষায়" />
+  <text name="Not approved" value="অনুমোদিত হয়নি" />
+  <text name="The server returned an unreadable response. Please try again." value="সার্ভার থেকে পড়া যায় না এমন উত্তর এসেছে। আবার চেষ্টা করুন।" />
+  <text name="Request received" value="অনুরোধ পাওয়া গেছে" />
+  <text name="Thank you! Your store is waiting for approval." value="ধন্যবাদ! আপনার স্টোর অনুমোদনের অপেক্ষায় আছে।" />
+  <text name="Your request number is" value="আপনার অনুরোধ নম্বর" />
+  <text name="We'll email you when your store is approved. Keep the number to check its status." value="আপনার স্টোর অনুমোদিত হলে আমরা ইমেইল করব। স্ট্যাটাস দেখতে নম্বরটি রেখে দিন।" />
+  <text name="Check the status" value="স্ট্যাটাস দেখুন" />
+  <text name="Your workspace is registered and is waiting for activation." value="আপনার ওয়ার্কস্পেস নিবন্ধিত হয়েছে এবং সক্রিয় হওয়ার অপেক্ষায় আছে।" />
+  <text name="Your workspace is ready. Sign in to continue." value="আপনার ওয়ার্কস্পেস প্রস্তুত। চালিয়ে যেতে সাইন ইন করুন।" />
+  <text name="Sending…" value="পাঠানো হচ্ছে…" />
+  <text name="Sending your request…" value="আপনার অনুরোধ পাঠানো হচ্ছে…" />
+  <text name="We could not create your workspace. Check the details and try again." value="আপনার ওয়ার্কস্পেস তৈরি করা যায়নি। তথ্য দেখে আবার চেষ্টা করুন।" />
+  <text name="Your workspace is ready." value="আপনার ওয়ার্কস্পেস প্রস্তুত।" />
+  <text name="Workspace registration is unavailable right now." value="এই মুহূর্তে ওয়ার্কস্পেস নিবন্ধন করা যাচ্ছে না।" />
+  <text name="Get started" value="শুরু করুন" />
+  <text name="Create your store" value="আপনার স্টোর তৈরি করুন" />
+  <text name="Tell us about your store. We review every request and email you when your store is ready." value="আপনার স্টোর সম্পর্কে জানান। আমরা প্রতিটি অনুরোধ দেখি এবং স্টোর প্রস্তুত হলে ইমেইল করি।" />
+  <text name="Tell us about your store and choose the administrator account." value="আপনার স্টোর সম্পর্কে জানান এবং অ্যাডমিনিস্ট্রেটর অ্যাকাউন্ট বেছে নিন।" />
+  <text name="Your business name" value="আপনার ব্যবসার নাম" />
+  <text name="Use letters, numbers, dashes, or underscores." value="অক্ষর, সংখ্যা, ড্যাশ বা আন্ডারস্কোর ব্যবহার করুন।" />
+  <text name="e.g. Retail" value="যেমন খুচরা" />
+  <text name="Anything we should know?" value="আমাদের আর কিছু জানা দরকার?" />
+  <text name="Use at least 6 characters, including a lowercase letter and a number." value="অন্তত ৬টি অক্ষর দিন, যার মধ্যে একটি ছোট হাতের অক্ষর ও একটি সংখ্যা থাকবে।" />
+  <text name="Send request" value="অনুরোধ পাঠান" />
+  <text name="Create workspace" value="ওয়ার্কস্পেস তৈরি করুন" />
+  <text name="Already have an account? Sign in" value="আগে থেকেই অ্যাকাউন্ট আছে? সাইন ইন করুন" />
+  <text name="Check a request" value="একটি অনুরোধ দেখুন" />
+  <text name="Wholesale" value="পাইকারি" />
+  <text name="{0} waiting for review" value="{0}টি পর্যালোচনার অপেক্ষায়" />
+  <text name="You manage every store from here." value="এখান থেকে আপনি সব স্টোর পরিচালনা করেন।" />
+  <text name="1 feature differs from the edition" value="১টি ফিচার এডিশন থেকে আলাদা" />
+  <text name="1 user now" value="এখন ১ জন ব্যবহারকারী" />
+  <text name="1 active item now" value="এখন ১টি সক্রিয় পণ্য" />
+  <text name="Security check" value="নিরাপত্তা যাচাই" />
+  <text name="Loading the security check…" value="নিরাপত্তা যাচাই লোড হচ্ছে…" />
+  <text name="The security check did not load. Check your connection and reload the page." value="নিরাপত্তা যাচাই লোড হয়নি। আপনার সংযোগ দেখে পাতাটি আবার লোড করুন।" />
+  <text name="Registration needs a security check that is not set up yet. Please try again later." value="নিবন্ধনের জন্য একটি নিরাপত্তা যাচাই দরকার, যা এখনও চালু করা হয়নি। পরে আবার চেষ্টা করুন।" />
+  <text name="Complete the security check first." value="আগে নিরাপত্তা যাচাই সম্পূর্ণ করুন।" />
+  <text name="CaptchaCanNotBeEmpty" value="আগে নিরাপত্তা যাচাই সম্পূর্ণ করুন।" />
+  <text name="IncorrectCaptchaAnswer" value="নিরাপত্তা যাচাই সফল হয়নি। আবার চেষ্টা করুন।" />
+  <text name="Permission_Create" value="তৈরি" />
+  <text name="Permission_Edit" value="সম্পাদনা" />
+  <text name="Permission_Delete" value="মুছুন" />
+  <text name="Permission_Approve" value="অনুমোদন" />
+  <text name="Permission_Approve_Description" value="ডকুমেন্ট অনুমোদন করে স্টকে যোগ করা (পোস্ট)।" />
+  <text name="Permission_Cancel" value="বাতিল ও ফেরত" />
+  <text name="Permission_Cancel_Description" value="পোস্ট করা ডকুমেন্ট বাতিল করা: এর স্টক চলাচল উল্টে যায়। বাতিল ও ফেরত বাটন দেখায়।" />
+  <text name="Create" value="তৈরি" />
+  <text name="Change permissions" value="অনুমতি বদলানো" />
+  <text name="Change features" value="ফিচার বদলানো" />
+  <text name="Sign in as" value="হিসেবে সাইন ইন" />
+  <text name="Change texts" value="লেখা বদলানো" />
+  <text name="Manage tree" value="ট্রি পরিচালনা" />
+  <text name="Manage members" value="সদস্য পরিচালনা" />
+  <text name="Given by the user’s roles" value="ব্যবহারকারীর রোল থেকে পাওয়া" />
+  <text name="Role" value="রোল" />
+  <text name="Given to this user only" value="শুধু এই ব্যবহারকারীকে দেওয়া" />
+  <text name="Added" value="যোগ করা" />
+  <text name="Taken away from this user only" value="শুধু এই ব্যবহারকারী থেকে সরানো" />
+  <text name="Removed" value="সরানো" />
+  <text name="Collapse" value="গুটিয়ে নিন" />
+  <text name="Expand" value="খুলুন" />
+  <text name="Find a permission…" value="অনুমতি খুঁজুন…" />
+  <text name="{0} of {1} given" value="{1}টির মধ্যে {0}টি দেওয়া" />
+  <text name="Expand all" value="সব খুলুন" />
+  <text name="Collapse all" value="সব গুটিয়ে নিন" />
+  <text name="Select all" value="সব বাছুন" />
+  <text name="Clear all" value="সব মুছুন" />
+  <text name="Tick a page to let them open it. Tick the actions they may do there. Giving an action also gives the page; taking a page away takes its actions too." value="পাতা খুলতে দিতে পাতাটিতে টিক দিন। সেখানে যে কাজগুলো করতে পারবে সেগুলোতে টিক দিন। কোনো কাজ দিলে পাতাটিও দেওয়া হয়; পাতা সরালে তার কাজগুলোও সরে যায়।" />
+  <text name="System" value="সিস্টেম" />
+  <text name="Custom" value="নিজস্ব" />
+  <text name="New users get this role" value="নতুন ব্যবহারকারীরা এই রোল পান" />
+  <text name="A role is a set of permissions. Give users roles, then adjust a single user on the Users page if needed." value="রোল হলো অনুমতির একটি সেট। ব্যবহারকারীদের রোল দিন, দরকার হলে ব্যবহারকারী পাতায় একজনের জন্য বদলান।" />
+  <text name="Add role" value="রোল যোগ করুন" />
+  <text name="Role deleted." value="রোল মুছে ফেলা হয়েছে।" />
+  <text name="Users with this role lose the permissions it gives (their own extra permissions stay)." value="এই রোলের ব্যবহারকারীরা এর অনুমতিগুলো হারাবেন (তাঁদের নিজস্ব অতিরিক্ত অনুমতি থাকবে)।" />
+  <text name="Role saved. Its users get the change when they next load a page." value="রোল সংরক্ষিত। এর ব্যবহারকারীরা পরের বার পাতা লোড করলে পরিবর্তন পাবেন।" />
+  <text name="Role created." value="রোল তৈরি হয়েছে।" />
+  <text name="Edit role" value="রোল সম্পাদনা" />
+  <text name="Role name" value="রোলের নাম" />
+  <text name="Default role: new users get it" value="ডিফল্ট রোল: নতুন ব্যবহারকারীরা এটি পান" />
+  <text name="Permissions" value="অনুমতি" />
+  <text name="People who can sign in. Their roles give most permissions; you can add or remove single permissions for one user." value="যাঁরা সাইন ইন করতে পারেন। বেশিরভাগ অনুমতি রোল থেকে আসে; একজন ব্যবহারকারীর জন্য আলাদা অনুমতি যোগ বা সরাতে পারেন।" />
+  <text name="Add user" value="ব্যবহারকারী যোগ করুন" />
+  <text name="User saved. Changes apply when they next load a page." value="ব্যবহারকারী সংরক্ষিত। পরের বার পাতা লোড করলে পরিবর্তন কার্যকর হবে।" />
+  <text name="User created." value="ব্যবহারকারী তৈরি হয়েছে।" />
+  <text name="Edit user" value="ব্যবহারকারী সম্পাদনা" />
+  <text name="Leave empty to keep the current one" value="বর্তমানটি রাখতে খালি রাখুন" />
+  <text name="Active: can sign in" value="সক্রিয়: সাইন ইন করতে পারবেন" />
+  <text name="Change password at next sign-in" value="পরের সাইন-ইনে পাসওয়ার্ড বদলাতে হবে" />
+  <text name="Lock the account after repeated failed sign-ins" value="বারবার ব্যর্থ সাইন-ইনের পর অ্যাকাউন্ট লক করুন" />
+  <text name="Email the user a link to activate the account" value="অ্যাকাউন্ট সক্রিয় করার লিংক ব্যবহারকারীকে ইমেইল করুন" />
+  <text name="The user gets every permission of each role ticked here." value="এখানে টিক দেওয়া প্রতিটি রোলের সব অনুমতি ব্যবহারকারী পাবেন।" />
+  <text name="given by a role" value="রোল থেকে পাওয়া" />
+  <text name="given to this user only" value="শুধু এই ব্যবহারকারীকে দেওয়া" />
+  <text name="taken from this user only" value="শুধু এই ব্যবহারকারী থেকে সরানো" />
+  <text name="Use role permissions only" value="শুধু রোলের অনুমতি ব্যবহার করুন" />
+  <text name="Role changes are saved first; the Role marks here still show the roles as they were." value="রোলের পরিবর্তন আগে সংরক্ষিত হবে; এখানের রোল চিহ্নগুলো এখনও আগের রোল দেখাচ্ছে।" />
+  <text name="User deleted." value="ব্যবহারকারী মুছে ফেলা হয়েছে।" />
+  <text name="They can no longer sign in. Their records stay." value="তাঁরা আর সাইন ইন করতে পারবেন না। তাঁদের রেকর্ড থাকবে।" />
+  <text name="Unlock {0}?" value="{0} আনলক করবেন?" />
+  <text name="The account is unlocked." value="অ্যাকাউন্ট আনলক হয়েছে।" />
+  <text name="Clears a lockout after failed sign-ins." value="ব্যর্থ সাইন-ইনের পরের লক সরিয়ে দেয়।" />
+  <text name="Use role permissions only?" value="শুধু রোলের অনুমতি ব্যবহার করবেন?" />
+  <text name="The user now has only the permissions of their roles." value="ব্যবহারকারীর এখন শুধু তাঁর রোলের অনুমতি আছে।" />
+  <text name="Every permission added to or removed from this user alone is cleared." value="শুধু এই ব্যবহারকারীর জন্য যোগ বা সরানো সব অনুমতি মুছে যাবে।" />
+  <text name="All roles" value="সব রোল" />
+  <text name="Last sign-in" value="শেষ সাইন-ইন" />
+  <text name="No setup lists for you" value="আপনার জন্য কোনো সেটআপ তালিকা নেই" />
+  <text name="Ask an administrator for access to the lists you need." value="যে তালিকাগুলো দরকার সেগুলোর জন্য অ্যাডমিনিস্ট্রেটরকে বলুন।" />
+  <text name="UserAccess_AdminProtected" value="শুধু একজন অ্যাডমিনিস্ট্রেটর অন্য অ্যাডমিনিস্ট্রেটরের অ্যাকাউন্ট দেখতে বা বদলাতে পারেন।" />
+  <text name="UserAccess_NotYourPermissions" value="আপনি শুধু নিজের অনুমতিগুলোই দিতে বা সরাতে পারেন। আপনার নয়: {0}।" />
+  <text name="UserAccess_OwnAccess" value="আপনি নিজের রোল বদলাতে পারবেন না। একজন অ্যাডমিনিস্ট্রেটরকে বলুন।" />
+  <text name="UserAccess_RoleBeyondYours" value="আপনি {0} রোলটি দিতে বা সরাতে পারবেন না: এতে এমন অনুমতি আছে যা আপনার নেই।" />
+  <text name="UserAccess_AdminRole" value="শুধু একজন অ্যাডমিনিস্ট্রেটর Admin রোল দিতে বা সরাতে পারেন।" />
+  <text name="UserAccess_OwnAdminRole" value="আপনি নিজের অ্যাকাউন্ট থেকে Admin রোল সরাতে পারবেন না।" />
+  <text name="UserAccess_AdminRoleProtected" value="শুধু একজন অ্যাডমিনিস্ট্রেটর Admin রোল দেখতে বা বদলাতে পারেন।" />
+  <text name="UserAccess_PermissionMissing" value="এর জন্য আপনার অনুমতি নেই ({0})।" />
+  <text name="You do not have this permission, so you cannot give or take it away." value="এই অনুমতি আপনার নেই, তাই আপনি এটি দিতে বা সরাতে পারবেন না।" />
+  <text name="Greyed-out permissions are ones you do not have: only an administrator can change them." value="ধূসর অনুমতিগুলো আপনার নেই: শুধু একজন অ্যাডমিনিস্ট্রেটর সেগুলো বদলাতে পারেন।" />
+  <text name="This is your own account: only an administrator can change your roles and permissions." value="এটি আপনার নিজের অ্যাকাউন্ট: শুধু একজন অ্যাডমিনিস্ট্রেটর আপনার রোল ও অনুমতি বদলাতে পারেন।" />
+  <text name="Only an administrator can give or take this role: it has permissions you do not have." value="শুধু একজন অ্যাডমিনিস্ট্রেটর এই রোল দিতে বা সরাতে পারেন: এতে এমন অনুমতি আছে যা আপনার নেই।" />
+  <text name="This is your own account: only an administrator can change your roles." value="এটি আপনার নিজের অ্যাকাউন্ট: শুধু একজন অ্যাডমিনিস্ট্রেটর আপনার রোল বদলাতে পারেন।" />
+  <text name="This is your own account. You can change only permissions you have, so a permission you give up can only be given back by an administrator. Changes apply when you next load a page." value="এটি আপনার নিজের অ্যাকাউন্ট। আপনি শুধু নিজের অনুমতিগুলো বদলাতে পারেন, তাই কোনো অনুমতি ছেড়ে দিলে শুধু একজন অ্যাডমিনিস্ট্রেটর তা ফিরিয়ে দিতে পারবেন। পরের বার পাতা লোড করলে পরিবর্তন কার্যকর হবে।" />
+  <text name="This is your own account: you keep only what your roles give, and only an administrator can give the rest back." value="এটি আপনার নিজের অ্যাকাউন্ট: আপনার কাছে শুধু রোল থেকে পাওয়া অনুমতি থাকবে, বাকিগুলো শুধু একজন অ্যাডমিনিস্ট্রেটর ফিরিয়ে দিতে পারবেন।" />
+  <text name="Collapse sidebar" value="সাইডবার গুটিয়ে নিন" />
+  <text name="Expand sidebar" value="সাইডবার খুলুন" />
+  <text name="Keep sidebar open" value="সাইডবার খোলা রাখুন" />
+  <text name="Main menu" value="প্রধান মেনু" />
+  <text name="Sidebar" value="সাইডবার" />
+  <text name="Open" value="খোলা" />
+  <text name="Collapsed" value="গোটানো" />
+  <text name="Auto-hide" value="স্বয়ংক্রিয় লুকানো" />
+  <text name="ProfilePicture_NotAnImage" value="এই ফাইলটি ব্যবহারযোগ্য ছবি নয়। JPG, PNG, GIF বা WebP ছবি বেছে নিন।" />
+  <text name="ProfilePicture_TooLarge" value="ছবিটি অনেক বড় (২০০ KB-এর বেশি)।" />
+  <text name="My account" value="আমার অ্যাকাউন্ট" />
+  <text name="Your details, picture, password and recent sign-ins." value="আপনার তথ্য, ছবি, পাসওয়ার্ড ও সাম্প্রতিক সাইন-ইন।" />
+  <text name="Store: {0}" value="স্টোর: {0}" />
+  <text name="Host administrator account" value="হোস্ট অ্যাডমিনিস্ট্রেটর অ্যাকাউন্ট" />
+  <text name="Your profile is saved." value="আপনার প্রোফাইল সংরক্ষিত হয়েছে।" />
+  <text name="Your details" value="আপনার তথ্য" />
+  <text name="The name others see on documents and in the audit log, and how we reach you." value="ডকুমেন্ট ও অডিট লগে অন্যরা যে নাম দেখেন, এবং কীভাবে আপনার সাথে যোগাযোগ করা যায়।" />
+  <text name="Save profile" value="প্রোফাইল সংরক্ষণ" />
+  <text name="Choose an image file (JPG, PNG, GIF or WebP)." value="একটি ছবির ফাইল বেছে নিন (JPG, PNG, GIF বা WebP)।" />
+  <text name="The image is larger than 10 MB. Choose a smaller one." value="ছবিটি ১০ MB-এর বড়। ছোট একটি বেছে নিন।" />
+  <text name="This file could not be read as an image." value="এই ফাইলটি ছবি হিসেবে পড়া যায়নি।" />
+  <text name="Your picture is saved." value="আপনার ছবি সংরক্ষিত হয়েছে।" />
+  <text name="Profile picture" value="প্রোফাইল ছবি" />
+  <text name="Shown in the top bar and next to your name. Choose a picture, then drag and zoom to frame it." value="উপরের বারে ও আপনার নামের পাশে দেখানো হয়। একটি ছবি বেছে নিন, তারপর টেনে ও জুম করে ঠিক করুন।" />
+  <text name="Current picture" value="বর্তমান ছবি" />
+  <text name="No picture yet" value="এখনও কোনো ছবি নেই" />
+  <text name="Remove picture" value="ছবি সরান" />
+  <text name="Drag to move the picture; use the arrow keys or the slider to adjust." value="ছবি সরাতে টানুন; ঠিক করতে তীর কী বা স্লাইডার ব্যবহার করুন।" />
+  <text name="Zoom" value="জুম" />
+  <text name="Choose another" value="অন্যটি বেছে নিন" />
+  <text name="Choose a picture" value="একটি ছবি বেছে নিন" />
+  <text name="or drop it here · JPG, PNG, GIF or WebP, up to 10 MB" value="অথবা এখানে ছেড়ে দিন · JPG, PNG, GIF বা WebP, ১০ MB পর্যন্ত" />
+  <text name="Remove your picture?" value="আপনার ছবি সরাবেন?" />
+  <text name="Removing…" value="সরানো হচ্ছে…" />
+  <text name="Your picture is removed." value="আপনার ছবি সরানো হয়েছে।" />
+  <text name="Your initials are shown instead." value="এর বদলে আপনার নামের আদ্যক্ষর দেখানো হবে।" />
+  <text name="At least {0} characters" value="অন্তত {0}টি অক্ষর" />
+  <text name="A lowercase letter" value="একটি ছোট হাতের অক্ষর" />
+  <text name="An uppercase letter" value="একটি বড় হাতের অক্ষর" />
+  <text name="A number" value="একটি সংখ্যা" />
+  <text name="A symbol such as ! ? # or %" value="একটি চিহ্ন, যেমন ! ? # বা %" />
+  <text name="At most {0} characters" value="সর্বোচ্চ {0}টি অক্ষর" />
+  <text name="Your password is changed. Use it the next time you sign in." value="আপনার পাসওয়ার্ড বদলানো হয়েছে। পরের বার সাইন ইনে এটি ব্যবহার করুন।" />
+  <text name="Enter your current password, then the new one twice." value="বর্তমান পাসওয়ার্ড দিন, তারপর নতুনটি দুবার দিন।" />
+  <text name="Repeat the new password" value="নতুন পাসওয়ার্ড আবার দিন" />
+  <text name="The two new passwords do not match." value="দুটি নতুন পাসওয়ার্ড মিলছে না।" />
+  <text name="Show passwords" value="পাসওয়ার্ড দেখান" />
+  <text name="Your new password needs" value="আপনার নতুন পাসওয়ার্ডে থাকতে হবে" />
+  <text name="Very weak" value="খুব দুর্বল" />
+  <text name="Weak" value="দুর্বল" />
+  <text name="Fair" value="মোটামুটি" />
+  <text name="Good" value="ভালো" />
+  <text name="Strong" value="শক্তিশালী" />
+  <text name="Signed in" value="সাইন ইন হয়েছে" />
+  <text name="Unknown user name or email" value="অজানা ইউজার নেম বা ইমেইল" />
+  <text name="Wrong password" value="ভুল পাসওয়ার্ড" />
+  <text name="Account is inactive" value="অ্যাকাউন্ট নিষ্ক্রিয়" />
+  <text name="Unknown store" value="অজানা স্টোর" />
+  <text name="Store is inactive" value="স্টোর নিষ্ক্রিয়" />
+  <text name="Email not confirmed" value="ইমেইল নিশ্চিত হয়নি" />
+  <text name="Unknown external sign-in" value="অজানা বাইরের সাইন-ইন" />
+  <text name="Account locked" value="অ্যাকাউন্ট লক" />
+  <text name="Mobile number not confirmed" value="মোবাইল নম্বর নিশ্চিত হয়নি" />
+  <text name="Sign-in failed" value="সাইন-ইন ব্যর্থ" />
+  <text name="Unknown browser" value="অজানা ব্রাউজার" />
+  <text name="App or script" value="অ্যাপ বা স্ক্রিপ্ট" />
+  <text name="{0} on {1}" value="{1}-এ {0}" />
+  <text name="Sign-in history" value="সাইন-ইন ইতিহাস" />
+  <text name="Your last {0} sign-ins. If you do not recognise one, change your password." value="আপনার শেষ {0}টি সাইন-ইন। কোনোটি চিনতে না পারলে পাসওয়ার্ড বদলান।" />
+  <text name="Last successful sign-in" value="শেষ সফল সাইন-ইন" />
+  <text name="Failed attempts in this list" value="এই তালিকায় ব্যর্থ চেষ্টা" />
+  <text name="No sign-ins yet" value="এখনও কোনো সাইন-ইন নেই" />
+  <text name="{0} item · quantity {1}" value="{0}টি পণ্য · পরিমাণ {1}" />
+  <text name="{0} items · quantity {1}" value="{0}টি পণ্য · পরিমাণ {1}" />
+  <text name="No items match &quot;{0}&quot;" value="&quot;{0}&quot;-এর সাথে কোনো পণ্য মেলেনি" />
+  <text name="No items yet. Add them on the Items page." value="এখনও কোনো পণ্য নেই। পণ্য পাতায় যোগ করুন।" />
+  <text name="Loading…" value="লোড হচ্ছে…" />
+  <text name="Permission_Post" value="স্টকে পোস্ট" />
+  <text name="Permission_Post_Description" value="ডকুমেন্ট স্টকে যোগ করা: স্টকে পোস্ট, সংরক্ষণ ও পোস্ট এবং তৈরি ও পোস্ট বাটন দেখায়।" />
+  </texts>
+</localizationDictionary>

@@ -1,0 +1,27 @@
+/*
+  Mockup styling for Zero's administration pages, which still use their own
+  class names (admin-*, button-*, modal-close). Colour tokens, the shell, themes and accents
+  now live in ../inventory-shared/stockpilot.css (the mockup wins); everything else that used to be here
+  styled the removed shell and was deleted as dead.
+*/
+html,body,#root{min-height:100%;background:var(--bg);color:var(--tx)}
+:root,html,body,#root{font-family:Inter,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+
+.button,.button-primary,.button-secondary{font:inherit;font-size:13px;font-weight:600;padding:6px 12px;border-radius:6px;border:1px solid var(--bd);cursor:pointer;display:inline-flex;gap:6px;align-items:center;transition:transform .12s,filter .12s}
+.button:active,.button-primary:active,.button-secondary:active{transform:scale(.97)}
+.button-primary{background:var(--ac)!important;border-color:var(--ac)!important;color:var(--acx)!important}.button-primary:hover{filter:brightness(1.08)}
+.button-secondary{background:var(--sf);color:var(--tx);border-color:var(--bd)}.button-secondary:hover{background:var(--bg)}
+
+.panel{background:var(--sf);border:1px solid var(--bd)!important;border-radius:8px!important;padding:12px;margin-bottom:12px;box-shadow:var(--sh)}
+.section-placeholder h1{letter-spacing:-.02em}
+.admin-page-heading h1{font-size:21px}
+.stock-kicker{color:var(--ac)!important}
+.stock-dashboard{display:grid;gap:12px}
+
+.admin-table thead{position:sticky;top:0;z-index:2;background:var(--sf)}
+.admin-table th{font-size:12px;font-weight:500;color:var(--mu)}
+.admin-table th,.admin-table td{padding:7px 12px}
+.admin-table td{font-size:12px}
+
+/* Recovered from the release build (minified); the original comments and layout are lost. */
+.modal-close{background:var(--bg);width:30px;height:30px;color:var(--mu);cursor:pointer;border:0;border-radius:7px;font-size:20px}

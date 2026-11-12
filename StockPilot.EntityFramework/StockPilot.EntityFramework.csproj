@@ -1,0 +1,57 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Rebuilt on 2026-11-12 from the decompiled release build after the source was deleted. -->
+  <PropertyGroup>
+    <TargetFramework>net461</TargetFramework>
+    <AssemblyName>StockPilot.EntityFramework</AssemblyName>
+    <RootNamespace>StockPilot</RootNamespace>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <LangVersion>7.3</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+    <GenerateResourceUsePreserializedResources>false</GenerateResourceUsePreserializedResources>
+    <NoWarn>$(NoWarn);CS0108;CS0114;CS0618;CS1998;MSB3277</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Abp.Zero">
+      <HintPath>..\packages\Abp.Zero.2.3.0\lib\net46\Abp.Zero.dll</HintPath>
+    </Reference>
+    <Reference Include="Abp.Zero.EntityFramework">
+      <HintPath>..\packages\Abp.Zero.EntityFramework.2.3.0\lib\net46\Abp.Zero.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Abp">
+      <HintPath>..\packages\Abp.2.3.0\lib\net46\Abp.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="Abp.EntityFramework">
+      <HintPath>..\packages\Abp.EntityFramework.2.3.0\lib\net46\Abp.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="EntityFramework.DynamicFilters">
+      <HintPath>..\packages\EntityFramework.DynamicFilters.2.10.0\lib\net40\EntityFramework.DynamicFilters.dll</HintPath>
+    </Reference>
+    <Reference Include="Abp.Zero.Common">
+      <HintPath>..\packages\Abp.Zero.Common.2.3.0\lib\net46\Abp.Zero.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StockPilot.Core\StockPilot.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\Add_InventoryTables.resx" LogicalName="StockPilot.Migrations.Add_InventoryTables.resources" />
+    <EmbeddedResource Include="Migrations\Add_Pending_db_change.resx" LogicalName="StockPilot.Migrations.Add_Pending_db_change.resources" />
+    <EmbeddedResource Include="Migrations\Add_Pending_db_change_update.resx" LogicalName="StockPilot.Migrations.Add_Pending_db_change_update.resources" />
+    <EmbeddedResource Include="Migrations\Add_Stock_Tables.resx" LogicalName="StockPilot.Migrations.Add_Stock_Tables.resources" />
+    <EmbeddedResource Include="Migrations\Host_TenantRequests_BusinessInfo.resx" LogicalName="StockPilot.Migrations.Host_TenantRequests_BusinessInfo.resources" />
+    <EmbeddedResource Include="Migrations\Phase0_UnitSets_UniqueIndexes.resx" LogicalName="StockPilot.Migrations.Phase0_UnitSets_UniqueIndexes.resources" />
+    <EmbeddedResource Include="Migrations\Phase1_DocumentSequences.resx" LogicalName="StockPilot.Migrations.Phase1_DocumentSequences.resources" />
+  </ItemGroup>
+</Project>

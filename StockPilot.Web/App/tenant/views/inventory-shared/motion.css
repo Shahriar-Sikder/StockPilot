@@ -1,0 +1,46 @@
+/* Button motion (every .btn and top-bar .chip). Hover: the icon moves the way it reads, picked by the <Icon> name
+   (svg[data-i]); icons without a name just pop. Click: the icon presses and a ripple spreads from where it was
+   pressed (motion.js sets [data-clk] and --rx / --ry). The ripple uses ::before: ::after is the busy spinner's.
+   Keyframes mi-* are shared with the sidebar (dashboard/sidebar.css). */
+.btn,.chip{position:relative;overflow:hidden}
+.btn svg,.chip svg,.lnk svg{transform-box:fill-box;transform-origin:center;flex:none}
+
+.btn:not(.mi-new):hover svg,.chip:hover svg,.lnk:hover svg{animation:mi-pop .45s cubic-bezier(.34,1.56,.64,1)}
+.btn:not(.mi-new):hover svg[data-i=plus],.lnk:hover svg[data-i=plus]{animation:mi-plus .45s cubic-bezier(.34,1.56,.64,1)}
+.btn:hover svg[data-i=items]{animation:mi-hop .55s cubic-bezier(.34,1.56,.64,1)}
+.btn:hover svg[data-i=purchase],.btn:hover svg[data-i=dl],.lnk:hover svg[data-i=dl]{animation:mi-down .6s ease}
+.btn:hover svg[data-i=sale],.btn:hover svg[data-i=up],.lnk:hover svg[data-i=up]{animation:mi-up .6s ease}
+.btn:hover svg[data-i=move]{animation:mi-shuttle .6s ease}
+.btn:hover svg[data-i=supplier]{animation:mi-drive .7s ease}
+.btn:hover svg[data-i=file],.btn:hover svg[data-i=reports],.lnk:hover svg[data-i=file]{animation:mi-tilt .5s ease}
+.btn:hover svg[data-i=setup],.chip:hover svg[data-i=palette],.btn:hover svg[data-i=palette]{animation:mi-wiggle .55s ease}
+.btn:hover svg[data-i=user]{animation:mi-nod .5s ease}
+.btn:hover svg[data-i=lock],.btn:hover svg[data-i=alert],.lnk:hover svg[data-i=lock]{animation:mi-shake .45s ease}
+.btn:hover svg[data-i=trash],.lnk:hover svg[data-i=trash]{animation:mi-bin .5s ease}
+.btn:hover svg[data-i=edit],.lnk:hover svg[data-i=edit]{animation:mi-scribble .55s ease}
+.btn:hover svg[data-i=print]{animation:mi-feed .6s ease}
+.btn:hover svg[data-i=search],.chip:hover svg[data-i=search]{animation:mi-zoom .5s cubic-bezier(.34,1.56,.64,1)}
+.btn:hover svg[data-i=compass],.btn:hover svg[data-i=globe],.chip:hover svg[data-i=globe],.btn:hover svg[data-i=sun]{animation:mi-turn .7s cubic-bezier(.34,1.56,.64,1)}
+.btn:hover svg[data-i=moon]{animation:mi-tilt .5s ease}
+.btn:hover svg[data-i=logout]{animation:mi-right .5s ease}
+.btn:hover svg[data-i=chevl]{animation:mi-left .5s ease}
+.btn:hover svg[data-i=chevr]{animation:mi-right .5s ease}
+.btn:hover svg[data-i=coin]{animation:mi-flip .6s ease}
+.btn:hover svg[data-i=camera]{animation:mi-flash .5s ease}
+.btn:hover svg[data-i=dash]{animation:mi-tiles .5s ease}
+
+/* click */
+.btn[data-clk] svg,.chip[data-clk] svg{animation:mi-press .35s cubic-bezier(.34,1.56,.64,1)}
+.btn[data-clk]::before,.chip[data-clk]::before{content:'';position:absolute;left:var(--rx,50%);top:var(--ry,50%);width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:currentColor;opacity:.28;pointer-events:none;animation:mi-ripple .55s ease-out forwards}
+
+@keyframes mi-plus{0%{transform:rotate(0)}100%{transform:rotate(90deg)}}
+@keyframes mi-bin{0%,100%{transform:rotate(0)}20%{transform:rotate(-12deg) translateY(-1px)}45%{transform:rotate(10deg)}70%{transform:rotate(-5deg)}}
+@keyframes mi-scribble{0%,100%{transform:translate(0,0) rotate(0)}25%{transform:translate(-2px,1px) rotate(-8deg)}50%{transform:translate(2px,-1px) rotate(4deg)}75%{transform:translate(-1px,1px) rotate(-4deg)}}
+@keyframes mi-feed{0%,100%{transform:translateY(0)}35%{transform:translateY(2px) scaleY(.92)}70%{transform:translateY(-1px)}}
+@keyframes mi-zoom{0%,100%{transform:scale(1)}45%{transform:scale(1.25) rotate(-8deg)}}
+@keyframes mi-flip{0%{transform:rotateY(0)}100%{transform:rotateY(360deg)}}
+@keyframes mi-flash{0%,100%{transform:scale(1);opacity:1}30%{transform:scale(1.15);opacity:.55}60%{opacity:1}}
+
+@media(prefers-reduced-motion:reduce){
+  .btn svg,.chip svg,.lnk svg,.btn[data-clk]::before,.chip[data-clk]::before{animation:none!important}
+}

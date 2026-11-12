@@ -1,0 +1,64 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Rebuilt on 2026-11-12 from the decompiled release build after the source was deleted. -->
+  <PropertyGroup>
+    <TargetFramework>net461</TargetFramework>
+    <AssemblyName>StockPilot.Application</AssemblyName>
+    <RootNamespace>StockPilot</RootNamespace>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <LangVersion>7.3</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+    <GenerateResourceUsePreserializedResources>false</GenerateResourceUsePreserializedResources>
+    <NoWarn>$(NoWarn);CS0108;CS0114;CS0618;CS1998;MSB3277</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Abp">
+      <HintPath>..\packages\Abp.2.3.0\lib\net46\Abp.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.6.1.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="Abp.AutoMapper">
+      <HintPath>..\packages\Abp.AutoMapper.2.3.0\lib\net46\Abp.AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Abp.Zero.Common">
+      <HintPath>..\packages\Abp.Zero.Common.2.3.0\lib\net46\Abp.Zero.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\recovered-libs\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>..\recovered-libs\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Abp.Zero.Ldap">
+      <HintPath>..\packages\Abp.Zero.Ldap.2.3.0\lib\net46\Abp.Zero.Ldap.dll</HintPath>
+    </Reference>
+    <Reference Include="Abp.Zero">
+      <HintPath>..\packages\Abp.Zero.2.3.0\lib\net46\Abp.Zero.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.4.1.1\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Linq.Dynamic">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.7\lib\net40\System.Linq.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StockPilot.Core\StockPilot.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+
+  </ItemGroup>
+</Project>

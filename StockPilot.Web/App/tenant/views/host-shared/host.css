@@ -1,0 +1,53 @@
+/* Host pages (store requests, stores, editions, host dashboard). Colours come from the theme variables. */
+.hs-exp{color:var(--er);font-weight:600}
+.hs-soon{color:var(--wn);font-weight:600}
+.b.hc{background:var(--bg);color:var(--mu);border:1px solid var(--bd)}
+.hs-custom{margin-left:6px;font-size:11px;vertical-align:1px}
+.hs-actions{display:flex;flex-wrap:wrap;gap:8px}
+.hs-note{margin:10px 0 0;padding:10px 12px;border-radius:6px;background:var(--ac2);color:var(--tx);font-size:12.5px}
+.hs-danger{margin-top:18px;padding-top:14px;border-top:1px solid var(--bd)}
+.hs-section{margin:18px 0 8px;font-size:12px;font-weight:600;color:var(--mu);text-transform:uppercase;letter-spacing:.04em}
+.hs-usage{margin:14px 0}.hs-usage-top{display:flex;justify-content:space-between;gap:10px;margin-bottom:6px}
+.hs-empty-line{color:var(--mu);font-size:13px;padding:8px 0}
+.hs-full{grid-column:1/-1}
+.hs-fm textarea{width:100%;color:var(--tx);font:inherit;min-height:70px;resize:vertical}
+details.hs-more{margin-top:14px;border:1px solid var(--bd);border-radius:6px;padding:0 12px}
+details.hs-more>summary{cursor:pointer;padding:10px 0;font-weight:600;font-size:13px}
+details.hs-more[open]>summary{border-bottom:1px solid var(--bd);margin-bottom:6px}
+
+/* features tree */
+.ft-tree{display:flex;flex-direction:column}
+.ft-row{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:10px 4px;border-bottom:1px solid var(--bd)}
+.ft-row:last-child{border-bottom:0}
+.ft-row.off .ft-main b,.ft-row.off .ft-main span{opacity:.55}
+.ft-main{display:flex;flex-direction:column;gap:2px;min-width:0}
+.ft-main b{font-size:13.5px}
+.ft-badge{margin-left:8px;font-size:11px;padding:1px 7px;vertical-align:1px}
+.ft-input{flex:none}
+.ft-input input[type=number],.ft-input input[type=text]{width:110px;color:var(--tx)}
+.ft-switch{position:relative;display:inline-block;width:38px;height:22px;cursor:pointer}
+.ft-switch input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer}
+.ft-switch i{position:absolute;inset:0;border-radius:11px;background:var(--bd);transition:background .15s;pointer-events:none}
+.ft-switch i::after{content:'';position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:transform .15s;box-shadow:0 1px 2px rgba(0,0,0,.25)}
+.ft-switch input:checked+i{background:var(--ac)}
+.ft-switch input:checked+i::after{transform:translateX(16px)}
+.ft-switch input:focus-visible+i{outline:2px solid var(--ac);outline-offset:2px}
+.ft-switch input:disabled,.ft-switch input:disabled+i{cursor:default;opacity:.45}
+
+@media(max-width:560px){
+  .ft-row{align-items:flex-start}
+  .ft-input input[type=number],.ft-input input[type=text]{width:84px}
+  .hs-actions .btn{flex:1 1 auto}
+}
+
+/* Sidebar request badge, tabs and inline dates. Recovered from the release build (minified); the original comments and layout are lost. */
+:where(.sp-shell) aside a .nvb{background:var(--ac);color:#fff;text-align:center;border-radius:10px;min-width:20px;margin-left:auto;padding:1px 6px;font-size:11px;font-weight:700;line-height:16px}
+.hs-fm label.ck input,.md label.ck input[type=checkbox]{flex:none;width:auto}
+.dl span.hs-inline,.dl span.hs-inline span{font-size:inherit;color:inherit;display:inline}
+.dl span.hs-inline span.mu{color:var(--mu)}
+.dl span.hs-inline .hs-exp{color:var(--er)}
+.dl span.hs-inline .hs-soon{color:var(--wn)}
+.hs-tabs{border-bottom:1px solid var(--bd);padding:12px 22px 0}
+.hs-tabs .pills{margin-bottom:12px}
+@media (width<=560px){.hs-tabs{padding:10px 14px 0}}
+.hs-fm label.ck:not(.hs-full){align-self:end;min-height:38px}

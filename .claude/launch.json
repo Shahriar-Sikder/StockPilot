@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "stockpilot-web",
+      "runtimeExecutable": "C:\\Program Files\\IIS Express\\iisexpress.exe",
+      "runtimeArgs": ["/path:D:\\Development\\StockPilot\\StockPilot.Web", "/port:31892"],
+      "port": 31892
+    },
+    {
+      "name": "mockup",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["C:\\Users\\User\\AppData\\Local\\Temp\\claude\\661a33387f3007e8\\c94fa1c7-6f69-4745-b79e-928c8a4a448e\\scratchpad\\static-server.mjs", "D:\\Development\\StockPilot\\docs\\mockups", "31999"],
+      "port": 31999
+    }
+  ]
+}

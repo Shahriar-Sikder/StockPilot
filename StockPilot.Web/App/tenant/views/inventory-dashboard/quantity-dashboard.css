@@ -1,0 +1,12 @@
+/* Quantity dashboard ("Hide cost and values"): only what the mockup's .kp / .li / .b / .bar do not cover. */
+.kp b.qd-item{display:flex;align-items:center;gap:8px;min-width:0;font-size:17px;line-height:1.3;margin:4px 0 2px}
+.kp b.qd-item em{font-style:normal;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.qd-sg{display:flex;gap:10px;align-items:flex-start;min-width:0}
+.qd-sg>div{min-width:0}
+.qd-sg .b{flex:none;margin-top:1px;min-width:66px;text-align:center}
+.b.qd-crit{background:var(--erb);color:var(--er)}
+.b.qd-warn{background:var(--wnb);color:var(--wn)}
+.b.qd-info{background:color-mix(in srgb,var(--in) 14%,transparent);color:var(--in)}
+.qd-empty{padding:22px 10px}
+.qd-empty b{font-size:14px}
+@media(max-width:620px){.li .bar{width:64px}.kp b.qd-item{font-size:15px}}
