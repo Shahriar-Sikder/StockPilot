@@ -2937,9 +2937,9 @@
     <Content Include="Views\Account\_Layout-rtl.css" />
     <Content Include="Views\Error\_Layout.css" />
     <Content Include="Views\TenantRegistration\Index.js" />
-    <EmbeddedResource Include="Web.config">
+    <Content Include="Web.config">
       <SubType>Designer</SubType>
-    </EmbeddedResource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Layout\TenantCustomCssViewModel.cs" />
