@@ -195,7 +195,8 @@ export function RecordDialog({ config: listConfig, row, combos, onClose, onSaved
     {!model ? <div className="fm">{config.fields.map((field) => <div key={field.key} className="sk" style={{ height: 34 }} />)}</div>
       : <form className="fm" onSubmit={(event) => { event.preventDefault(); save(); }}>
         {config.fields.map((field) => {
-          const label = <>{L(field.label)}{field.required && <> <span className="req">*</span></>}</>;
+          // One <span>, so the label text and the required star stay on one line in the column layout (.fm label).
+          const label = <span>{L(field.label)}{field.required && <span className="req"> *</span>}</span>;
           if (field.type === 'img') return <label key={field.key} style={{ gridColumn: '1/-1' }}>{L('Picture (optional)')}
             <input type="file" ref={fileInput} accept="image/*" onChange={pick} />
             <div style={{ marginTop: 6 }}>{shownPicture
