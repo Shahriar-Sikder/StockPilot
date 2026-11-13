@@ -280,7 +280,7 @@ namespace StockPilot.Services.IssueSale
 					DiscountAmount = d.DiscountAmount,
 					TaxAmount = d.TaxAmount,
 					TotalAmount = d.TotalAmount,
-					CostTotal = (d.Items.Where((IssueSalesItem l) => !l.IsDeleted).Sum((Func<IssueSalesItem, decimal?>)((IssueSalesItem l) => l.BaseQuantity * l.UnitCost)) ?? 0m),
+					CostTotal = (d.Items.Where((IssueSalesItem l) => !l.IsDeleted).Sum((IssueSalesItem l) => (decimal?)(l.BaseQuantity * l.UnitCost)) ?? 0m),
 					Status = d.Status,
 					PostedTime = d.PostedTime,
 					LineCount = d.Items.Count((IssueSalesItem l) => !l.IsDeleted),

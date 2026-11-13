@@ -235,7 +235,7 @@ namespace StockPilot.Services.InventoryReport
 					DiscountAmount = d.DiscountAmount,
 					TaxAmount = d.TaxAmount,
 					TotalAmount = d.TotalAmount,
-					Cost = (d.Items.Where((IssueSalesItem l) => !l.IsDeleted).Sum((Func<IssueSalesItem, decimal?>)((IssueSalesItem l) => l.BaseQuantity * l.UnitCost)) ?? 0m),
+					Cost = (d.Items.Where((IssueSalesItem l) => !l.IsDeleted).Sum((IssueSalesItem l) => (decimal?)(l.BaseQuantity * l.UnitCost)) ?? 0m),
 					Status = d.Status
 				}).ToListAsync();
 			foreach (SalesListRowDto row in rows)
