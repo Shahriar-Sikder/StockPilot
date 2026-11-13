@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import { isEscapeKey } from './modal.jsx';
 
 /**
  * The mockup's drawer(): dimmed overlay .ov and a 560px panel .dw sliding in from the right.
@@ -9,9 +10,10 @@ import { createPortal } from 'react-dom';
 export default function Drawer({ onClose, children }) {
   useEffect(() => {
     // A dialog opened over the drawer (Post to stock?) takes Escape first.
-    const key = (event) => { if (event.key === 'Escape' && !document.querySelector('.mo')) onClose(); };
-    window.addEventListener('keydown', key);
-    return () => window.removeEventListener('keydown', key);
+    // Capture on document like the modal; the drawer opened first, so it sees a dialog over it before that closes.
+    const key = (event) => { if (isEscapeKey(event) && !document.querySelector('.mo')) onClose(); };
+    document.addEventListener('keydown', key, true);
+    return () => document.removeEventListener('keydown', key, true);
   }, [onClose]);
   return createPortal(<>
     <div className="ov" onClick={onClose} />
