@@ -25,7 +25,7 @@ namespace StockPilot.Services.ItemMaster
 					ItemSubCategoryName = i.ItemSubCategoryInfo.Name,
 					BaseUnitId = i.BaseUnitId,
 					BaseUnitCode = i.BaseUnit.Code,
-					PictureId = i.PictureId,
+					PictureUrl = i.PictureUrl,
 					SalePrice = i.SalePrice,
 					ReorderLevel = i.ReorderLevel,
 					QuantityOnHand = quantity,

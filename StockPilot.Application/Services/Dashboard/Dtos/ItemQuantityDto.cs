@@ -10,7 +10,7 @@ namespace StockPilot.Services.Dashboard.Dtos
 
 		public string ItemCode { get; set; }
 
-		public Guid? PictureId { get; set; }
+		public string PictureUrl { get; set; }
 
 		public decimal Quantity { get; set; }
 

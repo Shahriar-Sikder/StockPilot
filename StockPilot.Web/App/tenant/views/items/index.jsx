@@ -54,7 +54,7 @@ export default function ItemsPage() {
       ]}
       columns={[
         { key: 'itemCode', label: 'Code' },
-        { key: 'itemName', label: 'Item', render: (r) => <div className="nm"><Avatar name={r.itemName} picture={{ service: 'ItemMaster', id: r.id, pictureId: r.pictureId }} /><b>{r.itemName}</b></div> },
+        { key: 'itemName', label: 'Item', render: (r) => <div className="nm"><Avatar name={r.itemName} src={r.pictureUrl} /><b>{r.itemName}</b></div> },
         { key: 'itemCategoryName', label: 'Category' },
         { key: 'itemSubCategoryName', label: 'Sub-category', text: (r) => r.itemSubCategoryName || '-' },
         { key: 'quantityOnHand', label: 'On hand', right: true, render: (r) => <b>{n(r.quantityOnHand, 2)}</b> },
@@ -64,7 +64,7 @@ export default function ItemsPage() {
         { key: 'status', label: 'Status', text: (r) => stockStatusText(r.status), render: (r) => <StockBadge status={r.status} /> }
       ]} />
     {openId && <ItemDrawer id={openId} reloadKey={reload} onClose={() => setOpenId(null)}
-      onEdit={(detail) => { setOpenId(null); setDialog({ row: { id: detail.id, pictureId: detail.pictureId } }); }} />}
+      onEdit={(detail) => { setOpenId(null); setDialog({ row: { id: detail.id, pictureUrl: detail.pictureUrl } }); }} />}
     {dialog && <RecordDialog config={ITEM} row={dialog.row} combos={combos} onClose={() => setDialog(null)} onSaved={saved} />}
   </>;
 }
@@ -91,7 +91,7 @@ function ItemDrawer({ id, reloadKey, onClose, onEdit }) {
   const units = (detail.units || []).map((u) => u.code).join(', ') || unit;
   const ago = (value) => { const [key, count] = agoParts(value); return L(key, count); };
   return <Drawer onClose={onClose}>
-    <DrawerHeader avatar={<Avatar name={detail.itemName} size="lg" picture={{ service: 'ItemMaster', id: detail.id, pictureId: detail.pictureId }} />}
+    <DrawerHeader avatar={<Avatar name={detail.itemName} size="lg" src={detail.pictureUrl} />}
       title={detail.itemName} subtitle={`${detail.itemCode} · ${detail.itemCategoryName || '-'} / ${detail.itemSubCategoryName || '-'}`} onClose={onClose} />
     <div className="db">
       <StockBadge status={detail.status} />

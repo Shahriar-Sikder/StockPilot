@@ -23,7 +23,7 @@ namespace StockPilot.Services.ItemSubCategory.Dtos
 
 		public bool IsActive { get; set; }
 
-		public Guid? PictureId { get; set; }
+		public string PictureUrl { get; set; }
 
 		public bool IsDeleted { get; set; }
 

@@ -128,6 +128,7 @@ namespace StockPilot.Services.IssueSale
 				EditIssueSalesItemDto editIssueSalesItemDto = base.ObjectMapper.Map<EditIssueSalesItemDto>(l);
 				editIssueSalesItemDto.ItemCode = l.ItemMasterInfo?.ItemCode;
 				editIssueSalesItemDto.ItemName = l.ItemMasterInfo?.ItemName;
+				editIssueSalesItemDto.ItemPictureUrl = l.ItemMasterInfo?.PictureUrl;
 				editIssueSalesItemDto.BaseUnitCode = l.ItemMasterInfo?.BaseUnit?.Code;
 				editIssueSalesItemDto.UnitCode = l.UnitMasterInfo?.Code;
 				if (available != null)

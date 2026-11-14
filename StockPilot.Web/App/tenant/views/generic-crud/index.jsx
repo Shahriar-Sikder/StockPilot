@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { callService, clearBusy, isGranted, L, notifyError, notifySuccess, setBusy } from '../abp.js';
 import { notifyAction } from '../toast.js';
 import AbpGrid from '../inventory-shared/abp-grid.jsx';
-import { usePicture } from '../inventory-shared/avatar.jsx';
+import { usePictureFailed } from '../inventory-shared/avatar.jsx';
 import Icon from '../inventory-shared/icons.jsx';
 import Modal from '../inventory-shared/modal.jsx';
 import { date, day, n } from '../inventory-shared/format.js';
@@ -43,9 +43,10 @@ const comboLabel = (combos, service, id) => {
 
 /* ---------- grid cells ---------- */
 
-function PictureCell({ service, row }) {
-  const src = usePicture(service, row.id, row.pictureId);
-  return src ? <img className="th" src={src} alt="" /> : <span className="mu">—</span>;
+// The picture straight from its URL; a dash when there is none or it does not load.
+function PictureCell({ row }) {
+  const [failed, onError] = usePictureFailed(row.pictureUrl);
+  return row.pictureUrl && !failed ? <img className="th" src={row.pictureUrl} alt="" onError={onError} /> : <span className="mu">—</span>;
 }
 
 function cellValue(field, row, combos) {
@@ -65,7 +66,7 @@ function columnsFor(config, combos, actions) {
     nosort: field.type === 'img',
     right: field.type === 'num',
     text: (row) => cellValue(field, row, combos),
-    render: field.type === 'img' ? (row) => <PictureCell service={config.service} row={row} />
+    render: field.type === 'img' ? (row) => <PictureCell row={row} />
       : field.type === 'num' ? (row) => n(row[field.key]) : undefined
   }));
   if (actions) columns.push({ key: '_a', label: '', nosort: true, noexport: true, stop: true, render: actions });
@@ -107,7 +108,7 @@ function emptyRecord(config) {
 }
 
 /**
- * Add (row null) or edit (row = { id, pictureId? }) one record of `config`.
+ * Add (row null) or edit (row = { id, pictureUrl? }) one record of `config`.
  * field.filterBy = { key, prop }: only options whose combo row[prop] equals this form's `key` value
  * (sub-categories of the chosen category). config.beforeSave(input, combos) can fill derived fields.
  */
@@ -116,7 +117,7 @@ export function RecordDialog({ config: listConfig, row, combos, onClose, onSaved
   const config = withPictureFeature(listConfig);
   const editing = !!row;
   const [model, setModel] = useState(editing ? null : emptyRecord(config));
-  const existingPicture = usePicture(config.picture && editing ? config.service : null, row && row.id, row && row.pictureId);
+  const existingPicture = config.picture && editing && row ? row.pictureUrl || '' : '';
   const [picture, setPicture] = useState(undefined); // undefined: unchanged, '': removed, data URL: new picture
   const saveButton = useRef(null);
   const fileInput = useRef(null);
@@ -174,7 +175,7 @@ export function RecordDialog({ config: listConfig, row, combos, onClose, onSaved
       if (editing) await callService(config.service, 'Update', input);
       else id = (await callService(config.service, 'Create', input)).id;
       if (config.picture && picture) await callService(config.service, 'UploadPicture', { id, fileName: 'picture.jpg', base64Content: picture.split(',')[1] });
-      else if (config.picture && picture === '' && row && row.pictureId) await callService(config.service, 'DeletePicture', { id });
+      else if (config.picture && picture === '' && row && row.pictureUrl) await callService(config.service, 'DeletePicture', { id });
       notifySuccess(L(editing ? config.updated : config.saved));
       onSaved();
       onClose();

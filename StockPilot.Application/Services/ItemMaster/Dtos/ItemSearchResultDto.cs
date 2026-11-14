@@ -11,7 +11,7 @@ namespace StockPilot.Services.ItemMaster.Dtos
 
 		public string Barcode { get; set; }
 
-		public Guid? PictureId { get; set; }
+		public string PictureUrl { get; set; }
 
 		public bool IsStockItem { get; set; }
 

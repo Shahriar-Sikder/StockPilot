@@ -39,16 +39,16 @@ namespace StockPilot.Services.ItemCategory
 
 		private readonly IRepository<StockPilot.Entity.ItemMaster> _itemRepository;
 
-		private readonly PictureStore _pictureStore;
+		private readonly EntityPictureFiles _pictureFiles;
 
 		public ItemCategoryExcelExporter ExcelExporter { get; set; }
 
-		public ItemCategoryAppService(IRepository<StockPilot.Entity.ItemCategory> categoryRepository, IRepository<StockPilot.Entity.ItemSubCategory> subCategoryRepository, IRepository<StockPilot.Entity.ItemMaster> itemRepository, PictureStore pictureStore)
+		public ItemCategoryAppService(IRepository<StockPilot.Entity.ItemCategory> categoryRepository, IRepository<StockPilot.Entity.ItemSubCategory> subCategoryRepository, IRepository<StockPilot.Entity.ItemMaster> itemRepository, EntityPictureFiles pictureFiles)
 		{
 			_categoryRepository = categoryRepository;
 			_subCategoryRepository = subCategoryRepository;
 			_itemRepository = itemRepository;
-			_pictureStore = pictureStore;
+			_pictureFiles = pictureFiles;
 		}
 
 		[AbpAuthorize(new string[] { "Pages.StockPilot.Setup.Categories" })]
@@ -88,6 +88,7 @@ namespace StockPilot.Services.ItemCategory
 			await EnsureCodeIsFreeAsync(input.Code, null);
 			StockPilot.Entity.ItemCategory entity = MapForCreate<StockPilot.Entity.ItemCategory>(input);
 			entity.PictureId = null;
+			entity.PictureUrl = null;
 			return new EntityDto(await _categoryRepository.InsertAndGetIdAsync(entity));
 		}
 
@@ -98,8 +99,10 @@ namespace StockPilot.Services.ItemCategory
 			StockPilot.Entity.ItemCategory entity = await _categoryRepository.GetAsync(input.Id);
 			await EnsureCodeIsFreeAsync(input.Code, entity.Id);
 			Guid? pictureId = entity.PictureId;
+			string pictureUrl = entity.PictureUrl;
 			MapForUpdate(input, entity);
 			entity.PictureId = pictureId;
+			entity.PictureUrl = pictureUrl;
 		}
 
 		[AbpAuthorize(new string[] { "Pages.StockPilot.Setup.Categories.Delete" })]
@@ -134,18 +137,13 @@ namespace StockPilot.Services.ItemCategory
 
 		[AbpAuthorize(new string[] { "Pages.StockPilot.Setup.Categories.Edit" })]
 		[RequiresFeature(new string[] { "App.Inventory.Pictures" })]
-		public async Task<PictureDto> UploadPicture(UploadPictureInput input)
+		public async Task<PictureUrlDto> UploadPicture(UploadPictureInput input)
 		{
 			StockPilot.Entity.ItemCategory entity = await _categoryRepository.GetAsync(input.Id);
-			StockPilot.Entity.ItemCategory itemCategory = entity;
-			itemCategory.PictureId = await _pictureStore.ReplaceAsync(entity.PictureId, input);
-			return await _pictureStore.GetOrNullAsync(entity.PictureId);
-		}
-
-		public async Task<PictureDto> GetPicture(EntityDto input)
-		{
-			StockPilot.Entity.ItemCategory entity = await _categoryRepository.GetAsync(input.Id);
-			return await _pictureStore.GetOrNullAsync(entity.PictureId);
+			// The new file now; the previous one is deleted after the save (EntityPictureFiles).
+			entity.PictureUrl = await _pictureFiles.ReplaceAsync(entity.TenantId, PictureFolders.Categories, input.Base64Content, entity.PictureUrl, entity.PictureId);
+			entity.PictureId = null;
+			return new PictureUrlDto { PictureUrl = entity.PictureUrl };
 		}
 
 		[AbpAuthorize(new string[] { "Pages.StockPilot.Setup.Categories.Edit" })]
@@ -153,7 +151,8 @@ namespace StockPilot.Services.ItemCategory
 		public async Task DeletePicture(EntityDto input)
 		{
 			StockPilot.Entity.ItemCategory entity = await _categoryRepository.GetAsync(input.Id);
-			await _pictureStore.DeleteAsync(entity.PictureId);
+			_pictureFiles.RemoveAfterCommit(entity.PictureUrl, entity.PictureId);
+			entity.PictureUrl = null;
 			entity.PictureId = null;
 		}
 

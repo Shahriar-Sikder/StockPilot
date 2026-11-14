@@ -88,7 +88,7 @@ const ItemSearch = forwardRef(function ItemSearch({ onPick }, ref) {
             className={`sg${index === active ? ' on' : ''}`}
             onMouseEnter={() => setActive(index)}
             onMouseDown={(event) => { event.preventDefault(); pick(item); }}>
-            <Avatar name={item.itemName} picture={{ service: 'ItemMaster', id: item.id, pictureId: item.pictureId }} />
+            <Avatar name={item.itemName} src={item.pictureUrl} />
             <div><b>{item.itemName}</b><div className="mu">{item.itemCode}</div></div>
             <span className="mu">{L('{0} in stock', `${n(item.quantityOnHand, 2)} ${item.baseUnitCode}`)}</span>
           </div>)}

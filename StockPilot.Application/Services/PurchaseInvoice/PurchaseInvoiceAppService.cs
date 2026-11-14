@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Abp.Application.Features;
@@ -12,6 +13,7 @@ using Abp.Domain.Entities;
 using Abp.Domain.Repositories;
 using Abp.Extensions;
 using Abp.Linq.Extensions;
+using Abp.Threading;
 using Abp.UI;
 using StockPilot.Dto;
 using StockPilot.Entity;
@@ -51,19 +53,22 @@ namespace StockPilot.Services.PurchaseInvoice
 
 		private readonly IBinaryObjectManager _binaryObjectManager;
 
+		private readonly DocumentFileStore _documentFiles;
+
 		private readonly DocumentNumberManager _documentNumberManager;
 
 		private readonly StockManager _stockManager;
 
 		public PurchaseInvoiceExcelExporter ExcelExporter { get; set; }
 
-		public PurchaseInvoiceAppService(IRepository<StockPilot.Entity.PurchaseInvoice> invoiceRepository, IRepository<PurchaseInvoiceItem> lineRepository, IRepository<PurchaseInvoiceDocument> documentRepository, IRepository<StockPilot.Entity.Supplier> supplierRepository, IBinaryObjectManager binaryObjectManager, DocumentNumberManager documentNumberManager, StockManager stockManager)
+		public PurchaseInvoiceAppService(IRepository<StockPilot.Entity.PurchaseInvoice> invoiceRepository, IRepository<PurchaseInvoiceItem> lineRepository, IRepository<PurchaseInvoiceDocument> documentRepository, IRepository<StockPilot.Entity.Supplier> supplierRepository, IBinaryObjectManager binaryObjectManager, DocumentNumberManager documentNumberManager, StockManager stockManager, DocumentFileStore documentFiles)
 		{
 			_invoiceRepository = invoiceRepository;
 			_lineRepository = lineRepository;
 			_documentRepository = documentRepository;
 			_supplierRepository = supplierRepository;
 			_binaryObjectManager = binaryObjectManager;
+			_documentFiles = documentFiles;
 			_documentNumberManager = documentNumberManager;
 			_stockManager = stockManager;
 		}
@@ -130,6 +135,7 @@ namespace StockPilot.Services.PurchaseInvoice
 				EditPurchaseInvoiceItemDto editPurchaseInvoiceItemDto = base.ObjectMapper.Map<EditPurchaseInvoiceItemDto>(l);
 				editPurchaseInvoiceItemDto.ItemCode = l.ItemMasterInfo?.ItemCode;
 				editPurchaseInvoiceItemDto.ItemName = l.ItemMasterInfo?.ItemName;
+				editPurchaseInvoiceItemDto.ItemPictureUrl = l.ItemMasterInfo?.PictureUrl;
 				editPurchaseInvoiceItemDto.BaseUnitCode = l.ItemMasterInfo?.BaseUnit?.Code;
 				editPurchaseInvoiceItemDto.UnitCode = l.UnitMasterInfo?.Code;
 				return editPurchaseInvoiceItemDto;
@@ -270,8 +276,10 @@ namespace StockPilot.Services.PurchaseInvoice
 			{
 				throw new UserFriendlyException(L("AttachmentContentDoesNotMatchType", fileName));
 			}
-			BinaryObject binary = new BinaryObject(base.AbpSession.TenantId, bytes);
-			await _binaryObjectManager.SaveAsync(binary);
+			// A file in the picture folder (documents\t{tenant}\), not a database row. Written now; deleted again if the
+			// document is not saved.
+			string filePath = await _documentFiles.SaveAsync(invoice.TenantId, bytes, Path.GetExtension(fileName));
+			base.CurrentUnitOfWork.Failed += (sender, args) => DeleteDocumentFile(filePath);
 			PurchaseInvoiceDocument document = new PurchaseInvoiceDocument
 			{
 				TenantId = invoice.TenantId,
@@ -279,7 +287,8 @@ namespace StockPilot.Services.PurchaseInvoice
 				FileName = fileName,
 				ContentType = contentType,
 				SizeBytes = bytes.Length,
-				BinaryObjectId = binary.Id
+				FilePath = filePath,
+				BinaryObjectId = null
 			};
 			await _documentRepository.InsertAndGetIdAsync(document);
 			return base.ObjectMapper.Map<PurchaseInvoiceDocumentDto>(document);
@@ -290,8 +299,17 @@ namespace StockPilot.Services.PurchaseInvoice
 		public async Task<PurchaseDocumentContentDto> DownloadDocument(EntityDto input)
 		{
 			PurchaseInvoiceDocument document = await _documentRepository.GetAsync(input.Id);
-			BinaryObject binary = await _binaryObjectManager.GetOrNullAsync(document.BinaryObjectId);
-			if (binary == null)
+			// The file; a document saved before the change is still read from the database until it is moved.
+			byte[] content = null;
+			if (!string.IsNullOrEmpty(document.FilePath))
+			{
+				content = await _documentFiles.ReadOrNullAsync(document.FilePath);
+			}
+			else if (document.BinaryObjectId.HasValue)
+			{
+				content = (await _binaryObjectManager.GetOrNullAsync(document.BinaryObjectId.Value))?.Bytes;
+			}
+			if (content == null)
 			{
 				throw new UserFriendlyException(L("AttachmentFileMissing", document.FileName));
 			}
@@ -299,7 +317,7 @@ namespace StockPilot.Services.PurchaseInvoice
 			{
 				FileName = document.FileName,
 				ContentType = document.ContentType,
-				Base64Content = Convert.ToBase64String(binary.Bytes)
+				Base64Content = Convert.ToBase64String(content)
 			};
 		}
 
@@ -315,6 +333,18 @@ namespace StockPilot.Services.PurchaseInvoice
 		public async Task RestoreDocument(EntityDto input)
 		{
 			await RestoreEntityAsync(_documentRepository, input.Id);
+		}
+
+		private void DeleteDocumentFile(string filePath)
+		{
+			try
+			{
+				AsyncHelper.RunSync(() => _documentFiles.DeleteAsync(filePath));
+			}
+			catch (Exception error)
+			{
+				base.Logger.Warn("Could not delete document file " + filePath + " after a failed save.", error);
+			}
 		}
 
 		private IQueryable<PurchaseInvoiceGridRow> FilteredQuery(PurchaseInvoiceGridInput input)

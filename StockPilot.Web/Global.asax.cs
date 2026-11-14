@@ -58,10 +58,23 @@ namespace StockPilot.Web
 			}
 		}
 
+		// Item, category and sub-category pictures (StockPilot:PictureBaseUrl): unique file names that never change.
+		private static readonly string PictureUrlPrefix = new StockPilot.Services.Common.PictureFileStore().BaseUrl;
+
 		protected override void Application_BeginRequest(object sender, EventArgs e)
 		{
 			base.Application_BeginRequest(sender, e);
-			DisableClientCache();
+			// Pictures are cached by browsers for a year (a new picture always gets a new name); everything else stays
+			// uncached as before. Web.config (<location path="Pictures">) limits what this folder serves.
+			if (base.Request.Path.StartsWith(PictureUrlPrefix, StringComparison.OrdinalIgnoreCase))
+			{
+				base.Response.Cache.SetCacheability(HttpCacheability.Public);
+				base.Response.Cache.SetMaxAge(TimeSpan.FromDays(365));
+			}
+			else
+			{
+				DisableClientCache();
+			}
 		}
 
 		private void DisableClientCache()

@@ -25,7 +25,13 @@ namespace StockPilot.Entity
 
 		public virtual bool IsActive { get; set; } = true;
 
+		/// <summary>Old storage: the picture as a row in AppBinaryObjects. Moved to <see cref="PictureUrl"/> by
+		/// PictureFileMigrator, then dropped by a later migration.</summary>
 		public virtual Guid? PictureId { get; set; }
+
+		/// <summary>The picture file, as a relative URL such as /Pictures/t3/items/{guid}.png (PictureFileStore).</summary>
+		[StringLength(500)]
+		public virtual string PictureUrl { get; set; }
 
 		public virtual int Sequence { get; set; }
 

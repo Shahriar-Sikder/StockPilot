@@ -15,7 +15,7 @@ namespace StockPilot.Services.ItemSubCategory.Exporting
 				InventoryExcelExporterBase.Col("ColCode", (ItemSubCategoryListDto r) => r.Code),
 				InventoryExcelExporterBase.Col("ColName", (ItemSubCategoryListDto r) => r.Name),
 				InventoryExcelExporterBase.Col("ColDescription", (ItemSubCategoryListDto r) => r.Description),
-				InventoryExcelExporterBase.Col("ColPicture", (ItemSubCategoryListDto r) => (!r.PictureId.HasValue) ? L("No") : L("Yes")),
+				InventoryExcelExporterBase.Col("ColPicture", (ItemSubCategoryListDto r) => string.IsNullOrEmpty(r.PictureUrl) ? L("No") : L("Yes")),
 				InventoryExcelExporterBase.Col("ColActive", (ItemSubCategoryListDto r) => (!r.IsActive) ? L("No") : L("Yes"))
 			};
 			return Export("SubCategories.xlsx", "Sub-categories", rows, columns);

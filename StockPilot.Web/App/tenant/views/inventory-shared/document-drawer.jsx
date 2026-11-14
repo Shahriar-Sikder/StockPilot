@@ -14,9 +14,6 @@ import Modal from './modal.jsx';
 import Skeleton from './skeleton.jsx';
 import { DocumentBadge } from './status-badge.jsx';
 
-/** Item picture by item id (document lines carry no PictureId); GetPicture returns null when there is none. */
-const linePicture = (itemId) => ({ service: 'ItemMaster', id: itemId, pictureId: `line-${itemId}` });
-
 const NOTES = {
   0: 'Draft: nothing has changed in stock yet.',
   1: 'Posted: stock was updated. Cancelling adds reversing entries.',
@@ -90,7 +87,7 @@ export default function DocumentDrawer({ kind, id, onClose, onChanged }) {
       <div className="db">
         <div className="dl"><div><span>{L(K.partyLabel)}</span>{K.partyOf(doc)}</div><div><span>{L('Currency')}</span>{doc.currencyCode}</div></div>
         {doc.lines.map((l) => <div className="li" key={l.id}>
-          <div className="nm"><Avatar name={l.itemName} picture={linePicture(l.itemMasterId)} /><div><b>{l.itemName}</b><span>{n(l.quantity)} {l.unitCode}<IfCost> × {n(K.linePrice(l))}</IfCost></span></div></div>
+          <div className="nm"><Avatar name={l.itemName} src={l.itemPictureUrl} /><div><b>{l.itemName}</b><span>{n(l.quantity)} {l.unitCode}<IfCost> × {n(K.linePrice(l))}</IfCost></span></div></div>
           <div style={{ textAlign: 'right' }}><IfCost><b>{n(l.lineTotal)}</b></IfCost><div className="mu">{L('{0} stock', `${K.sign}${n(l.baseQuantity, 4)} ${l.baseUnitCode}`)}</div></div>
         </div>)}
         {showAttachments && <>

@@ -22,6 +22,9 @@ StockPilot.Web/AppSettings.Local.config
 StockPilot.Web/Properties/PublishProfiles/*.pubxml.user
 StockPilot.Web/Properties/PublishProfiles/FolderProfile*.pubxml
 
+# Uploaded item / category / sub-category pictures: data, not code (docs/pictures.md)
+StockPilot.Web/Pictures/
+
 # Logs
 *.log
 StockPilot.Web/App_Data/Logs/

@@ -66,7 +66,7 @@ export default function UiKitPage() {
         onRowClick={() => setDrawer(true)}
         columns={[
           { key: 'itemCode', label: 'Code' },
-          { key: 'itemName', label: 'Item', render: (r) => <div className="nm"><Avatar name={r.itemName} picture={{ service: 'ItemMaster', id: r.id, pictureId: r.pictureId }} /><b>{r.itemName}</b></div> },
+          { key: 'itemName', label: 'Item', render: (r) => <div className="nm"><Avatar name={r.itemName} src={r.pictureUrl} /><b>{r.itemName}</b></div> },
           { key: 'itemCategoryName', label: 'Category' },
           { key: 'quantityOnHand', label: 'On hand', right: true, render: (r) => <b>{n(r.quantityOnHand, 2)}</b> },
           { key: 'baseUnitCode', label: 'Unit' },

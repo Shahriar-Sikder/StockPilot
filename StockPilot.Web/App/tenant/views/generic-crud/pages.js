@@ -1,6 +1,7 @@
 // The mockup's M / H / SING / MF tables for the reference lists, mapped onto the ABP app services.
 // Every list service has GetAll(GridInput) / GetForEdit / Create / Update / Delete / Restore / GetForCombo;
-// ItemCategory and ItemSubCategory also have UploadPicture / GetPicture / DeletePicture (base64).
+// ItemCategory and ItemSubCategory also have UploadPicture (base64 in, the saved PictureUrl out) / DeletePicture;
+// the picture itself is loaded straight from its PictureUrl.
 //
 // field: { key, label, type: 'text' | 'num' | 'date' | 'bool' | 'img' | 'fk', required?, default?,
 //          fk?: combo service, col?: list DTO property shown in the grid, sortKey?: server sort field }
@@ -24,7 +25,7 @@ export const LISTS = {
     fields: [
       { key: 'code', label: 'Code', required: true },
       { key: 'name', label: 'Name', required: true },
-      { key: 'pictureId', label: 'Picture', type: 'img' }
+      { key: 'pictureUrl', label: 'Picture', type: 'img' }
     ]
   },
   itemSubCategory: {
@@ -34,7 +35,7 @@ export const LISTS = {
       { key: 'itemCategoryId', label: 'Category', type: 'fk', fk: 'ItemCategory', col: 'itemCategoryName', sortKey: 'itemCategoryName', required: true },
       { key: 'code', label: 'Code', required: true },
       { key: 'name', label: 'Name', required: true },
-      { key: 'pictureId', label: 'Picture', type: 'img' }
+      { key: 'pictureUrl', label: 'Picture', type: 'img' }
     ],
     filters: [{ key: 'itemCategoryId', all: 'All categories', fk: 'ItemCategory' }]
   },
@@ -125,7 +126,7 @@ export const LISTS = {
       { key: 'standardCost', label: 'Cost price', type: 'num' },
       { key: 'salePrice', label: 'Sale price', type: 'num' },
       { key: 'reorderLevel', label: 'Reorder level', type: 'num' },
-      { key: 'pictureId', label: 'Picture', type: 'img' }
+      { key: 'pictureUrl', label: 'Picture', type: 'img' }
     ],
     // The form picks a base unit; the item's unit group is that unit's group.
     beforeSave(input, combos) {

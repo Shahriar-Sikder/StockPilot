@@ -71,6 +71,9 @@ namespace StockPilot.Web
 			catch
 			{
 			}
+			// One-time move of item / category / sub-category pictures to files; skipped once
+			// StockPilot:PicturesMigratedToFiles is "true". Logs its counts and never stops the site from starting.
+			base.IocManager.Resolve<StockPilot.Services.Common.PictureFileMigrator>().RunAtStartup();
 		}
 	}
 }

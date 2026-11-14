@@ -26,9 +26,8 @@ namespace StockPilot.Services.ItemCategory
 
 		Task<ListResultDto<ItemCategoryComboDto>> GetForCombo();
 
-		Task<PictureDto> UploadPicture(UploadPictureInput input);
+		Task<PictureUrlDto> UploadPicture(UploadPictureInput input);
 
-		Task<PictureDto> GetPicture(EntityDto input);
 
 		Task DeletePicture(EntityDto input);
 	}

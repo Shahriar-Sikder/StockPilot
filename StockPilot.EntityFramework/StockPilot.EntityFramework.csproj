@@ -53,5 +53,7 @@
     <EmbeddedResource Include="Migrations\Host_TenantRequests_BusinessInfo.resx" LogicalName="StockPilot.Migrations.Host_TenantRequests_BusinessInfo.resources" />
     <EmbeddedResource Include="Migrations\Phase0_UnitSets_UniqueIndexes.resx" LogicalName="StockPilot.Migrations.Phase0_UnitSets_UniqueIndexes.resources" />
     <EmbeddedResource Include="Migrations\Phase1_DocumentSequences.resx" LogicalName="StockPilot.Migrations.Phase1_DocumentSequences.resources" />
+    <EmbeddedResource Include="Migrations\202611131854414_Pictures_PictureUrl.resx" LogicalName="StockPilot.Migrations.Pictures_PictureUrl.resources" />
+    <EmbeddedResource Include="Migrations\202611140325067_Documents_FilePath.resx" LogicalName="StockPilot.Migrations.Documents_FilePath.resources" />
   </ItemGroup>
 </Project>

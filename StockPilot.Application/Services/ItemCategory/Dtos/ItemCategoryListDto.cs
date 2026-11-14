@@ -19,7 +19,7 @@ namespace StockPilot.Services.ItemCategory.Dtos
 
 		public int Sequence { get; set; }
 
-		public Guid? PictureId { get; set; }
+		public string PictureUrl { get; set; }
 
 		public bool IsDeleted { get; set; }
 

@@ -32,7 +32,7 @@ namespace StockPilot.Services.ItemMaster.Dtos
 
 		public string BaseUnitCode { get; set; }
 
-		public Guid? PictureId { get; set; }
+		public string PictureUrl { get; set; }
 
 		public decimal SalePrice { get; set; }
 

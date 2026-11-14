@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import { callService } from '../abp.js';
+import { useState } from 'react';
 
 /** The mockup's avc(): a stable colour per name. */
 export function avatarColour(text) {
@@ -10,40 +9,24 @@ export function avatarColour(text) {
 
 const initialsOf = (text) => String(text || '').split(' ').filter(Boolean).slice(0, 2).map((word) => word[0]).join('').toUpperCase();
 
-// Pictures already fetched this session, by "service:id:pictureId" (a new PictureId after an upload is a new key).
-const pictures = new Map();
-
 /**
- * Loads an entity picture through `${service}.GetPicture` ({ contentType, base64Content } or null) once per
- * session and returns a data: URL, or '' when there is none.
+ * An item, category or sub-category picture loaded straight from its URL (PictureUrl, e.g. /Pictures/t3/items/….png).
+ * onError reports a picture that does not load (deleted file, no access), so the caller can show its fallback.
  */
-export function usePicture(service, id, pictureId) {
-  const key = service && id && pictureId ? `${service}:${id}:${pictureId}` : '';
-  const [src, setSrc] = useState(() => (key && typeof pictures.get(key) === 'string' ? pictures.get(key) : ''));
-  useEffect(() => {
-    if (!key) { setSrc(''); return undefined; }
-    let live = true;
-    if (!pictures.has(key)) {
-      pictures.set(key, callService(service, 'GetPicture', { id })
-        .then((picture) => (picture && picture.base64Content ? `data:${picture.contentType};base64,${picture.base64Content}` : ''))
-        .catch(() => ''));
-    }
-    Promise.resolve(pictures.get(key)).then((value) => { pictures.set(key, value); if (live) setSrc(value); });
-    return () => { live = false; };
-  }, [key]);
-  return src;
+export function usePictureFailed(src) {
+  const [failedSrc, setFailedSrc] = useState(null);
+  return [!!src && src === failedSrc, () => setFailedSrc(src)];
 }
 
 /**
  * The mockup's AV(): the picture when there is one, otherwise coloured initials.
- *   <Avatar name="Green Tea" />                                     initials
- *   <Avatar name={row.itemName} picture={{ service: 'ItemMaster', id: row.id, pictureId: row.pictureId }} />
+ *   <Avatar name="Green Tea" />                                  initials
+ *   <Avatar name={row.itemName} src={row.pictureUrl} />          the picture, or initials if it is empty or fails to load
  *   size="lg" for the 52px drawer avatar; inside a table cell the CSS shrinks it to 28px.
  */
-export default function Avatar({ name, src, picture, size = '', style, children }) {
-  const loaded = usePicture(picture && picture.service, picture && picture.id, picture && picture.pictureId);
-  const image = src || loaded;
+export default function Avatar({ name, src, size = '', style, children }) {
+  const [failed, onError] = usePictureFailed(src);
   const className = `av ${size}`.trim();
-  if (image) return <img className={className} src={image} alt="" />;
+  if (src && !failed) return <img className={className} src={src} alt="" onError={onError} />;
   return <div className={className} style={{ background: avatarColour(name), ...style }}>{children ?? initialsOf(name)}</div>;
 }

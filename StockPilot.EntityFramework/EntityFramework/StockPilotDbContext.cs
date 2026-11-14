@@ -99,7 +99,7 @@ namespace StockPilot.EntityFramework
 			modelBuilder.Entity<PurchaseInvoiceDocument>().HasRequired((PurchaseInvoiceDocument document) => document.PurchaseInvoiceInfo).WithMany((PurchaseInvoice invoice) => invoice.Documents)
 				.HasForeignKey((PurchaseInvoiceDocument document) => document.PurchaseInvoiceId)
 				.WillCascadeOnDelete(value: true);
-			modelBuilder.Entity<PurchaseInvoiceDocument>().HasRequired((PurchaseInvoiceDocument document) => document.BinaryObjectInfo).WithMany()
+			modelBuilder.Entity<PurchaseInvoiceDocument>().HasOptional((PurchaseInvoiceDocument document) => document.BinaryObjectInfo).WithMany()
 				.HasForeignKey((PurchaseInvoiceDocument document) => document.BinaryObjectId)
 				.WillCascadeOnDelete(value: false);
 			modelBuilder.Properties<decimal>().Configure(delegate(ConventionPrimitivePropertyConfiguration property)

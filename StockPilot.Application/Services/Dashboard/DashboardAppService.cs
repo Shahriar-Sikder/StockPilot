@@ -123,7 +123,7 @@ namespace StockPilot.Services.Dashboard
 					Id = i.Id,
 					ItemName = i.ItemName,
 					ItemCode = i.ItemCode,
-					PictureId = i.PictureId,
+					PictureUrl = i.PictureUrl,
 					BaseUnitCode = i.BaseUnit.Code
 				}).ToListAsync();
 			return top.Select(t =>
@@ -134,7 +134,7 @@ namespace StockPilot.Services.Dashboard
 					ItemId = t.ItemId,
 					ItemName = anon.ItemName,
 					ItemCode = anon.ItemCode,
-					PictureId = anon.PictureId,
+					PictureUrl = anon.PictureUrl,
 					BaseUnitCode = anon.BaseUnitCode,
 					Quantity = t.Quantity,
 					DocumentCount = t.DocumentCount
@@ -172,7 +172,7 @@ namespace StockPilot.Services.Dashboard
 				ItemId = top.ItemId,
 				ItemName = top.ItemName,
 				ItemCode = top.ItemCode,
-				PictureId = top.PictureId,
+				PictureUrl = top.PictureUrl,
 				Quantity = top.Quantity,
 				BaseUnitCode = top.BaseUnitCode
 			};
@@ -189,7 +189,7 @@ namespace StockPilot.Services.Dashboard
 				PartyName = row.PartyName,
 				ItemCode = row.ItemCode,
 				ItemName = row.ItemName,
-				PictureId = row.PictureId,
+				PictureUrl = row.PictureUrl,
 				QuantityOnHand = row.QuantityOnHand,
 				ReorderLevel = row.ReorderLevel,
 				BaseUnitCode = row.BaseUnitCode,
@@ -344,7 +344,7 @@ namespace StockPilot.Services.Dashboard
 				Id = r.Id,
 				ItemCode = r.ItemCode,
 				ItemName = r.ItemName,
-				PictureId = r.PictureId,
+				PictureUrl = r.PictureUrl,
 				QuantityOnHand = r.QuantityOnHand,
 				ReorderLevel = r.ReorderLevel,
 				BaseUnitCode = r.BaseUnitCode,

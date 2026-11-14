@@ -65,7 +65,7 @@ function ItemKpi({ icon, colour, background, label, item, sign, empty }) {
     <i className="ki" style={{ color: colour, background }}><Icon name={icon} size={16} /></i>
     <span>{label}</span>
     {item
-      ? <><b className="qd-item"><Avatar name={item.itemName} picture={{ service: 'ItemMaster', id: item.itemId, pictureId: item.pictureId }} /><em title={item.itemName}>{item.itemName}</em></b>
+      ? <><b className="qd-item"><Avatar name={item.itemName} src={item.pictureUrl} /><em title={item.itemName}>{item.itemName}</em></b>
         <small>{`${sign}${n(item.quantity, 2)} ${item.baseUnitCode}`} · {L('last 14 days')}</small></>
       : <><b className="qd-item">—</b><small>{empty} · {L('last 14 days')}</small></>}
   </div>;
@@ -76,7 +76,7 @@ function TopItems({ title, items, countText, empty }) {
   const top = items.length ? items[0].quantity : 1;
   return <div className="card"><h3>{title}</h3>
     {items.length ? items.map((item) => <div className="li" key={item.itemId}>
-      <div className="nm"><Avatar name={item.itemName} picture={{ service: 'ItemMaster', id: item.itemId, pictureId: item.pictureId }} />
+      <div className="nm"><Avatar name={item.itemName} src={item.pictureUrl} />
         <div><b>{item.itemName}</b><span>{n(item.quantity, 2)} {item.baseUnitCode} · {countText(item.documentCount)}</span></div></div>
       <div className="bar"><i style={{ width: `${Math.max(4, Math.round(item.quantity / (top || 1) * 100))}%` }} /></div>
     </div>) : <div className="empty qd-empty"><b>{L('Nothing yet')}</b>{empty}</div>}

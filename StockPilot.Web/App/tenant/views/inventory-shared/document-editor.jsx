@@ -112,7 +112,7 @@ export default function DocumentEditor({ kind, preItemId, preQuantity, onClose, 
       const units = isFeatureEnabled(FEATURES.unitConversions) && (item.units || []).length ? item.units.map((u) => ({ unitId: u.unitId, code: u.code, factor: u.factor }))
         : [{ unitId: item.baseUnitId, code: item.baseUnitCode, factor: 1 }];
       setLines((current) => current.some((l) => l.itemId === id) ? current : [...current, {
-        itemId: id, name: item.itemName, pictureId: item.pictureId, onHand: item.quantityOnHand, baseUnitCode: item.baseUnitCode,
+        itemId: id, name: item.itemName, pictureUrl: item.pictureUrl, onHand: item.quantityOnHand, baseUnitCode: item.baseUnitCode,
         units, unitId: item.baseUnitId, qty: quantity > 0 ? quantity : 1, base: K.basePrice(item) || 0, price: K.basePrice(item) || 0
       }]);
     } catch (_) { /* abp.ajax showed it */ }
@@ -200,7 +200,7 @@ export default function DocumentEditor({ kind, preItemId, preQuantity, onClose, 
     </div>
     <ItemSearch ref={searchBox} onPick={(item) => addItem(item.id)} />
     <div>{lines.length ? lines.map((l, i) => <div className={hideCost ? 'ln nc' : 'ln'} key={l.itemId}>
-      <div className="nm"><Avatar name={l.name} picture={{ service: 'ItemMaster', id: l.itemId, pictureId: l.pictureId }} />
+      <div className="nm"><Avatar name={l.name} src={l.pictureUrl} />
         <div><b>{l.name}</b>{over(l)
           ? <span className="warn">{L('Only {0} available', `${n(l.onHand, 2)} ${l.baseUnitCode}`)}</span>
           : <span>{L('In stock: {0}', `${n(l.onHand, 2)} ${l.baseUnitCode}`)}</span>}</div></div>

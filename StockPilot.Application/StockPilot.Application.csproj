@@ -23,6 +23,8 @@
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Transactions" />
     <Reference Include="Abp.AutoMapper">
       <HintPath>..\packages\Abp.AutoMapper.2.3.0\lib\net46\Abp.AutoMapper.dll</HintPath>
     </Reference>

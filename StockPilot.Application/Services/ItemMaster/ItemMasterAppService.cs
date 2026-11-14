@@ -72,11 +72,11 @@ namespace StockPilot.Services.ItemMaster
 
 		private readonly StockManager _stockManager;
 
-		private readonly PictureStore _pictureStore;
+		private readonly EntityPictureFiles _pictureFiles;
 
 		public ItemMasterExcelExporter ExcelExporter { get; set; }
 
-		public ItemMasterAppService(IRepository<StockPilot.Entity.ItemMaster> itemRepository, IRepository<StockBalance> balanceRepository, IRepository<StockPilot.Entity.StockMovement, long> movementRepository, IRepository<StockPilot.Entity.ItemCategory> categoryRepository, IRepository<StockPilot.Entity.ItemSubCategory> subCategoryRepository, IRepository<StockPilot.Entity.UnitSet> unitSetRepository, IRepository<StockPilot.Entity.UnitMaster> unitRepository, IRepository<StockPilot.Entity.Supplier> supplierRepository, IRepository<PurchaseInvoiceItem> purchaseLineRepository, IRepository<IssueSalesItem> saleLineRepository, UnitConversionManager unitConversionManager, StockManager stockManager, PictureStore pictureStore)
+		public ItemMasterAppService(IRepository<StockPilot.Entity.ItemMaster> itemRepository, IRepository<StockBalance> balanceRepository, IRepository<StockPilot.Entity.StockMovement, long> movementRepository, IRepository<StockPilot.Entity.ItemCategory> categoryRepository, IRepository<StockPilot.Entity.ItemSubCategory> subCategoryRepository, IRepository<StockPilot.Entity.UnitSet> unitSetRepository, IRepository<StockPilot.Entity.UnitMaster> unitRepository, IRepository<StockPilot.Entity.Supplier> supplierRepository, IRepository<PurchaseInvoiceItem> purchaseLineRepository, IRepository<IssueSalesItem> saleLineRepository, UnitConversionManager unitConversionManager, StockManager stockManager, EntityPictureFiles pictureFiles)
 		{
 			_itemRepository = itemRepository;
 			_balanceRepository = balanceRepository;
@@ -90,7 +90,7 @@ namespace StockPilot.Services.ItemMaster
 			_saleLineRepository = saleLineRepository;
 			_unitConversionManager = unitConversionManager;
 			_stockManager = stockManager;
-			_pictureStore = pictureStore;
+			_pictureFiles = pictureFiles;
 		}
 
 		[AbpAuthorize(new string[] { "Pages.StockPilot.Items" })]
@@ -155,7 +155,7 @@ namespace StockPilot.Services.ItemMaster
 				Barcode = item.Barcode,
 				ItemCategoryName = item.ItemCategoryInfo?.Name,
 				ItemSubCategoryName = item.ItemSubCategoryInfo?.Name,
-				PictureId = item.PictureId,
+				PictureUrl = item.PictureUrl,
 				IsStockItem = item.IsStockItem,
 				IsActive = item.IsActive,
 				Status = ItemStockRules.GetStatus(item.IsStockItem, quantity, item.ReorderLevel),
@@ -196,7 +196,7 @@ namespace StockPilot.Services.ItemMaster
 					ItemCode = i.ItemCode,
 					ItemName = i.ItemName,
 					Barcode = i.Barcode,
-					PictureId = i.PictureId,
+					PictureUrl = i.PictureUrl,
 					IsStockItem = i.IsStockItem,
 					QuantityOnHand = (((decimal?)b.QuantityOnHand) ?? 0m),
 					AvailableQuantity = (((decimal?)b.QuantityOnHand) ?? 0m) - (((decimal?)b.ReservedQuantity) ?? 0m),
@@ -235,6 +235,7 @@ namespace StockPilot.Services.ItemMaster
 			await CheckPictureFeatureAsync(input.Picture != null);
 			StockPilot.Entity.ItemMaster entity = MapForCreate<StockPilot.Entity.ItemMaster>(input);
 			entity.PictureId = null;
+			entity.PictureUrl = null;
 			await ValidateAsync(entity);
 			if (entity.IsActive)
 			{
@@ -242,8 +243,8 @@ namespace StockPilot.Services.ItemMaster
 			}
 			if (input.Picture != null)
 			{
-				StockPilot.Entity.ItemMaster itemMaster = entity;
-				itemMaster.PictureId = await _pictureStore.ReplaceAsync(null, input.Picture);
+				// Written now; deleted again if the item is not saved (EntityPictureFiles).
+				entity.PictureUrl = await _pictureFiles.ReplaceAsync(base.AbpSession.TenantId, PictureFolders.Items, input.Picture.Base64Content, null, null);
 			}
 			int id = await _itemRepository.InsertAndGetIdAsync(entity);
 			await _stockManager.EnsureBalanceAsync(id);
@@ -271,17 +272,21 @@ namespace StockPilot.Services.ItemMaster
 				await CheckItemLimitAsync(entity.Id);
 			}
 			Guid? pictureId = entity.PictureId;
+			string pictureUrl = entity.PictureUrl;
 			MapForUpdate(input, entity);
 			entity.PictureId = pictureId;
+			entity.PictureUrl = pictureUrl;
 			await ValidateAsync(entity);
 			if (input.Picture != null)
 			{
-				StockPilot.Entity.ItemMaster itemMaster = entity;
-				itemMaster.PictureId = await _pictureStore.ReplaceAsync(entity.PictureId, input.Picture);
+				// The new file now; the previous one is deleted after the save (EntityPictureFiles).
+				entity.PictureUrl = await _pictureFiles.ReplaceAsync(entity.TenantId, PictureFolders.Items, input.Picture.Base64Content, pictureUrl, pictureId);
+				entity.PictureId = null;
 			}
 			else if (input.RemovePicture)
 			{
-				await _pictureStore.DeleteAsync(entity.PictureId);
+				_pictureFiles.RemoveAfterCommit(pictureUrl, pictureId);
+				entity.PictureUrl = null;
 				entity.PictureId = null;
 			}
 		}
@@ -341,18 +346,13 @@ namespace StockPilot.Services.ItemMaster
 
 		[AbpAuthorize(new string[] { "Pages.StockPilot.Items.Edit" })]
 		[RequiresFeature(new string[] { "App.Inventory.Pictures" })]
-		public async Task<PictureDto> UploadPicture(UploadPictureInput input)
+		public async Task<PictureUrlDto> UploadPicture(UploadPictureInput input)
 		{
 			StockPilot.Entity.ItemMaster entity = await _itemRepository.GetAsync(input.Id);
-			StockPilot.Entity.ItemMaster itemMaster = entity;
-			itemMaster.PictureId = await _pictureStore.ReplaceAsync(entity.PictureId, input);
-			return await _pictureStore.GetOrNullAsync(entity.PictureId);
-		}
-
-		public async Task<PictureDto> GetPicture(EntityDto input)
-		{
-			StockPilot.Entity.ItemMaster entity = await _itemRepository.GetAsync(input.Id);
-			return await _pictureStore.GetOrNullAsync(entity.PictureId);
+			// The new file now; the previous one is deleted after the save (EntityPictureFiles).
+			entity.PictureUrl = await _pictureFiles.ReplaceAsync(entity.TenantId, PictureFolders.Items, input.Base64Content, entity.PictureUrl, entity.PictureId);
+			entity.PictureId = null;
+			return new PictureUrlDto { PictureUrl = entity.PictureUrl };
 		}
 
 		[AbpAuthorize(new string[] { "Pages.StockPilot.Items.Edit" })]
@@ -360,7 +360,8 @@ namespace StockPilot.Services.ItemMaster
 		public async Task DeletePicture(EntityDto input)
 		{
 			StockPilot.Entity.ItemMaster entity = await _itemRepository.GetAsync(input.Id);
-			await _pictureStore.DeleteAsync(entity.PictureId);
+			_pictureFiles.RemoveAfterCommit(entity.PictureUrl, entity.PictureId);
+			entity.PictureUrl = null;
 			entity.PictureId = null;
 		}
 

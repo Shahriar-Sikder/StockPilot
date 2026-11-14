@@ -82,7 +82,7 @@ export function AttentionList({ attention, draftDetail }) {
       <button className="btn s" onClick={() => go(`${a.kind === 1 ? '/purchase-invoices' : '/issues'}?open=${a.id}`)}>{L('Review')}</button>
     </div>)}
     {lows.map((a) => <div className="li" key={`l${a.id}`}>
-      <div className="nm"><Avatar name={a.itemName} picture={{ service: 'ItemMaster', id: a.id, pictureId: a.pictureId }} />
+      <div className="nm"><Avatar name={a.itemName} src={a.pictureUrl} />
         <div><b>{a.itemName}</b><span>{L('{0} left · reorder at {1}', `${n(a.quantityOnHand, 2)} ${a.baseUnitCode}`, n(a.reorderLevel))}</span></div></div>
       {isGranted('Pages.StockPilot.Purchases.Create') && <button className="btn s" onClick={() => go(`/purchase-invoices?new=1&item=${a.id}`)}>{L('Reorder')}</button>}
     </div>)}

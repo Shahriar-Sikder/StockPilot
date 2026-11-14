@@ -3110,6 +3110,36 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <!-- Uploaded item / category / sub-category pictures (StockPilot:PictureRootPath, docs\pictures.md) are data, not
+       code: a publish never copies, overwrites or (with Web Deploy) deletes the Pictures folder on the server.
+       A FileSystem publish with "Delete all existing files prior to publish" (DeleteExistingFiles=True) still empties
+       the whole target folder, Pictures included: keep it False in the publish profile, or keep Pictures outside
+       the site (recommended for production). -->
+  <PropertyGroup>
+    <ExcludeFoldersFromDeployment>Pictures</ExcludeFoldersFromDeployment>
+  </PropertyGroup>
+  <ItemGroup>
+    <MsDeploySkipRules Include="SkipPicturesFolder">
+      <SkipAction>Delete</SkipAction>
+      <ObjectName>dirPath</ObjectName>
+      <AbsolutePath>\\Pictures($|\\)</AbsolutePath>
+    </MsDeploySkipRules>
+    <MsDeploySkipRules Include="SkipPictureFiles">
+      <SkipAction>Delete</SkipAction>
+      <ObjectName>filePath</ObjectName>
+      <AbsolutePath>\\Pictures\\</AbsolutePath>
+    </MsDeploySkipRules>
+  </ItemGroup>
+  <!-- Guard: "Delete all existing files prior to publish" deletes everything in the target folder that is not part of
+       the build, uploaded pictures included (WebFileSystemPublish has no way to exclude a folder from that delete).
+       So a FileSystem publish with it switched on stops here, before anything is deleted, when the target already
+       holds pictures. -->
+  <Target Name="StockPilotProtectUploadedPictures" BeforeTargets="WebFileSystemPublish" Condition="'$(DeleteExistingFiles)' == 'True' And '$(PublishUrl)' != ''">
+    <ItemGroup>
+      <_StockPilotPicturesAtTarget Include="$(PublishUrl)\Pictures\**\*" />
+    </ItemGroup>
+    <Error Condition="'@(_StockPilotPicturesAtTarget)' != ''" Text="Publish stopped to protect uploaded pictures: '$(PublishUrl)\Pictures' holds item / category / sub-category pictures, and 'Delete all existing files prior to publish' would delete them. Turn that option off in the publish profile (Settings, File Publish Options), or move the pictures outside the site (docs\pictures.md). Nothing was deleted." />
+  </Target>
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ProjectExtensions>

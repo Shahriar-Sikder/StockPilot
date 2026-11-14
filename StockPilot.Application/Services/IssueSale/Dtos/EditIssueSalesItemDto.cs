@@ -34,6 +34,9 @@ namespace StockPilot.Services.IssueSale.Dtos
 
 		public string ItemName { get; set; }
 
+		/// <summary>The line's item picture (relative URL), for display only.</summary>
+		public string ItemPictureUrl { get; set; }
+
 		public string UnitCode { get; set; }
 
 		public string BaseUnitCode { get; set; }
